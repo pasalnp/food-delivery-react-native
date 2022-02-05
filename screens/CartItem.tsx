@@ -49,6 +49,7 @@ const CartItem = ({ navigation }) => {
  
     return (
       <View style={styles.container}>
+        <ScrollView>
         {/* HEADER */}
         <View
           style={{
@@ -61,7 +62,7 @@ const CartItem = ({ navigation }) => {
             borderBottomColor: "black"
           }}
         >
-          {
+          
             <Ionicons
               name="md-arrow-back"
               size={30}
@@ -73,7 +74,7 @@ const CartItem = ({ navigation }) => {
             //     })
             //   }
             />
-          }
+          
           <View
             style={{
               borderBottomWidth: 0.8,
@@ -189,7 +190,7 @@ const CartItem = ({ navigation }) => {
                   <Text
                     style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
                   >
-                    {/* {cart.ItemName} */}
+                    {/* {cart.ItemName} */}tet
                   </Text>
                 </View>
                 <View style={{ borderRightWidth: 0.6, width: "18%" }}>
@@ -225,7 +226,7 @@ const CartItem = ({ navigation }) => {
               </View>
             {/* );
           } */}
-          )
+          
         </ScrollView>
 
         {/* CHECKOUT */}
@@ -310,6 +311,7 @@ const CartItem = ({ navigation }) => {
             </Text>
           </View>
         </View>
+      </ScrollView>
       </View>
     );
   }
