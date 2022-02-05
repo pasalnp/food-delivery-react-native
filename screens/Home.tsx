@@ -25,7 +25,13 @@ const Home = ({ navigation }) => {
   }
 
   const categoryData = [
+    
     {
+      id: 777,
+      name: "Todays Menu",
+      icon: icons.rice_bowl,
+    }
+    ,{
       id: 1,
       name: "Rice",
       icon: icons.rice_bowl,
@@ -131,7 +137,7 @@ const Home = ({ navigation }) => {
       id: 2,
       name: "ByProgrammers Pizza",
       rating: 4.8,
-      categories: [2, 4, 6],
+      categories: [2, 4, 777,6],
       priceRating: expensive,
       photo: images.pizza_restaurant,
       duration: "15 - 20 min",

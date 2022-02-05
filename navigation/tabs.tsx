@@ -11,6 +11,8 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 import { Home } from "../screens"
 
 import { COLORS, icons } from "../constants"
+import Login from '../screens/Login';
+import SignUp from '../screens/SignUp';
 
 const Tab = createBottomTabNavigator();
 
@@ -190,7 +192,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="User"
-                component={Home}
+                component={SignUp}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
