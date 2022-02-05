@@ -5,8 +5,10 @@ import React, { useState } from "react";
 import {
   View,
   Text,
+  StyleSheet
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { Picker } from "@react-native-picker/picker";
 import {
   icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
   Headline4, Body1, Body2,
@@ -35,16 +37,21 @@ if(pass=='123'){
       pass: '1234',
     },
     
-    
+
   ]
   
-  
+  const[pickerValue, setPickerValue] =useState('Admin')
   
   return (
     <View style={{ padding: SIZES.padding * 2 }}>
     <Text style={{fontSize:18, paddingTop:20}}>Sign Up</Text>
     <Text>Please your credintial for login</Text>
     <Text> your credintial for login is {user} {pass} {logedin}</Text>
+     <Picker style={styles.picker} selectedValue={pickerValue}
+     onValueChange={(itemValue) => setPickerValue(itemValue)}>
+       <Picker.Item label="Admin" value="Admin"/>
+       <Picker.Item label="Customer" value="Customer"/>
+     </Picker>
     <TextInput onChangeText={setUser} style={{padding:20,borderRightColor:'red',borderBottomWidth:3,}} placeholder={'User Name'}/>
     <TextInput onChangeText={setPass} style={{padding:20,borderRightColor:'red',borderBottomWidth:3,}} placeholder={'Password'}/>
     <TouchableOpacity style={{padding:50}}>
@@ -55,6 +62,20 @@ if(pass=='123'){
     </View>
     )
   }
+
+  const styles= StyleSheet.create({
+    picker:{
+      height:40,
+      width:200,
+      borderColor:'blue',
+      borderRadius:10,
+      borderWidth:2,
+      backgroundColor:'gray',
+      color:'white',
+      textAlign:'center'
+      
+    }
+  })
   
   export default Login;
   

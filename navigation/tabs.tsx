@@ -13,6 +13,8 @@ import { Home } from "../screens"
 import { COLORS, icons } from "../constants"
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
+import CartItem from '../screens/CartItem';
+import AddItem from '../screens/AddItems';
 
 const Tab = createBottomTabNavigator();
 
@@ -192,7 +194,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="User"
-                component={SignUp}
+                component={AddItem}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
