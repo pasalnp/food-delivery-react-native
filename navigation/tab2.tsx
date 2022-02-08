@@ -13,13 +13,10 @@ import { Home, OrderDelivery } from "../screens"
 import { COLORS, icons } from "../constants"
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import CartItem from '../screens/MyCart';
+import CartItem from '../screens/CartItem';
 import AddItem from '../screens/AddItems';
-import ViewOrder from '../screens/MyOrder';
-import MyOrder from '../screens/MyOrder';
-import Orders from '../screens/Orders';
-import Products from '../screens/Products';
-import MyCart from '../screens/MyCart';
+import ViewOrder from '../screens/ViewOrder';
+import MyOrder from '../screens/ViewOrder';
 
 const Tab = createBottomTabNavigator();
 
@@ -107,7 +104,7 @@ const CustomTabBar = (props) => {
 
 }
 
-const Tabs = () => {
+const Tab2 = () => {
     return (
         <Tab.Navigator
             tabBarOptions={{
@@ -130,7 +127,7 @@ const Tabs = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={Orders}
+                component={Home}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -153,7 +150,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Search"
-                component={Products}
+                component={MyOrder}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -176,7 +173,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Like"
-                component={MyCart}
+                component={CartItem}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -223,4 +220,4 @@ const Tabs = () => {
     )
 }
 
-export default Tabs
+export default Tab2;

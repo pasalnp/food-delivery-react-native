@@ -86,7 +86,7 @@ const Restaurant = ({ route, navigation }) => {
 
   function renderHeader() {
     return (
-      <View style={{ flexDirection: 'row' }}>
+      <View style={{ flexDirection: 'row' ,padding:15}}>
         <TouchableOpacity
           style={{
             width: 50,
@@ -135,7 +135,7 @@ const Restaurant = ({ route, navigation }) => {
           }}
         >
           <Image
-            source={icons.list}
+            source={icons.basket}
             resizeMode="contain"
             style={{
               width: 30,
@@ -356,7 +356,7 @@ const Restaurant = ({ route, navigation }) => {
               paddingHorizontal: SIZES.padding * 3
             }}
           >
-            <View style={{ flexDirection: 'row' }}>
+            {/* <View style={{ flexDirection: 'row' }}>
               <Image
                 source={icons.pin}
                 resizeMode="contain"
@@ -367,9 +367,9 @@ const Restaurant = ({ route, navigation }) => {
                 }}
               />
               <Headline4 style={{ marginLeft: SIZES.padding }}>Location</Headline4>
-            </View>
+            </View> */}
 
-            <View style={{ flexDirection: 'row' }}>
+            {/* <View style={{ flexDirection: 'row' }}>
               <Image
                 source={icons.master_card}
                 resizeMode="contain"
@@ -381,22 +381,23 @@ const Restaurant = ({ route, navigation }) => {
               />
               <Headline4 style={{ marginLeft: SIZES.padding }}>8888</Headline4>
             </View>
-          </View>
+          </View> */}
 
           {/* Order Button */}
           <View
             style={{
               padding: SIZES.padding * 2,
               alignItems: 'center',
-              justifyContent: 'center'
+              justifyContent:'center'
             }}
           >
             <TouchableOpacity
               style={{
-                width: SIZES.width * 0.9,
+                width: SIZES.width * 0.75,
                 padding: SIZES.padding,
                 backgroundColor: COLORS.primary,
                 alignItems: 'center',
+                justifyContent:'center',
                 borderRadius: SIZES.radius
               }}
               onPress={() => navigation.navigate("OrderDelivery", {
@@ -404,7 +405,7 @@ const Restaurant = ({ route, navigation }) => {
                 currentLocation: currentLocation
               })}
             >
-              <Headline2 style={{ color: COLORS.white }}>Order</Headline2>
+              <Headline2 style={{ color: COLORS.white }}>Add to Cart</Headline2>
             </TouchableOpacity>
           </View>
         </View>
@@ -423,6 +424,7 @@ const Restaurant = ({ route, navigation }) => {
           </View>
         }
       </View>
+      </View>
     )
   }
 
@@ -435,7 +437,7 @@ const Restaurant = ({ route, navigation }) => {
   )
 }
 
-const styles = StyleSheet.create({
+const styles = StyleSheet.create ({
   container: {
     flex: 1,
     backgroundColor: COLORS.lightGray2

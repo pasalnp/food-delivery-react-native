@@ -7,7 +7,7 @@ import {
   Text,
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import {SIZES } from '../constants'
+import {COLORS, SIZES } from '../constants'
 
 // import {
 //   icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
@@ -15,6 +15,7 @@ import {SIZES } from '../constants'
 //   Body3, Body4, Body5, LargeTitle
 // } from '../constants'
 import { user } from "../constants/icons";
+import Header from "./Components/Header";
 
 const SignUp = ({ navigation }) => {
 //   const [pass,setPass]= useState('');
@@ -43,22 +44,23 @@ const SignUp = ({ navigation }) => {
   
   
   return (
-    <View style={{ padding: SIZES.padding * 2 }}>
-    <Text style={{fontSize:18, paddingTop:20}}>Sign Up</Text>
+    <View>
+       <Header title={'Sign Up'}/>
+    <Text style={{fontSize:18, paddingTop:20}}></Text>
     <Text style={{color:'#888'}}>Please fill your information to sign up</Text>
     <TextInput onChangeText='' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Name'}/>
     <TextInput onChangeText='' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Address'}/>
     <TextInput onChangeText='' keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Phone Number'}/>
     <TextInput onChangeText='' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'User Name'}/>
     <TextInput onChangeText='' keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Password'}/>
-    <TouchableOpacity style={{paddingTop:50}}>
-      <View style={{padding:10,backgroundColor:'blue', borderRadius:10}}>
+    <TouchableOpacity style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
+      <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
 <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Sign Up</Text>
 </View>
       </TouchableOpacity>
       <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
         <Text style={{fontSize:16}}>Alredy Signed Up? </Text>
-        <TouchableOpacity><Text style={{color:'blue', fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
+        <TouchableOpacity><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
     </View>
     </View>
     

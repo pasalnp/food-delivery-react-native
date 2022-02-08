@@ -8,11 +8,12 @@ import {
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import {images, SIZES } from '../constants';
 import ImageContainer from "./Components/ImageContainer";
+import Header from "./Components/Header";
 
 const AddItem = ({ navigation }) => {
   return (
     <View style={{ padding: SIZES.padding * 2 }}>
-    <Text style={{fontSize:18, paddingTop:20}}>Add Item</Text>
+       <Header title={'Add Item'}/>
     <View style={{flexDirection:'row', alignContent:'space-between',justifyContent:'space-evenly'}}>
         <ImageContainer
         

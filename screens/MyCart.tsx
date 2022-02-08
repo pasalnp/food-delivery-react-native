@@ -12,8 +12,10 @@ import {
   MaterialCommunityIcons,
   FontAwesome
 } from "@expo/vector-icons";
+import { COLORS } from "../constants";
+import Header from "./Components/Header";
 
-const CartItem = ({ navigation }) => {
+const MyCart = ({ navigation }) => {
 //   componentWillMount() {
 //     let TotalAmount = 0;
 //     for (var i = 0; i < this.state.cart.length; i++) {
@@ -48,10 +50,13 @@ const CartItem = ({ navigation }) => {
 
  
     return (
+    <>
+    <Header title={'My Cart'} />
       <View style={styles.container}>
         <ScrollView>
+
         {/* HEADER */}
-        <View
+        {/* <View
           style={{
             backgroundColor: "white",
             width: "100%",
@@ -89,7 +94,7 @@ const CartItem = ({ navigation }) => {
             <Text
               style={{ fontSize: 20, color: "#404040", textAlign: "center" }}
             >
-              My Basket
+              My Cart
             </Text>
           </View>
           <MaterialCommunityIcons
@@ -99,66 +104,67 @@ const CartItem = ({ navigation }) => {
             size={30}
             style={{ paddingTop: 12, paddingLeft: "20%" }}
           />
-        </View>
+        </View> */}
 
         {/* Table Header */}
         <View
           style={{
-            borderBottomColor: "black",
-            borderBottomWidth: 0.6,
+            borderColor: COLORS.primary,
+            borderWidth: 0.6,
             flexDirection: "row",
             height: 30,
-            backgroundColor: "#cca300"
+            backgroundColor: COLORS.secondary
           }}
         >
           <View
             style={{
               width: "48%",
+              borderColor:COLORS.primary,
               borderRightWidth: 0.6,
-              borderLefttWidth: 0.6
+              borderLeftWidth:0.6
             }}
           >
             <Text
               style={{
                 textAlign: "center",
-                fontSize: 15,
-                color: "white",
+                fontSize: 18,
+                color: COLORS.black,
                 marginTop: 3
               }}
             >
               Item Name
             </Text>
           </View>
-          <View style={{ borderRightWidth: 0.6, width: "18%" }}>
+          <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "18%" }}>
             <Text
               style={{
                 textAlign: "center",
-                fontSize: 15,
-                color: "white",
+                fontSize: 18,
+                color:COLORS.black,
                 marginTop: 3
               }}
             >
               Quantity
             </Text>
           </View>
-          <View style={{ borderRightWidth: 0.6, width: "12%" }}>
+          <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "12%" }}>
             <Text
               style={{
                 textAlign: "center",
-                fontSize: 15,
-                color: "white",
+                fontSize: 18,
+                color: COLORS.black,
                 marginTop: 3
               }}
             >
-              Price
+              Rate
             </Text>
           </View>
           <View style={{ width: "22%" }}>
             <Text
               style={{
                 textAlign: "center",
-                fontSize: 15,
-                color: "white",
+                fontSize: 18,
+                color: COLORS.black,
                 marginTop: 3
               }}
             >
@@ -174,8 +180,9 @@ const CartItem = ({ navigation }) => {
               <View
                 // key={cart.ItemKey}
                 style={{
-                  borderBottomColor: "black",
+                  borderBottomColor: COLORS.primary,
                   borderBottomWidth: 0.6,
+                  backgroundColor:COLORS.white,
                   flexDirection: "row",
                   height: 30
                 }}
@@ -183,24 +190,25 @@ const CartItem = ({ navigation }) => {
                 <View
                   style={{
                     width: "48%",
+                    borderColor:COLORS.primary,
                     borderRightWidth: 0.6,
                     borderLefttWidth: 0.6
                   }}
                 >
                   <Text
-                    style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
-                  >
-                    {/* {cart.ItemName} */}tet
+                    style={{ textAlign: "center", fontSize: 14, marginTop: 3 }}
+                  >ggyjcgyugcucuyuy cygcvgcy bcuagcu
+                    {/* {cart.ItemName} */}
                   </Text>
                 </View>
-                <View style={{ borderRightWidth: 0.6, width: "18%" }}>
+                <View style={{ borderRightWidth: 0.6, borderColor:COLORS.primary,width: "18%" }}>
                   <Text
                     style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
                   >
                     {/* {cart.ItemQuantity} */}
                   </Text>
                 </View>
-                <View style={{ borderRightWidth: 0.6, width: "12%" }}>
+                <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "12%" }}>
                   <Text
                     style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
                   >
@@ -229,6 +237,52 @@ const CartItem = ({ navigation }) => {
           
         </ScrollView>
 
+        
+
+        {/* Table Footer */}
+        <View
+          style={{
+            borderColor: COLORS.primary,
+            borderTopWidth: 0.6,
+            borderBottomWidth: 0.6,
+            flexDirection: "row",
+            height: 30,
+            marginTop:1,
+            backgroundColor: COLORS.white
+          }}
+        >
+          <View
+            style={{
+              width: "48%",
+              borderColor:COLORS.primary,
+              borderRightWidth: 0.6,
+              
+            }}
+          >
+            <Text
+              style={{
+                textAlign: "center",
+                fontSize: 15,
+                color:COLORS.black,
+                marginTop: 3
+              }}
+            >
+              Final Amount
+            </Text>
+          </View>
+          <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "52%" }}>
+            <Text
+              style={{
+                textAlign: "center",
+                fontSize: 15,
+                color: COLORS.black,
+                marginTop: 3
+              }}
+            >
+              {/* $ {this.state.TotalAmount} */}
+            </Text>
+          </View>
+        </View>
         {/* CHECKOUT */}
 
         <TouchableOpacity
@@ -236,12 +290,13 @@ const CartItem = ({ navigation }) => {
             borderRightWidth: 0.6,
             borderLeftWidth: 0.6,
             borderTopWidth: 0.6,
-            backgroundColor: "#cca300",
+            backgroundColor: COLORS.primary,
             width: "70%",
             height: 30,
             borderRadius: 7,
             paddingTop: 5,
-            marginLeft: "16%"
+            marginLeft: "16%",
+            marginTop:10
           }}
         >
           <View
@@ -268,51 +323,9 @@ const CartItem = ({ navigation }) => {
             />
           </View>
         </TouchableOpacity>
-
-        {/* Table Footer */}
-        <View
-          style={{
-            borderBottomColor: "black",
-            borderTopWidth: 0.6,
-            borderBottomWidth: 0.6,
-            flexDirection: "row",
-            height: 30,
-            backgroundColor: "#cca300"
-          }}
-        >
-          <View
-            style={{
-              width: "48%",
-              borderRightWidth: 0.6,
-              borderLefttWidth: 0.6
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 15,
-                color: "white",
-                marginTop: 3
-              }}
-            >
-              Total Amount
-            </Text>
-          </View>
-          <View style={{ borderRightWidth: 0.6, width: "52%" }}>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 15,
-                color: "white",
-                marginTop: 3
-              }}
-            >
-              {/* $ {this.state.TotalAmount} */}
-            </Text>
-          </View>
-        </View>
       </ScrollView>
       </View>
+      </>
     );
   }
 
@@ -324,4 +337,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default CartItem;
+export default MyCart;

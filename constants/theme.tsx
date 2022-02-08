@@ -2,6 +2,15 @@ import { Dimensions } from "react-native";
 const { width, height } = Dimensions.get("window");
 import styled from 'styled-components';
 
+// export const GlobalStyle = styled.createGlobalStyle`
+//   body {
+//     color: ${props => (props.whiteColor ? 'white' : 'black')};
+//     @font-face {
+//       font-family: "Roboto-Black";
+//       src: url("../fonts/Roboto-Black.ttf");
+//     }
+//   }
+// `
 
 export const COLORS = {
   // base colors
@@ -41,6 +50,14 @@ font-size: 30px;
 line-height: 36;
 `
 export const Headline2 = styled.Text`
+@font-face {
+  font-family: "Roboto-Bold";
+  src: url("../fonts/Roboto-Bold.ttf");
+}
+font-size: 22px;
+line-height: 30;
+`
+export const Picker = styled.Picker`
 @font-face {
   font-family: "Roboto-Bold";
   src: url("../fonts/Roboto-Bold.ttf");

@@ -10,11 +10,12 @@ import {
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import { Picker } from "@react-native-picker/picker";
 import {
-  icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
-  Headline4, Body1, Body2,
+  icons, images, SIZES,COLORS, Headline1, Headline2, Headline3,
+  Headline4, Body1, Body2,GlobalStyle,
   Body3, Body4, Body5, LargeTitle
 } from '../constants'
 import { user } from "../constants/icons";
+import Header from "./Components/Header";
 
 const Login = ({ navigation }) => {
   const [pass,setPass]= useState('');
@@ -43,8 +44,11 @@ if(pass=='123'){
   const[pickerValue, setPickerValue] =useState('Admin')
   
   return (
-    <View style={{ padding: SIZES.padding * 2 }}>
-    <Text style={{fontSize:18, paddingTop:20}}>Sign Up</Text>
+    <>
+    <Header title={'Sign In'} />
+    <View style={{ padding: SIZES.padding * 2 }}>       
+     
+    <Text style={{fontSize:18, color:COLORS.primary}}>WELCOME</Text>
     <Text>Please your credintial for login</Text>
     <Text> your credintial for login is {user} {pass} {logedin}</Text>
      <Picker style={styles.picker} selectedValue={pickerValue}
@@ -52,28 +56,40 @@ if(pass=='123'){
        <Picker.Item label="Admin" value="Admin"/>
        <Picker.Item label="Customer" value="Customer"/>
      </Picker>
-    <TextInput onChangeText={setUser} style={{padding:20,borderRightColor:'red',borderBottomWidth:3,}} placeholder={'User Name'}/>
-    <TextInput onChangeText={setPass} style={{padding:20,borderRightColor:'red',borderBottomWidth:3,}} placeholder={'Password'}/>
+    <TextInput onChangeText={setUser} style={styles.box} placeholder={'User Name'}/>
+    <TextInput onChangeText={setPass} style={styles.box} placeholder={'Password'}/>
     <TouchableOpacity style={{padding:50}}>
-      <View style={{padding:10,backgroundColor:'red', borderRadius:10}}>
+      <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
 <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Login</Text>
 </View>
       </TouchableOpacity>
+      <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
+        <Text style={{fontSize:16}}>don't have Account? </Text>
+        <TouchableOpacity><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text></TouchableOpacity>
     </View>
+    </View>
+    </>
     )
   }
 
   const styles= StyleSheet.create({
+    
     picker:{
       height:40,
       width:200,
-      borderColor:'blue',
+      borderColor:COLORS.primary,
       borderRadius:10,
-      borderWidth:2,
-      backgroundColor:'gray',
-      color:'white',
-      textAlign:'center'
-      
+      borderBottomColor:'red',
+      backgroundColor:COLORS.secondary,
+      color:COLORS.black,
+      textAlign:'center',
+    
+           
+    },
+    box:{
+      padding:20,
+      borderBottomColor:COLORS.primary,
+      borderBottomWidth:3
     }
   })
   

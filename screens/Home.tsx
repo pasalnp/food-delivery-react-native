@@ -13,6 +13,7 @@ import {
   Headline4, Body1, Body2,
   Body3, Body4, Body5, LargeTitle
 } from '../constants'
+import Header from "./Components/Header";
 
 const Home = ({ navigation }) => {
 
@@ -363,6 +364,8 @@ const Home = ({ navigation }) => {
 
   function renderHeader() {
     return (
+      <>       
+      <Header title={'Home'} />
       <View style={{ flexDirection: 'row', height: 50 }}>
         <TouchableOpacity
           style={{
@@ -413,6 +416,8 @@ const Home = ({ navigation }) => {
           />
         </TouchableOpacity>
       </View>
+      </>
+
     )
   }
 

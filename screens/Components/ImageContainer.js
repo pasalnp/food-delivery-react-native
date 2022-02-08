@@ -8,11 +8,11 @@ import { images } from "../../constants";
  
   const ImageContainer= ({ source }) => {
     return (
-        <View style={{ height:50, weight:50, borderColor:'grey', borderRadius:6, borderWidth:2 }}>
+        <View >
         <Image
         source={source}
-        resizeMode='contain'
-        style={{height:50, width:50}}
+        resizeMode='cover'
+        style={{height:50, width:50,borderRadius:6,borderColor:'grey',borderWidth:3}}
         />
         </View>
     );
