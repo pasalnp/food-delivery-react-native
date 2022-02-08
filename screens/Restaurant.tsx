@@ -428,6 +428,8 @@ const Restaurant = ({ route, navigation }) => {
     )
   }
 
+  
+
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
