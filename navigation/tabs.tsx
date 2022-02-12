@@ -17,7 +17,7 @@ import CartItem from '../screens/MyCart';
 import AddItem from '../screens/AddItems';
 import ViewOrder from '../screens/MyOrder';
 import MyOrder from '../screens/MyOrder';
-import Orders from '../screens/Orders';
+import Orders from '../screens/Dashboard';
 import Products from '../screens/Products';
 import MyCart from '../screens/MyCart';
 import ResetPassword from '../screens/PasswordReset';
@@ -201,7 +201,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="User"
-                component={Login}
+                component={SignUp}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -225,4 +225,4 @@ const Tabs = () => {
     )
 }
 
-export default Tabs
+export default Tabs;

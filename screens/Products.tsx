@@ -4,7 +4,7 @@ import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-han
 import { Portal } from "react-native-paper";
 import { COLORS, SIZES,images, icons, Body3, Headline2, Body1, Body4, Headline1 } from "../constants";
 import Header from "./Components/Header";
-
+import { navigate } from "../navigation/RootNav";
 
 
 const Products= () =>{
@@ -378,17 +378,15 @@ const Products= () =>{
         </TouchableOpacity>
         </ScrollView>
         </View>
-<View
- style={{
-    paddingTop:15,
-    
-        }}
-    >
+
+
+<View style={{paddingTop:15 }} >
+  
         <View>
             <Headline1>Products</Headline1>
         </View>
 
-  
+        <TouchableOpacity>
         <View
         style={{
             paddingTop:10,
@@ -443,20 +441,21 @@ const Products= () =>{
                   color: COLORS.darkgray
                 }}>50 cal</Body3>
               </View>
+              
         </View>
 
-        
+        </TouchableOpacity>
         </View>
         
         {/* Add Button */}
-        <Portal>
-        <TouchableOpacity style={{height:50,width:50,top:50, right:50,borderRadius:25,backgroundColor:'red'}}>
+        
+        <TouchableOpacity onPress={()=>navigate('additems')} style={{height:50,width:50,borderRadius:25,backgroundColor:'red'}}>
         <View style={{alignContent:'center',justifyContent:'center',marginVertical:8,marginHorizontal:3}}>
              <Text style={{fontSize:30,color:'black'}}>ADD</Text>
                 
                 </View>
         </TouchableOpacity>
-        </Portal>
+        
         
         
         </View>

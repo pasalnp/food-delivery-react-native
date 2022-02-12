@@ -28,7 +28,8 @@ const Login = ({ navigation }) => {
   const loginHandler = ()=>{
     console.log(user,pass);
 if(pass=='123'){
-  navigate('tabs');
+  // navigate('tabs');
+  pickerValue=='Customer'?  goToTabs('tabs') :  goToTabs('tab2');
   user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
 
 }
@@ -52,7 +53,8 @@ if(pass=='123'){
   ]
   useEffect(() => {
     if(logedin=='logged in'){
-    goToTabs('login');
+  
+    pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
     }
   },[logedin])
   

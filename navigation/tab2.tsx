@@ -8,15 +8,23 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 import Svg, { Path } from 'react-native-svg';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
-import { Home, OrderDelivery } from "../screens"
+import { Home, OrderDelivery, Restaurant } from "../screens"
 
 import { COLORS, icons } from "../constants"
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import CartItem from '../screens/CartItem';
+import CartItem from '../screens/MyCart';
 import AddItem from '../screens/AddItems';
-import ViewOrder from '../screens/ViewOrder';
-import MyOrder from '../screens/ViewOrder';
+import ViewOrder from '../screens/MyOrder';
+import MyOrder from '../screens/MyOrder';
+import Orders from '../screens/Dashboard';
+import Products from '../screens/Products';
+import MyCart from '../screens/MyCart';
+import ResetPassword from '../screens/PasswordReset';
+import MyOrders from '../screens/MyOrder';
+import Dashboard from '../screens/Dashboard';
+import Users from '../screens/Users';
+import UserDetails from '../screens/UserDetails';
 
 const Tab = createBottomTabNavigator();
 
@@ -127,11 +135,11 @@ const Tab2 = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={Home}
+                component={Dashboard}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.cutlery}
+                            source={{uri:'https://cdn-icons-png.flaticon.com/512/2329/2329087.png'}}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -150,11 +158,11 @@ const Tab2 = () => {
 
             <Tab.Screen
                 name="Search"
-                component={MyOrder}
+                component={Products}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.search}
+                            source={{uri:'https://cdn-icons.flaticon.com/png/512/3621/premium/3621280.png?token=exp=1644695028~hmac=9fdb0d72e1b84fc7a0864703951ba563'}}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -173,7 +181,7 @@ const Tab2 = () => {
 
             <Tab.Screen
                 name="Like"
-                component={CartItem}
+                component={Users}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
