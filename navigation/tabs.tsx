@@ -8,7 +8,7 @@ import { createBottomTabNavigator, BottomTabBar } from "@react-navigation/bottom
 import Svg, { Path } from 'react-native-svg';
 import { isIphoneX } from 'react-native-iphone-x-helper';
 
-import { Home, OrderDelivery } from "../screens"
+import { Home, OrderDelivery, Restaurant } from "../screens"
 
 import { COLORS, icons } from "../constants"
 import Login from '../screens/Login';
@@ -20,6 +20,8 @@ import MyOrder from '../screens/MyOrder';
 import Orders from '../screens/Orders';
 import Products from '../screens/Products';
 import MyCart from '../screens/MyCart';
+import ResetPassword from '../screens/PasswordReset';
+import MyOrders from '../screens/MyOrder';
 
 const Tab = createBottomTabNavigator();
 
@@ -130,7 +132,7 @@ const Tabs = () => {
         >
             <Tab.Screen
                 name="Home"
-                component={Orders}
+                component={Home}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -153,7 +155,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Search"
-                component={Products}
+                component={MyOrders}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -176,7 +178,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Like"
-                component={MyCart}
+                component={AddItem}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

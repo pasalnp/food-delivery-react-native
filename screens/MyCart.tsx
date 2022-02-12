@@ -2,6 +2,7 @@ import React from "react";
 import {
   StyleSheet,
   Text,
+  Image,
   View,
   TouchableOpacity,
   ScrollView
@@ -14,6 +15,7 @@ import {
 } from "@expo/vector-icons";
 import { COLORS } from "../constants";
 import Header from "./Components/Header";
+import { navigate } from "../navigation/RootNav";
 
 const MyCart = ({ navigation }) => {
 //   componentWillMount() {
@@ -184,7 +186,8 @@ const MyCart = ({ navigation }) => {
                   borderBottomWidth: 0.6,
                   backgroundColor:COLORS.white,
                   flexDirection: "row",
-                  height: 30
+                  height: 50                  
+                  
                 }}
               >
                 <View
@@ -192,9 +195,20 @@ const MyCart = ({ navigation }) => {
                     width: "48%",
                     borderColor:COLORS.primary,
                     borderRightWidth: 0.6,
-                    borderLefttWidth: 0.6
+                    flexDirection:'row',
+                                       
+                  
                   }}
-                >
+                ><Image 
+                style={{
+                  width: 15,
+                  height:10,
+                  borderColor:COLORS.primary,
+                  borderRightWidth: 0.6,
+                  justifyContent:'space-around'
+                                
+                }}
+                source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}/> 
                   <Text
                     style={{ textAlign: "center", fontSize: 14, marginTop: 3 }}
                   >ggyjcgyugcucuyuy cygcvgcy bcuagcu

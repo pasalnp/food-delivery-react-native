@@ -33,9 +33,8 @@ if(pass=='123'){
 
 }
   }
-  const goToTabs = () => {
-
-    navigate('tabs');
+  const goToTabs = (page) => {
+    navigate(page);
   }
   const LoginData = [
     {
@@ -53,7 +52,7 @@ if(pass=='123'){
   ]
   useEffect(() => {
     if(logedin=='logged in'){
-    goToTabs();
+    goToTabs('login');
     }
   },[logedin])
   
@@ -77,11 +76,15 @@ if(pass=='123'){
 <Text style={{color:'white', fontSize:18, textAlign:'center'}} >Login</Text>
 </View>
       </TouchableOpacity>
-<TouchableOpacity style={{paddingTop:20,alignItems:'flex-end'}}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text></TouchableOpacity>
+<TouchableOpacity onPress={()=>goToTabs('resetpassword')} style={{paddingTop:20,alignItems:'flex-end'}}>
+  <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text>
+  </TouchableOpacity>
       
       <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
         <Text style={{fontSize:16}}>don't have Account? </Text>
-        <TouchableOpacity><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigate('signup')}>
+          <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text>
+          </TouchableOpacity>
     </View>
     </View>
     </>

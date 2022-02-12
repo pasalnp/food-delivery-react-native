@@ -14,6 +14,8 @@ import {
   Headline4, Body1, Body2,
   Body3, Body4, Body5, LargeTitle
 } from '../constants'
+import { navigate } from "../navigation/RootNav";
+
 
 const Restaurant = ({ route, navigation }) => {
 
@@ -128,6 +130,7 @@ const Restaurant = ({ route, navigation }) => {
         </View>
 
         <TouchableOpacity
+        onPress={()=>navigate('mycart')}
           style={{
             width: 50,
             paddingRight: SIZES.padding * 2,

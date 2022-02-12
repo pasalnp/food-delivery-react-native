@@ -14,6 +14,7 @@ import {
   Body3, Body4, Body5, LargeTitle
 } from '../constants'
 import Header from "./Components/Header";
+import { navigate } from "../navigation/RootNav";
 
 const Home = ({ navigation }) => {
 
@@ -399,7 +400,7 @@ const Home = ({ navigation }) => {
           </View>
         </View>
 
-        <TouchableOpacity
+        <TouchableOpacity onPress={()=>navigate('mycart')}
           style={{
             width: 50,
             paddingRight: SIZES.padding * 2,
@@ -491,7 +492,7 @@ const Home = ({ navigation }) => {
     const renderItem = ({ item }) => (
       <TouchableOpacity
         style={{ marginBottom: SIZES.padding * 2 }}
-        onPress={() => navigation.navigate("Restaurant", {
+        onPress={() => navigation.navigate("restaurant", {
           item,
           currentLocation
         })}
