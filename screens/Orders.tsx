@@ -1,7 +1,8 @@
  import React from "react";
  import{View, Text, Image,StyleSheet} from "react-native";
- import { ScrollView } from "react-native-gesture-handler";
+ import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
  import {COLORS,images, SIZES} from '../constants';
+import { navigate } from "../navigation/RootNav";
  import Header from "./Components/Header";
  import ImageContainer from "./Components/ImageContainer";
 
@@ -9,9 +10,10 @@
  const Orders = ({ navigation }) => {
      return (
         <>
-        <Header title={'Orders'}/>
+        <Header title={'Orders'} />
         <ScrollView showsVerticalScrollIndicator={false}>
          <View style={{padding:SIZES.padding}}>
+            <TouchableOpacity onPress={()=>navigate('login')}>
                      <View style={styles.flex}>
                          <View style={styles.card}>
                              <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
@@ -30,10 +32,10 @@
                                  </View>
                                 
                          </View>
-                         
                         
                         
                      </View>
+                         </TouchableOpacity>
                      </View>
 
                      <View style={{padding:SIZES.padding}}>

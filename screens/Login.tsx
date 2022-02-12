@@ -1,7 +1,7 @@
 import { Button, ButtonBase, Select } from "@material-ui/core";
 import SelectInput from "@material-ui/core/Select/SelectInput";
 import { Input } from "native-base";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -16,15 +16,26 @@ import {
 } from '../constants'
 import { user } from "../constants/icons";
 import Header from "./Components/Header";
+import { navigate } from "../navigation/RootNav";
 
 const Login = ({ navigation }) => {
+
   const [pass,setPass]= useState('');
   const [logedin,setLoggedin]= useState('');
   const [user,setUser]= useState('');
+  const[pickerValue, setPickerValue] =useState('Admin')
+
   const loginHandler = ()=>{
+    console.log(user,pass);
 if(pass=='123'){
-  user=='sabin' ? setLogeedin('logged in') : setLoggedin('not logged in'); 
+  navigate('tabs');
+  user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
+
 }
+  }
+  const goToTabs = () => {
+
+    navigate('tabs');
   }
   const LoginData = [
     {
@@ -40,8 +51,11 @@ if(pass=='123'){
     
 
   ]
-  
-  const[pickerValue, setPickerValue] =useState('Admin')
+  useEffect(() => {
+    if(logedin=='logged in'){
+    goToTabs();
+    }
+  },[logedin])
   
   return (
     <>
@@ -58,12 +72,12 @@ if(pass=='123'){
      </Picker>
     <TextInput onChangeText={setUser} style={styles.box} placeholder={'User Name'}/>
     <TextInput secureTextEntry={true} onChangeText={setPass} style={styles.box} placeholder={'Password'}/>
-    <TouchableOpacity style={{paddingTop:50,paddingHorizontal:50}}>
+    <TouchableOpacity onPress={loginHandler} style={{paddingTop:50,paddingHorizontal:50}}>
       <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
-<Text style={{color:'white', fontSize:18, textAlign:'center'}}>Login</Text>
+<Text style={{color:'white', fontSize:18, textAlign:'center'}} >Login</Text>
 </View>
-<TouchableOpacity style={{paddingTop:20,alignItems:'flex-end'}}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text></TouchableOpacity>
       </TouchableOpacity>
+<TouchableOpacity style={{paddingTop:20,alignItems:'flex-end'}}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text></TouchableOpacity>
       
       <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
         <Text style={{fontSize:16}}>don't have Account? </Text>
