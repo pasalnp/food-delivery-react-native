@@ -139,7 +139,7 @@ const Tab2 = () => {
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={{uri:'https://cdn-icons-png.flaticon.com/512/2329/2329087.png'}}
+                            source={{uri:'https://cdn-icons.flaticon.com/png/512/4110/premium/4110147.png?token=exp=1644698587~hmac=fe169d156ebbbc45f4dd3835bc4e9b56'}}
                             resizeMode="contain"
                             style={{
                                 width: 25,
