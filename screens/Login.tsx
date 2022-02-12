@@ -57,13 +57,15 @@ if(pass=='123'){
        <Picker.Item label="Customer" value="Customer"/>
      </Picker>
     <TextInput onChangeText={setUser} style={styles.box} placeholder={'User Name'}/>
-    <TextInput onChangeText={setPass} style={styles.box} placeholder={'Password'}/>
-    <TouchableOpacity style={{padding:50}}>
+    <TextInput secureTextEntry={true} onChangeText={setPass} style={styles.box} placeholder={'Password'}/>
+    <TouchableOpacity style={{paddingTop:50,paddingHorizontal:50}}>
       <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
 <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Login</Text>
 </View>
+<TouchableOpacity style={{paddingTop:20,alignItems:'flex-end'}}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text></TouchableOpacity>
       </TouchableOpacity>
-      <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
+      
+      <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
         <Text style={{fontSize:16}}>don't have Account? </Text>
         <TouchableOpacity><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text></TouchableOpacity>
     </View>
@@ -89,7 +91,8 @@ if(pass=='123'){
     box:{
       padding:20,
       borderBottomColor:COLORS.primary,
-      borderBottomWidth:3
+      borderBottomWidth:3,
+      fontSize:18
     }
   })
   

@@ -271,14 +271,14 @@ const MyCart = ({ navigation }) => {
             </Text>
           </View>
           <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "52%" }}>
-            <Text
+            <Text 
               style={{
                 textAlign: "center",
-                fontSize: 15,
+                fontSize: 20,
                 color: COLORS.black,
                 marginTop: 3
               }}
-            >
+            >Rs. 145646
               {/* $ {this.state.TotalAmount} */}
             </Text>
           </View>
