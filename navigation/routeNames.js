@@ -9,6 +9,7 @@ import SignUp from '../screens/SignUp';
 import Tab2 from './tab2';
 import Tabs from './tabs';
 import Orders from '../screens/Orders';
+import AddCategory from '../screens/AddCategory';
 
 export const homeRoutes = [
     { name: 'login', component: Login, title: 'Login' },
@@ -19,6 +20,7 @@ export const homeRoutes = [
     { name: 'signup', component: SignUp, title: 'Sign Up' },
     { name: 'mycart', component: MyCart, title: 'My Cart' },
     { name: 'additems', component: AddItem, title: 'Add Items' },
+    { name: 'addcategory', component: AddCategory, title: 'Add Category' },
     { name: 'home', component: Home, title: 'Home' },
     { name: 'products', component: Products, title: 'Products' },
     { name: 'dashboard', component: Dashboard, title: 'Dashboard' },

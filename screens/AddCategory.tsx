@@ -12,11 +12,11 @@ import { Picker } from "@react-native-picker/picker";
 import { navigate } from "../navigation/RootNav";
 
 
-const AddItem = ({ navigation }) => {
-  const[pickerValue, setPickerValue] =useState('FoodItems')
+const AddCategory = ({ navigation }) => {
+  // const[pickerValue, setPickerValue] =useState('FoodItems')
   return (
         <>
-       <Header title={'Add Items'}/>
+       <Header title={'Add categories'}/>
        <View style={{ padding: SIZES.padding }}>
          {/* <View style={styles.picker}>
        <Picker style={styles.picker} selectedValue={pickerValue}
@@ -33,9 +33,9 @@ const AddItem = ({ navigation }) => {
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Item Name'}/>
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category'}/>
-    <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Price'}/>
+    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category Name'}/>
+    {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category'}/> */}
+    {/* <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Price'}/> */}
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Enter Category Name'}/>
     <TextInput keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={''}/> */}
     <View style={{padding:50,flexDirection:'row', justifyContent:'space-evenly',alignContent:'space-around'}}>
@@ -73,5 +73,5 @@ const AddItem = ({ navigation }) => {
     },
   })
   
-  export default AddItem;
+  export default AddCategory;
   
