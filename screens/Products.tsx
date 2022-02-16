@@ -516,6 +516,7 @@ const Products= () =>{
         
         <FloatingAction
     actions={actions}
+    distanceToEdge={{ vertical: 60, horizontal: 20 }}
     onPressItem={()=>navigate('addcategory')}
     color='red'                                      
         
