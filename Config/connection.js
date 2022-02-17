@@ -1,22 +1,27 @@
-import { initializeApp } from 'firebase/app';
+// Import the functions you need from the SDKs you need
 
-// Optionally import the services that you want to use
-//import {...} from "firebase/auth";
-//import {...} from "firebase/database";
-//import {...} from "firebase/firestore";
-//import {...} from "firebase/functions";
-//import {...} from "firebase/storage";
+import * as firebase from 'firebase';
+import firestore from 'firebase/firestore';
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// Initialize Firebase
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: 'AIzaSyBxlcGsRhiLBWh_JPTRIGV478liOLY05qA',
-  authDomain: 'project-id.firebaseapp.com',
-  databaseURL: 'https://canteen-auto-default-rtdb.firebaseio.com/',
-  projectId: 'canteen-auto-id',
-  storageBucket: 'project-id.appspot.com',
-  messagingSenderId: 'sender-id',
-  appId: 'app-id',
-  measurementId: 'G-measurement-id',
+  apiKey: "AIzaSyBxlcGsRhiLBWh_JPTRIGV478liOLY05qA",
+  authDomain: "canteen-auto.firebaseapp.com",
+  databaseURL: "https://canteen-auto-default-rtdb.firebaseio.com",
+  projectId: "canteen-auto",
+  storageBucket: "canteen-auto.appspot.com",
+  messagingSenderId: "67659010604",
+  appId: "1:67659010604:web:8861b9001815ccd9ab7789",
+  measurementId: "G-X5QP3K2FN0"
 };
 
-initializeApp(firebaseConfig);
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+firebase.firestore();
+
+export default firebase;

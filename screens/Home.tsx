@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   SafeAreaView,
   View,
@@ -15,9 +15,15 @@ import {
 } from '../constants'
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
+import firebase  from "../Config/connection";
+
 
 const Home = ({ navigation }) => {
+ const data=firebase.firestore().collection('resturant');
+ useEffect(()=>{
+console.log(data);
 
+ },[data])
   const initialCurrentLocation = {
     streetName: "Kuching",
     gps: {
