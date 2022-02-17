@@ -10,6 +10,8 @@ import Tab2 from './tab2';
 import Tabs from './tabs';
 import Orders from '../screens/Orders';
 import AddCategory from '../screens/AddCategory';
+import UserDetails from '../screens/UserDetails';
+import Users from '../screens/Users';
 
 export const homeRoutes = [
     { name: 'login', component: Login, title: 'Login' },
@@ -25,4 +27,6 @@ export const homeRoutes = [
     { name: 'products', component: Products, title: 'Products' },
     { name: 'dashboard', component: Dashboard, title: 'Dashboard' },
     { name: 'orders', component: Orders, title: 'Orders' },
+    { name: 'userdetails', component: UserDetails, title: 'User Details' },
+    { name: 'users', component:Users, title: 'Users' },
 ];

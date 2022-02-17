@@ -29,6 +29,8 @@ const sushi = require("../assets/images/sushi.jpg");
 const teh_c_peng = require("../assets/images/teh-c-peng.jpg");
 const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
 
+
+
 export default {
     avatar_1,
     avatar_2,
@@ -40,13 +42,11 @@ export default {
     burger_restaurant_2,
     chicago_hot_dog,
     crispy_chicken_burger,
-
     fries_restaurant,
     hawaiian_pizza,
     honey_mustard_chicken_burger,
     hot_dog_restaurant,
     ice_kacang,
-
     japanese_restaurant,
     kek_lapis_shop,
     kek_lapis,
@@ -60,4 +60,6 @@ export default {
     sushi,
     teh_c_peng,
     tomato_pasta,
+    salad
+    
 }

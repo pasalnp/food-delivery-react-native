@@ -13,7 +13,7 @@ import { navigate } from "../navigation/RootNav";
 
 
 const AddItem = ({ navigation }) => {
-  const[pickerValue, setPickerValue] =useState('FoodItems')
+  // const[pickerValue, setPickerValue] =useState('FoodItems')
   return (
         <>
        <Header title={'Add Items'}/>

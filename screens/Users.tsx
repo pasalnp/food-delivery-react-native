@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import { COLORS } from '../constants';
 import Header from './Components/Header';
+import { navigate } from '../navigation/RootNav';
 
 export default class Users extends Component {
 
@@ -18,16 +19,16 @@ export default class Users extends Component {
     super(props);
     this.state = {
       data: [
-        {id:1, name: "Mark Doe",   address:"CEO",               image:"https://bootdey.com/img/Content/avatar/avatar7.png"},
-        {id:1, name: "John Doe",   address:"CTO",               image:"https://bootdey.com/img/Content/avatar/avatar1.png"},
-        {id:2, name: "Clark Man",  address:"Creative designer", image:"https://bootdey.com/img/Content/avatar/avatar6.png"} ,
-        {id:3, name: "Jaden Boor", address:"Front-end dev",     image:"https://bootdey.com/img/Content/avatar/avatar5.png"} ,
-        {id:4, name: "Srick Tree", address:"Backend-end dev",   image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-        {id:5, name: "John Doe",   address:"Creative designer", image:"https://bootdey.com/img/Content/avatar/avatar3.png"} ,
-        {id:6, name: "John Doe",   address:"Manager",           image:"https://bootdey.com/img/Content/avatar/avatar2.png"} ,
-        {id:8, name: "John Doe",   address:"IOS dev",           image:"https://bootdey.com/img/Content/avatar/avatar1.png"} ,
-        {id:9, name: "John Doe",   address:"Web dev",           image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
-        {id:9, name: "John Doe",   address:"Analyst",           image:"https://bootdey.com/img/Content/avatar/avatar7.png"} ,
+        {id:1, name: "Mark Doe",   address:"US",                image:"https://bootdey.com/img/Content/avatar/avatar7.png"},
+        {id:1, name: "John Doe",   address:"UK",                image:"https://bootdey.com/img/Content/avatar/avatar1.png"},
+        {id:2, name: "Clark Man",  address:"Australia",         image:"https://bootdey.com/img/Content/avatar/avatar6.png"} ,
+        {id:3, name: "Jaden Boor", address:"Germany",           image:"https://bootdey.com/img/Content/avatar/avatar5.png"} ,
+        {id:4, name: "Srick Tree", address:"Nepal",             image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
+        {id:5, name: "John Doe",   address:"India",             image:"https://bootdey.com/img/Content/avatar/avatar3.png"} ,
+        {id:6, name: "John Doe",   address:"Eraser",            image:"https://bootdey.com/img/Content/avatar/avatar2.png"} ,
+        {id:8, name: "John Doe",   address:"Nepal",             image:"https://bootdey.com/img/Content/avatar/avatar1.png"} ,
+        {id:9, name: "John Doe",   address:"Nepal",             image:"https://bootdey.com/img/Content/avatar/avatar4.png"} ,
+        {id:9, name: "John Doe",   address:"India",             image:"https://bootdey.com/img/Content/avatar/avatar7.png"} ,
       ]
     };
   }

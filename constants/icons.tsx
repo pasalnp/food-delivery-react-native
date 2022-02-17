@@ -23,6 +23,11 @@ export const basket = require("../assets/icons/shopping-basket.png");
 export const star = require("../assets/icons/star.png");
 export const sushi = require("../assets/icons/sushi.png");
 export const user = require("../assets/icons/user.png");
+const additem = require("../assets/icons/add-item.png");
+const addcategory = require("../assets/icons/add-category.png");
+const myorders = require("../assets/icons/myorders.png");
+const dashboard = require("../assets/icons/dashboard.png");
+const product = require("../assets/icons/product.png");
 
 export default {
     back,
@@ -50,4 +55,10 @@ export default {
     star,
     sushi,
     user,
+    additem,
+    addcategory,
+    myorders,
+    dashboard,
+    product
+    
 }

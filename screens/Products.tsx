@@ -13,17 +13,18 @@ const Products= () =>{
 
   const actions = [
     {
-      text: "Item",
-      icon: {uri:'https://as2.ftcdn.net/v2/jpg/03/54/21/57/1000_F_354215740_kiwMAPNUZREM73k2PvAvay4QeuRE351d.jpg'},
+      text: "Category",
+      icon: icons.addcategory,
       name: "bt_accessibility",
-      color:'red',
+      color:'#FF8208',
       position: 2
+  
     },
     {
-      text: "Category",
-      icon: {uri:'https://as2.ftcdn.net/v2/jpg/03/54/21/57/1000_F_354215740_kiwMAPNUZREM73k2PvAvay4QeuRE351d.jpg'},
+      text: "Item",
+      icon: icons.additem,
       name: "bt_language",
-      color:'red',
+      color:'#FF8208',
       position: 1
     }
   ];
@@ -518,7 +519,9 @@ const Products= () =>{
     actions={actions}
     distanceToEdge={{ vertical: 60, horizontal: 20 }}
     onPressItem={()=>navigate('addcategory')}
-    color='red'                                      
+    color='red'
+       
+                                     
         
     
       

@@ -10,7 +10,7 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { Home, OrderDelivery, Restaurant } from "../screens"
 
-import { COLORS, icons } from "../constants"
+import { COLORS, icons, images } from "../constants"
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import CartItem from '../screens/MyCart';
@@ -134,12 +134,12 @@ const Tab2 = () => {
             )}
         >
             <Tab.Screen
-                name="Home"
+                name="Dashboard"
                 component={Dashboard}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={{uri:'https://cdn-icons.flaticon.com/png/512/4110/premium/4110147.png?token=exp=1644698587~hmac=fe169d156ebbbc45f4dd3835bc4e9b56'}}
+                            source={icons.dashboard}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -157,12 +157,12 @@ const Tab2 = () => {
             />
 
             <Tab.Screen
-                name="Search"
+                name="Products"
                 component={Products}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={{uri:'https://cdn-icons.flaticon.com/png/512/3621/premium/3621280.png?token=exp=1644695028~hmac=9fdb0d72e1b84fc7a0864703951ba563'}}
+                            source={icons.product}
                             resizeMode="contain"
                             style={{
                                 width: 25,

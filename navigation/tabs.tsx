@@ -10,7 +10,7 @@ import { isIphoneX } from 'react-native-iphone-x-helper';
 
 import { Home, OrderDelivery, Restaurant } from "../screens"
 
-import { COLORS, icons } from "../constants"
+import { COLORS, icons, images } from "../constants"
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
 import CartItem from '../screens/MyCart';
@@ -22,6 +22,7 @@ import Products from '../screens/Products';
 import MyCart from '../screens/MyCart';
 import ResetPassword from '../screens/PasswordReset';
 import MyOrders from '../screens/MyOrder';
+import CreditCard from '../screens/CreditCard';
 
 const Tab = createBottomTabNavigator();
 
@@ -154,12 +155,12 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name="Search"
-                component={MyOrders}
+                name="My Orders"
+                component={MyOrder}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.search}
+                            source={icons.myorders}
                             resizeMode="contain"
                             style={{
                                 width: 25,
