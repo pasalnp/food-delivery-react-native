@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   SafeAreaView,
   View,
@@ -15,9 +15,24 @@ import {
 } from '../constants'
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
+import { GetRequest } from "../Config/axios";
 
 const Home = ({ navigation }) => {
+  const [data,setData] = useState([]);
+  const [search,setSearch] = useState([]);
+ useEffect(()=>{
+   console.log('data>>>>>.loading');
+   
+   GetRequest("https://sabinsth.com.np/api/v1/report/profit_loss?subdomain=Pasal",{search})
+.then((response) => {
+	console.log('response');
+	setData(response);
+})
+.catch(err => {
+	console.error(err);
+});
 
+},[search])
   const initialCurrentLocation = {
     streetName: "Kuching",
     gps: {

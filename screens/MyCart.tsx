@@ -1,354 +1,217 @@
-import React from "react";
+import React, { Component } from 'react';
 import {
+  Platform,
   StyleSheet,
-  Text,
-  Image,
-  View,
+  FlatList,
   TouchableOpacity,
-  ScrollView
-} from "react-native";
-import {
-  Ionicons,
-  MaterialIcons,
-  MaterialCommunityIcons,
-  FontAwesome
-} from "@expo/vector-icons";
-import { COLORS } from "../constants";
+  View,
+  Image,
+  Text,
+} from 'react-native';
+import {COLORS, SIZES,icons, images, Headline1, Headline2, Headline3,
+  Headline4, Body1, Body2,
+  Body3, Body4, Body5,  } from '../constants';
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
 
-const MyCart = ({ navigation }) => {
-//   componentWillMount() {
-//     let TotalAmount = 0;
-//     for (var i = 0; i < this.state.cart.length; i++) {
-//       TotalAmount =
-//         TotalAmount +
-//         this.state.cart[i].ItemQuantity * this.state.cart[i].ItemPrice;
-//     }
-//     this.setState({ TotalAmount: TotalAmount });
-//   }
-//   delete = ItemKey => {
-//     let cart = this.state.cart;
-//     for (var i = 0; i < cart.length; i++) {
-//       if (cart[i].ItemKey === ItemKey) {
-//         this.setState({
-//           TotalAmount:
-//             this.state.TotalAmount -
-//             this.state.cart[i].ItemQuantity * this.state.cart[i].ItemPrice
-//         });
-//         cart.splice(i, 1);
-//         break;
-//       }
-//     }
-//     this.setState({ cart: cart });
-//   };
-//   constructor(props) {
-//     super(props);
-//     this.state = {
-//       cart: this.props.navigation.getParam("cart"),
-//       TotalAmount: 0
-//     };
-//   }
-
- 
-    return (
-    <>
-    <Header title={'My Cart'} />
-      <View style={styles.container}>
-        <ScrollView>
-
-        {/* HEADER */}
-        {/* <View
-          style={{
-            backgroundColor: "white",
-            width: "100%",
-            height: 60,
-            flexDirection: "row",
-            marginTop: "6.5%",
-            borderBottomWidth: 0.6,
-            borderBottomColor: "black"
-          }}
-        >
-          
-            <Ionicons
-              name="md-arrow-back"
-              size={30}
-              color="#404040"
-              style={{ paddingTop: 12, paddingLeft: "9%" }}
-            //   onPress={() =>
-            //     this.props.navigation.navigate("Store", {
-            //       cart: this.state.cart
-            //     })
-            //   }
-            />
-          
-          <View
-            style={{
-              borderBottomWidth: 0.8,
-              height: 33,
-              width: "33%",
-              borderTopWidth: 0.8,
-              padding: 0,
-              marginTop: 12,
-              marginLeft: "16%"
-            }}
-          >
-            <Text
-              style={{ fontSize: 20, color: "#404040", textAlign: "center" }}
-            >
-              My Cart
-            </Text>
-          </View>
-          <MaterialCommunityIcons
-            name="cart"
-            size={30}
-            color="black"
-            size={30}
-            style={{ paddingTop: 12, paddingLeft: "20%" }}
-          />
-        </View> */}
-
-        {/* Table Header */}
-        <View
-          style={{
-            borderColor: COLORS.primary,
-            borderWidth: 0.6,
-            flexDirection: "row",
-            height: 30,
-            backgroundColor: COLORS.secondary
-          }}
-        >
-          <View
-            style={{
-              width: "48%",
-              borderColor:COLORS.primary,
-              borderRightWidth: 0.6,
-              borderLeftWidth:0.6
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 18,
-                color: COLORS.black,
-                marginTop: 3
-              }}
-            >
-              Item Name
-            </Text>
-          </View>
-          <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "18%" }}>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 18,
-                color:COLORS.black,
-                marginTop: 3
-              }}
-            >
-              Quantity
-            </Text>
-          </View>
-          <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "12%" }}>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 18,
-                color: COLORS.black,
-                marginTop: 3
-              }}
-            >
-              Rate
-            </Text>
-          </View>
-          <View style={{ width: "22%" }}>
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 18,
-                color: COLORS.black,
-                marginTop: 3
-              }}
-            >
-              Total
-            </Text>
-          </View>
-        </View>
-
-        {/* Table Contents */}
-        <ScrollView>
-          {/* {this?.state?.cart.map(cart => {
-            return ( */}
-              <View
-                // key={cart.ItemKey}
-                style={{
-                  borderBottomColor: COLORS.primary,
-                  borderBottomWidth: 0.6,
-                  backgroundColor:COLORS.white,
-                  flexDirection: "row",
-                  height: 50                  
-                  
-                }}
-              >
-                <View
-                  style={{
-                    width: "48%",
-                    borderColor:COLORS.primary,
-                    borderRightWidth: 0.6,
-                    flexDirection:'row',
-                                       
-                  
-                  }}
-                ><Image 
-                style={{
-                  width: 15,
-                  height:10,
-                  borderColor:COLORS.primary,
-                  borderRightWidth: 0.6,
-                  justifyContent:'space-around'
-                                
-                }}
-                source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}/> 
-                  <Text
-                    style={{ textAlign: "center", fontSize: 14, marginTop: 3 }}
-                  >ggyjcgyugcucuyuy cygcvgcy bcuagcu
-                    {/* {cart.ItemName} */}
-                  </Text>
-                </View>
-                <View style={{ borderRightWidth: 0.6, borderColor:COLORS.primary,width: "18%" }}>
-                  <Text
-                    style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
-                  >
-                    {/* {cart.ItemQuantity} */}
-                  </Text>
-                </View>
-                <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "12%" }}>
-                  <Text
-                    style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
-                  >
-                    {/* ${cart.ItemPrice} */}
-                  </Text>
-                </View>
-                <View style={{ width: "12%" }}>
-                  <Text
-                    style={{ textAlign: "center", fontSize: 12, marginTop: 3 }}
-                  >
-                    {/* ${cart.ItemQuantity * cart.ItemPrice} */}
-                  </Text>
-                </View>
-                {/* <MaterialIcons
-                  name="delete"
-                  size={23}
-                  color="black"
-                  style={{ marginLeft: 5 }}
-                  onPress={() => {
-                    this.delete(cart.ItemKey);
-                  }}
-                /> */}
-              </View>
-            {/* );
-          } */}
-          
-        </ScrollView>
-
-        
-
-        {/* Table Footer */}
-        <View
-          style={{
-            borderColor: COLORS.primary,
-            borderTopWidth: 0.6,
-            borderBottomWidth: 0.6,
-            flexDirection: "row",
-            height: 30,
-            marginTop:1,
-            backgroundColor: COLORS.white
-          }}
-        >
-          <View
-            style={{
-              width: "48%",
-              borderColor:COLORS.primary,
-              borderRightWidth: 0.6,
-              
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                fontSize: 15,
-                color:COLORS.black,
-                marginTop: 3
-              }}
-            >
-              Final Amount
-            </Text>
-          </View>
-          <View style={{ borderRightWidth: 0.6,borderColor:COLORS.primary, width: "52%" }}>
-            <Text 
-              style={{
-                textAlign: "center",
-                fontSize: 20,
-                color: COLORS.black,
-                marginTop: 3
-              }}
-            >Rs. 145646
-              {/* $ {this.state.TotalAmount} */}
-            </Text>
-          </View>
-        </View>
-        {/* CHECKOUT */}
-
-        <TouchableOpacity
-          style={{
-            borderRightWidth: 0.6,
-            borderLeftWidth: 0.6,
-            borderTopWidth: 0.6,
-            backgroundColor: COLORS.primary,
-            width: "70%",
-            height: 30,
-            borderRadius: 7,
-            paddingTop: 5,
-            marginLeft: "16%",
-            marginTop:10
-          }}
-        >
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-              justifyContent: "center"
-            }}
-          >
-            <Text
-              style={{
-                textAlign: "center",
-                color: "white",
-                fontWeight: "bold"
-              }}
-            >
-              CHECKOUT
-            </Text>
-            <FontAwesome
-              name="arrow-right"
-              size={20}
-              color="white"
-              style={{ marginLeft: 4 }}
-            />
-          </View>
-        </TouchableOpacity>
-      </ScrollView>
-      </View>
-      </>
-    );
+export default class MyCart extends Component<{}> {
+  
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [
+         {id:1, image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
+         {id:2, image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
+         {id:3, image: "https://bootdey.com/img/Content/avatar/avatar2.png"},
+         {id:4, image: "https://bootdey.com/img/Content/avatar/avatar3.png"},
+         {id:5, image: "https://bootdey.com/img/Content/avatar/avatar4.png"},
+         {id:6, image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
+         {id:7, image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
+      ],
+    };
   }
 
+  render() {
+    return (
+      <>
+      <Header title={'My Cart'} />
+      <View>
+                  
+      <FlatList 
+        style={styles.container} 
+        enableEmptySections={true}
+        data={this.state.data}
+        keyExtractor= {(item) => {
+          return item.id;
+        }}
+        renderItem={({item}) => {
+          return (
+            
+            <View >
+              <View style={styles.box}>
+                <Image style={styles.image} source={{uri:item.image}} />
+                <View style={styles.info}>
+                  <Text  style={styles.name}>Burger</Text>
+                  <Text  style={styles.discription}>Veg</Text>
+                  <Text  style={styles.price}>$$100</Text>
+                  
+
+                    
+                    {/* Quantity */}
+                <View
+                  style={{
+                    position: 'absolute',
+                   bottom:10,
+                    width: 50,
+                    height: 50,
+                    paddingLeft:160,
+                    flexDirection: 'row'
+                  }}
+                >
+                  <TouchableOpacity
+                    style={{
+                      width: 30,
+                      backgroundColor: COLORS.primary,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius: 10,
+                      
+                    }}
+                    // onPress={() => editOrder("-", item.menuId, item.price)}
+                  >
+                    <Body1>-</Body1>
+                  </TouchableOpacity>
+
+                  <View
+                    style={{
+                      width: 40,
+                      backgroundColor: COLORS.white,
+                      borderRadius:6,
+                      borderColor:COLORS.primary,
+                      borderWidth:1,
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Headline2>1</Headline2>
+                  </View>
+
+                  <TouchableOpacity
+                    style={{
+                      width: 30,
+                      backgroundColor: COLORS.primary,
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      borderRadius:10,
+                      
+                    }}
+                    onPress={() => editOrder("+", item.menuId, item.price)}
+                  >
+                    <Body1>+</Body1>
+                  </TouchableOpacity>
+
+                  <TouchableOpacity >
+                      <Image style={styles.icon} source={icons.bin} />
+                    </TouchableOpacity>
+                </View>
+              </View>
+              </View>
+              
+            
+            </View>
+            
+            
+          )
+        }}/></View>
+        <View style={{marginTop:10,flexDirection:'row',width:SIZES.width,justifyContent:'space-between'}}>
+        <TouchableOpacity style={{marginLeft:20,justifyContent:'flex-start',alignItems:'flex-start'}}>
+            <View style={styles.btn}>
+            <Text> Add More </Text>
+            </View>
+        </TouchableOpacity>
+
+        <TouchableOpacity style={{marginRight:20,justifyContent:'flex-end',alignItems:'flex-end',alignContent:'flex-end'}}>
+            <View style={styles.btn}>
+            <Text> Order</Text>
+            </View>
+        </TouchableOpacity>
+
+        </View>
+        </>
+    );
+  }
+  
+}
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    justifyContent: "flex-start"
+    height:550,
+    backgroundColor: '#EEEEEE',
+    
+  },
+  icon:{
+    width:25,
+    height:25,
+    bottom:30
+   
+  },
+  btn: {
+    height:50,
+    width:100,
+    backgroundColor:COLORS.primary,
+    borderRadius:8,
+    alignContent:'center',
+    justifyContent:'center',
+    alignItems:'center'
+  },
+  image: {
+    width: 100,
+    height:100
+  },
+  box: {
+    marginTop:10,
+    backgroundColor: 'white',
+    flexDirection: 'row',
+    shadowColor: 'black',
+    shadowOpacity: .2,
+    shadowOffset: {
+      height:1,
+      width:-2
+    },
+    elevation:2
+  },
+  info: {
+    flex:1,
+    width:20,
+    flexDirection: 'column',
+    paddingLeft:10
+  },
+  name: {
+    fontSize:20,
+    marginTop:10,
+    color: '#333'
+  },
+  price: {
+    fontSize:24,
+    marginTop:10,
+    color: 'green'
+  },
+  discription:{
+    fontSize:12,
+    marginTop:10,
+    color: '#333'
+  },
+  row: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginHorizontal: 40,
+    marginTop:10
+  },
+  
+  iconFonts: {
+    color: 'gray',
+  },
+  red: {
+    color: '#FF4500',
   }
 });
-
-export default MyCart;

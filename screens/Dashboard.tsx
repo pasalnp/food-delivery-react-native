@@ -11,9 +11,12 @@ import { navigate } from "../navigation/RootNav";
      return (
         <>
         <Header title={'Dashboard'} />
-        <TouchableOpacity onPress={()=>navigate('orders')}><Text style={{fontSize:32, color:COLORS.primary, fontWeight:'bold'}}>Orders</Text></TouchableOpacity>
+        <ScrollView>
         <TouchableOpacity onPress={()=>navigate('orders')}>
-         <View  style={{height:340,borderColor:'black',borderWidth:2,borderRadius:6, backgroundColor:'yellow'}}>
+            <Text style={{fontSize:32, color:COLORS.primary, fontWeight:'bold'}}>Orders</Text>
+            </TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigate('orders')}>
+         <View  style={{height:340,borderColor:'black',borderWidth:2,borderRadius:6, backgroundColor:COLORS.secondary}}>
         <ScrollView showsVerticalScrollIndicator={false}>
          <View style={{padding:SIZES.padding}}>
             
@@ -27,6 +30,7 @@ import { navigate } from "../navigation/RootNav";
                                  
                                  <View style={{ paddingLeft:10, }}>
                                      <Text style={{fontSize:24}}>Item Name</Text>
+                                     <Text style={{paddingTop:10,fontSize:18}}>Price</Text>
                                      <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
                                  </View>
                                  <View style={{ paddingLeft:70, paddingTop:30 }}>
@@ -66,158 +70,14 @@ import { navigate } from "../navigation/RootNav";
                      </View>
                      </View>
 
-                     <View style={{padding:SIZES.padding}}>
-                     <View style={styles.flex}>
-                         <View style={styles.card}>
-                             <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
-                             <View style={{ paddingLeft:10, flexDirection:'row'}}>
-                                 <Image 
-                                 source={images.sushi}
-                                 style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
-                                 
-                                 <View style={{ paddingLeft:10, }}>
-                                     <Text style={{fontSize:24}}>Item Name</Text>
-                                     <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
-                                 </View>
-                                 <View style={{ paddingLeft:70, paddingTop:30 }}>
-                                 <Text style={{fontSize:24, fontWeight:'bold'}}>$0000000</Text>
-                                 </View>
-                                 </View>
-                                
-                         </View>
-                         
-                        
-                        
-                     </View>
-                     </View>
-
-                     <View style={{padding:SIZES.padding}}>
-                     <View style={styles.flex}>
-                         <View style={styles.card}>
-                             <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
-                             <View style={{ paddingLeft:10, flexDirection:'row'}}>
-                                 <Image 
-                                 source={images.sushi}
-                                 style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
-                                 
-                                 <View style={{ paddingLeft:10, }}>
-                                     <Text style={{fontSize:24}}>Item Name</Text>
-                                     <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
-                                 </View>
-                                 <View style={{ paddingLeft:70, paddingTop:30 }}>
-                                 <Text style={{fontSize:24, fontWeight:'bold'}}>$0000000</Text>
-                                 </View>
-                                 </View>
-                                
-                         </View>
-                         
-                        
-                        
-                     </View>
-                     </View>
-
-                     <View style={{padding:SIZES.padding}}>
-                     <View style={styles.flex}>
-                         <View style={styles.card}>
-                             <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
-                             <View style={{ paddingLeft:10, flexDirection:'row'}}>
-                                 <Image 
-                                 source={images.sushi}
-                                 style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
-                                 
-                                 <View style={{ paddingLeft:10, }}>
-                                     <Text style={{fontSize:24}}>Item Name</Text>
-                                     <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
-                                 </View>
-                                 <View style={{ paddingLeft:70, paddingTop:30 }}>
-                                 <Text style={{fontSize:24, fontWeight:'bold'}}>$0000000</Text>
-                                 </View>
-                                 </View>
-                                
-                         </View>
-                         
-                        
-                        
-                     </View>
-                     </View>
-
-                     <View style={{padding:SIZES.padding}}>
-                     <View style={styles.flex}>
-                         <View style={styles.card}>
-                             <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
-                             <View style={{ paddingLeft:10, flexDirection:'row'}}>
-                                 <Image 
-                                 source={images.sushi}
-                                 style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
-                                 
-                                 <View style={{ paddingLeft:10, }}>
-                                     <Text style={{fontSize:24}}>Item Name</Text>
-                                     <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
-                                 </View>
-                                 <View style={{ paddingLeft:70, paddingTop:30 }}>
-                                 <Text style={{fontSize:24, fontWeight:'bold'}}>$0000000</Text>
-                                 </View>
-                                 </View>
-                                
-                         </View>
-                         
-                        
-                        
-                     </View>
-                     </View>
-
-                     <View style={{padding:SIZES.padding}}>
-                     <View style={styles.flex}>
-                         <View style={styles.card}>
-                             <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
-                             <View style={{ paddingLeft:10, flexDirection:'row'}}>
-                                 <Image 
-                                 source={images.sushi}
-                                 style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
-                                 
-                                 <View style={{ paddingLeft:10, }}>
-                                     <Text style={{fontSize:24}}>Item Name</Text>
-                                     <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
-                                 </View>
-                                 <View style={{ paddingLeft:70, paddingTop:30 }}>
-                                 <Text style={{fontSize:24, fontWeight:'bold'}}>$0000000</Text>
-                                 </View>
-                                 </View>
-                                
-                         </View>
-                         
-                        
-                        
-                     </View>
-                     </View>
-
-                     <View style={{padding:SIZES.padding}}>
-                     <View style={styles.flex}>
-                         <View style={styles.card}>
-                             <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >Customer Name</Text>
-                             <View style={{ paddingLeft:10, flexDirection:'row'}}>
-                                 <Image 
-                                 source={images.sushi}
-                                 style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
-                                 
-                                 <View style={{ paddingLeft:10, }}>
-                                     <Text style={{fontSize:24}}>Item Name</Text>
-                                     <Text style={{paddingTop:30,fontSize:18}}>Qty</Text>
-                                 </View>
-                                 <View style={{ paddingLeft:70, paddingTop:30 }}>
-                                 <Text style={{fontSize:24, fontWeight:'bold'}}>$0000000</Text>
-                                 </View>
-                                 </View>
-                                
-                         </View>
-                         
-                        
-                        
-                     </View>
-                     </View>
+                     
                      </ScrollView>
                      </View>
                      </TouchableOpacity>
+                     <View>
+                         
+                     </View>
+                     </ScrollView>
 </>
          
          );
@@ -228,7 +88,7 @@ import { navigate } from "../navigation/RootNav";
  const styles = StyleSheet.create({
      flex: {
          flex: 1,
-         backgroundColor: '#fff'
+         backgroundColor: 'white'
      },
      header:{
          fontSize:18,

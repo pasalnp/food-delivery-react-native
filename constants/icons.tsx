@@ -28,9 +28,12 @@ const addcategory = require("../assets/icons/add-category.png");
 const myorders = require("../assets/icons/myorders.png");
 const dashboard = require("../assets/icons/dashboard.png");
 const product = require("../assets/icons/product.png");
+const bin = require("../assets/icons/bin.png");
+
 
 export default {
     back,
+   bin,
     car,
     cutlery,
     donut,

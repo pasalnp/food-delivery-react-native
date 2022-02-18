@@ -6,6 +6,7 @@ import {
   Image,
 } from 'react-native';
 import { COLORS } from '../constants';
+import { navigate } from '../navigation/RootNav';
 
 export default class UserDetails extends Component {
 
