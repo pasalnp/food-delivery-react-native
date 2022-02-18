@@ -23,6 +23,8 @@ import MyCart from '../screens/MyCart';
 import ResetPassword from '../screens/PasswordReset';
 import MyOrders from '../screens/MyOrder';
 import CreditCard from '../screens/CreditCard';
+import Payment from '../screens/Payment';
+import MyTransactions from '../screens/MyTransactions';
 
 const Tab = createBottomTabNavigator();
 
@@ -179,7 +181,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Like"
-                component={AddItem}
+                component={MyTransactions}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

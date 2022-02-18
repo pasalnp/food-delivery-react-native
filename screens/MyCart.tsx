@@ -124,15 +124,15 @@ export default class MyCart extends Component<{}> {
           )
         }}/></View>
         <View style={{marginTop:10,flexDirection:'row',width:SIZES.width,justifyContent:'space-between'}}>
-        <TouchableOpacity style={{marginLeft:20,justifyContent:'flex-start',alignItems:'flex-start'}}>
+        <TouchableOpacity onPress={()=>navigate('home')} style={{marginLeft:20,justifyContent:'flex-start',alignItems:'flex-start'}}>
             <View style={styles.btn}>
-            <Text> Add More </Text>
+            <Headline3> Add More </Headline3>
             </View>
         </TouchableOpacity>
 
-        <TouchableOpacity style={{marginRight:20,justifyContent:'flex-end',alignItems:'flex-end',alignContent:'flex-end'}}>
+        <TouchableOpacity onPress={()=>navigate('payment')} style={{marginRight:20,justifyContent:'flex-end',alignItems:'flex-end',alignContent:'flex-end'}}>
             <View style={styles.btn}>
-            <Text> Order</Text>
+            <Headline3> Order</Headline3>
             </View>
         </TouchableOpacity>
 
@@ -163,6 +163,7 @@ const styles = StyleSheet.create({
     alignContent:'center',
     justifyContent:'center',
     alignItems:'center'
+    
   },
   image: {
     width: 100,
