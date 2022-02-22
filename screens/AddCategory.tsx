@@ -12,12 +12,12 @@ import { Picker } from "@react-native-picker/picker";
 import { navigate } from "../navigation/RootNav";
 
 
-const AddCategory = ({ navigation }) => {
+const AddCategory = ({ navigation  }) => {
   // const[pickerValue, setPickerValue] =useState('FoodItems')
   return (
         <>
        <Header title={'Add categories'}/>
-       <View style={{ padding: SIZES.padding }}>
+       <View style={{ padding: SIZES.padding, navigation }}>
          {/* <View style={styles.picker}>
        <Picker style={styles.picker} selectedValue={pickerValue}
      onValueChange={(itemValue) => setPickerValue(itemValue)}>

@@ -13,19 +13,29 @@ const Products= () =>{
 
   const actions = [
     {
+      text: "Today's Menu",
+      icon: icons.menu,
+      name: "restaurant",
+      color:'#FF8208',
+      position: 3,
+      
+  
+    },
+    {
       text: "Category",
       icon: icons.addcategory,
-      name: "bt_accessibility",
+      name: "addcategory",
       color:'#FF8208',
-      position: 2
+      position: 2,
+      
   
     },
     {
       text: "Item",
       icon: icons.additem,
-      name: "bt_language",
+      name: "additems",
       color:'#FF8208',
-      position: 1
+      position: 1,
     }
   ];
     return(
@@ -405,7 +415,7 @@ const Products= () =>{
         <View>
             <Headline1>Products</Headline1>
         </View>
-        <ScrollView style={{height:420}}>
+        <ScrollView showsVerticalScrollIndicator={false} style={{height:420}}>
         <TouchableOpacity style={{paddingTop:10}}>
         <View
         style={{
@@ -518,7 +528,7 @@ const Products= () =>{
         <FloatingAction
     actions={actions}
     distanceToEdge={{ vertical: 60, horizontal: 20 }}
-    onPressItem={()=>navigate('addcategory')}
+    onPressItem={(page)=> navigate(page)}
     color='red'
        
                                      

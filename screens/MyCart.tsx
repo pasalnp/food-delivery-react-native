@@ -93,7 +93,7 @@ export default class MyCart extends Component<{}> {
                       justifyContent: 'center'
                     }}
                   >
-                    <Headline2>1</Headline2>
+                    <Headline2>0</Headline2>
                   </View>
 
                   <TouchableOpacity
@@ -105,13 +105,16 @@ export default class MyCart extends Component<{}> {
                       borderRadius:10,
                       
                     }}
-                    onPress={() => editOrder("+", item.menuId, item.price)}
+                    // onPress={() => editOrder("+", item.menuId, item.price)}
                   >
                     <Body1>+</Body1>
                   </TouchableOpacity>
 
-                  <TouchableOpacity >
-                      <Image style={styles.icon} source={icons.bin} />
+                  <TouchableOpacity  >
+                    <View>
+                      
+                       <Image style={styles.icon} source={icons.bin} /> 
+                      </View>
                     </TouchableOpacity>
                 </View>
               </View>

@@ -1,6 +1,6 @@
  import React from "react";
  import{View, Text, Image,StyleSheet} from "react-native";
- import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
+ import { FlatList, ScrollView, TouchableOpacity } from "react-native-gesture-handler";
  import {COLORS,images, SIZES} from '../constants';
 import { navigate } from "../navigation/RootNav";
  import Header from "./Components/Header";
@@ -12,9 +12,11 @@ import { navigate } from "../navigation/RootNav";
         <>
         <Header title={'Dashboard'} />
         <ScrollView>
+
         <TouchableOpacity onPress={()=>navigate('orders')}>
             <Text style={{fontSize:32, color:COLORS.primary, fontWeight:'bold'}}>Orders</Text>
             </TouchableOpacity>
+
         <TouchableOpacity onPress={()=>navigate('orders')}>
          <View  style={{height:340,borderColor:'black',borderWidth:2,borderRadius:6, backgroundColor:COLORS.secondary}}>
         <ScrollView showsVerticalScrollIndicator={false}>
@@ -74,8 +76,26 @@ import { navigate } from "../navigation/RootNav";
                      </ScrollView>
                      </View>
                      </TouchableOpacity>
-                     <View>
+
+                     {/*Cards */}
+                     <View style={{flexDirection:'row', justifyContent:'center'}}>
                          
+
+                     <View style={{margin:20,height:70, width:150,backgroundColor:COLORS.secondary,borderRadius:10, borderWidth:2 }}>
+                         <View style={{ alignItems:'center'}}>
+                             <Text style={{fontSize:18}}>Number of Orders</Text>
+                             <Text style={{fontSize:32}}>25</Text>
+                         </View>
+                     </View>
+
+                     <View style={{margin:20,height:70, width:150,backgroundColor:COLORS.secondary,borderRadius:10, borderWidth:2 }}>
+                         <View style={{ alignItems:'center'}}>
+                             <Text style={{fontSize:18, color:'red'}}>Pending Orders</Text>
+                             <Text style={{fontSize:32, color:'red'}}>10</Text>
+                         </View>
+                     </View>
+
+                
                      </View>
                      </ScrollView>
 </>

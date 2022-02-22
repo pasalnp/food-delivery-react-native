@@ -25,6 +25,8 @@ import MyOrders from '../screens/MyOrder';
 import CreditCard from '../screens/CreditCard';
 import Payment from '../screens/Payment';
 import MyTransactions from '../screens/MyTransactions';
+import UserDetails from '../screens/UserProfile';
+import UserProfile from '../screens/UserProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -180,12 +182,12 @@ const Tabs = () => {
             />
 
             <Tab.Screen
-                name="Like"
+                name="Transactions"
                 component={MyTransactions}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.like}
+                            source={icons.bills}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -204,7 +206,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="User"
-                component={SignUp}
+                component={UserProfile}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

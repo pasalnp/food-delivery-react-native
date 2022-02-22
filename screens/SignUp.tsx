@@ -51,9 +51,10 @@ const SignUp = ({ navigation }) => {
     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Name'}/>
     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Address'}/>
     <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Phone Number'}/>
+    <TextInput  style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Email'}/>
     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'User Name'}/>
     <TextInput keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Password'}/>
-    <TouchableOpacity style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
+    <TouchableOpacity onPress={()=>navigate('login')} style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
       <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
 <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Sign Up</Text>
 </View>

@@ -1,4 +1,5 @@
 export const back = require("../assets/icons/back.png");
+export const menu = require("../assets/icons/menu.png");
 export const car = require("../assets/icons/car.png");
 export const cutlery = require("../assets/icons/cutlery.png");
 export const donut = require("../assets/icons/donut.png");
@@ -29,11 +30,16 @@ const myorders = require("../assets/icons/myorders.png");
 const dashboard = require("../assets/icons/dashboard.png");
 const product = require("../assets/icons/product.png");
 const bin = require("../assets/icons/bin.png");
+const bills = require("../assets/icons/bills.png");
+const report = require("../assets/icons/report.png");
+
 
 
 export default {
     back,
+    menu,
    bin,
+   report,
     car,
     cutlery,
     donut,
@@ -62,6 +68,7 @@ export default {
     addcategory,
     myorders,
     dashboard,
-    product
+    product,
+    bills
     
 }

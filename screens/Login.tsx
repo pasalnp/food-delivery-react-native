@@ -27,7 +27,7 @@ const Login = ({ navigation }) => {
 
   const loginHandler = ()=>{
     console.log(user,pass);
-if(pass=='123'){
+if(pass=='12345'){
   // navigate('tabs');
   pickerValue=='Customer'?  goToTabs('tabs') :  goToTabs('tab2');
   user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 

@@ -23,7 +23,7 @@ const Home = ({ navigation }) => {
  useEffect(()=>{
    console.log('data>>>>>.loading');
    
-   GetRequest("https://sabinsth.com.np/api/v1/report/profit_loss?subdomain=Pasal",{search})
+   GetRequest("http://localhost:3000/",{search})
 .then((response) => {
 	console.log('response');
 	setData(response);
@@ -488,7 +488,7 @@ const Home = ({ navigation }) => {
 
     return (
       <View style={{ padding: SIZES.padding * 2 }}>
-        <Headline1>Main</Headline1>
+        {/* <Headline1>Main</Headline1> */}
         <Headline1>Categories</Headline1>
 
         <FlatList
@@ -582,7 +582,7 @@ const Home = ({ navigation }) => {
                     key={categoryId}
                   >
                     <Body3>{getCategoryNameById(categoryId)}</Body3>
-                    <Headline3 > . </Headline3>
+                    <Headline3 >  </Headline3>
                   </View>
                 )
               })

@@ -10,9 +10,11 @@ import Tab2 from './tab2';
 import Tabs from './tabs';
 import Orders from '../screens/Orders';
 import AddCategory from '../screens/AddCategory';
-import UserDetails from '../screens/UserDetails';
+import UserDetails from '../screens/UserProfile';
 import Users from '../screens/Users';
 import Payment from '../screens/Payment';
+import UserProfile from '../screens/UserProfile';
+import AdminProfile from '../screens/AdminProfile';
 
 export const homeRoutes = [
     { name: 'login', component: Login, title: 'Login' },
@@ -28,7 +30,8 @@ export const homeRoutes = [
     { name: 'products', component: Products, title: 'Products' },
     { name: 'dashboard', component: Dashboard, title: 'Dashboard' },
     { name: 'orders', component: Orders, title: 'Orders' },
-    { name: 'userdetails', component: UserDetails, title: 'User Details' },
+    { name: 'userprofile', component: UserProfile, title: 'User Profile' },
+    { name: 'adminprofile', component: AdminProfile, title: 'Admin Profile' },
     { name: 'users', component:Users, title: 'Users' },
     { name: 'payment', component:Payment, title: 'Payment' },
 ];

@@ -24,7 +24,8 @@ import ResetPassword from '../screens/PasswordReset';
 import MyOrders from '../screens/MyOrder';
 import Dashboard from '../screens/Dashboard';
 import Users from '../screens/Users';
-import UserDetails from '../screens/UserDetails';
+import UserDetails from '../screens/UserProfile';
+import AdminProfile from '../screens/AdminProfile';
 
 const Tab = createBottomTabNavigator();
 
@@ -180,12 +181,12 @@ const Tab2 = () => {
             />
 
             <Tab.Screen
-                name="Like"
+                name="Reports"
                 component={Users}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
-                            source={icons.like}
+                            source={icons.report}
                             resizeMode="contain"
                             style={{
                                 width: 25,
@@ -204,7 +205,7 @@ const Tab2 = () => {
 
             <Tab.Screen
                 name="User"
-                component={Login}
+                component={AdminProfile}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
