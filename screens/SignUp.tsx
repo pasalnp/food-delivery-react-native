@@ -1,7 +1,5 @@
-// import { Button, ButtonBase, Select } from "@material-ui/core";
-// import SelectInput from "@material-ui/core/Select/SelectInput";
-// import { Input } from "native-base";
-import React, { useState } from "react";
+
+import React, {useState} from "react";
 import {
   View,
   Text,
@@ -9,61 +7,147 @@ import {
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import {COLORS, SIZES } from '../constants'
 import { navigate } from "../navigation/RootNav";
-// import {
-//   icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
-//   Headline4, Body1, Body2,
-//   Body3, Body4, Body5, LargeTitle
-// } from '../constants'
+
 import { user } from "../constants/icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import Header from "./Components/Header";
+import { Center, FormControl, Icon, Input, KeyboardAvoidingView, NativeBaseProvider, Stack, useKeyboardDismissable, WarningOutlineIcon } from "native-base";
+const Example = () => {
+  const [pass,setPass]= useState('');
+  const [num,setNum]= useState('');
+  const [email,setEmail]= useState('');
+  const [showPass,SetShowPass]= useState(true);
+  const [errorPass,SetErrorPass]= useState(false);
+  const [errorNum,SetErrorNum]= useState(false);
+  const [errorEmail,SetErrorEmail]= useState(false);
+  let validEmail=new RegExp(
+    '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
+ );
+  
+
+
+  const handlePass = (e) =>{
+    if(pass.length<8){
+      SetErrorPass(true);
+    }else{
+      SetErrorPass(false);
+    }
+    if(num.length==10){
+      SetErrorNum(false);
+    }else{
+      SetErrorNum(true);
+    }
+    if(!validEmail.test(email)){
+      SetErrorEmail(true);
+    }else{
+      SetErrorEmail(false);
+
+    }
+  }
+  return <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}><Stack space={4} w="100%" >
+    <Text style={{color:'#888',paddingTop:10}}>Please fill your information to sign up</Text>
+      <Input w={{
+      base: "100%",
+      md: "25%",
+      
+    }} style={{borderColor:'red'}} InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="Name" />
+      <Input w={{
+      base: "100%",
+      md: "25%"
+    }} InputLeftElement={<Icon as={<MaterialIcons name="location-on" />} size={5} mr="2" color="muted.400" />} placeholder="Address" />
+    <FormControl isInvalid={errorNum} w="100%" >
+    <Input onChangeText={setNum} keyboardType="numeric" w={{
+      base: "100%",
+      md: "25%"
+    }} InputLeftElement={<Icon as={<MaterialIcons name="phone" />} size={5} ml="2" color="muted.400" />} placeholder="Phone Number" />
+      {errorNum ? (
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+         Invalid phone number
+        </FormControl.ErrorMessage>)
+        :<></>}
+      </FormControl>
+      <FormControl isInvalid={errorEmail} w="100%" >
+        <Input onChangeText={setEmail} w={{
+      base: "100%",
+      md: "25%"
+    }} InputLeftElement={<Icon as={<MaterialIcons name="mail" />} size={5} ml="2" color="muted.400" />} placeholder="E-mail" />
+      {errorEmail ? (
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+         Invalid e-mail
+        </FormControl.ErrorMessage>)
+        :<></>}
+     </FormControl>
+    <Input type='email' w={{
+      base: "100%",
+      md: "25%"
+    }} InputLeftElement={<Icon as={<MaterialIcons name="person-pin" />} size={5} ml="2" color="muted.400" />} placeholder="User Name" />
+
+     <FormControl isInvalid={errorPass} w="100%" >
+        
+        <Input onChangeText={setPass} type={showPass? 'password' : 'text'} w={{
+      base: "100%",
+      md: "25%"
+    }} InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={5} ml="2" color="muted.400" />} InputRightElement={
+    <Icon onPress={()=>SetShowPass(!showPass)}  as={<MaterialIcons name={showPass? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />} placeholder="Password" />
+        {errorPass ? (
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+         Password should be atleast eight character
+        </FormControl.ErrorMessage>)
+        :<></>}
+      </FormControl>
+     
+    <TouchableOpacity onPress={handlePass} style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
+     <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
+ <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Sign Up</Text>
+ </View>
+       </TouchableOpacity>
+       <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
+         <Text style={{fontSize:16}}>Alredy Signed Up? </Text>
+         <TouchableOpacity onPress={()=>navigate('login')}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
+     </View>
+    </Stack>
+    </KeyboardAvoidingView>
+};
 
 const SignUp = ({ navigation }) => {
-//   const [pass,setPass]= useState('');
-//   const [logedin,setLoggedin]= useState('');
-//   const [user,setUser]= useState('');
-//   const loginHandler = ()=>{
-// if(pass=='123'){
-//   user=='sabin' ? setLogeedin('logged in') : setLoggedin('not logged in'); 
-// }
-//   }
-//   const LoginData = [
-//     {
-//       id: 1,
-//       name: "subin",
-//       pass: '1234',
-//     },
-//     {
-//       id: 2,
-//       name: "sumir",
-//       pass: '1234',
-//     },
-    
-    
-//   ]
-  
+
   
   
   return (
-    <View>
-       <Header title={'Sign Up'}/>
-    <Text style={{fontSize:18, paddingTop:20}}></Text>
-    <Text style={{color:'#888'}}>Please fill your information to sign up</Text>
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Name'}/>
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Address'}/>
-    <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Phone Number'}/>
-    <TextInput  style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Email'}/>
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'User Name'}/>
-    <TextInput keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Password'}/>
-    <TouchableOpacity onPress={()=>navigate('login')} style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
-      <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
-<Text style={{color:'white', fontSize:18, textAlign:'center'}}>Sign Up</Text>
-</View>
-      </TouchableOpacity>
-      <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
-        <Text style={{fontSize:16}}>Alredy Signed Up? </Text>
-        <TouchableOpacity onPress={()=>navigate('login')}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
-    </View>
-    </View>
+    <NativeBaseProvider>
+            <Header title={'Sign Up'}/>
+            
+  
+    <Center flex={1} px="3" >
+        <Example />
+    </Center>
+  </NativeBaseProvider>
+//     <View>
+     
+//     <Text style={{fontSize:18, paddingTop:20}}></Text>
+//     <Text style={{color:'#888'}}>Please fill your information to sign up</Text>
+//     <Center>
+//       <Stack mt={3} space={4} w="75%" maxW="300px">
+//         <Input size="xs" placeholder="xs Input" />
+       
+//       </Stack>
+//     </Center>
+//     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Name'}/>
+//     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Address'}/>
+//     <TextInput dataDetectorTypes='phoneNumber' keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Phone Number'}/>
+//     <TextInput  style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Email'}/>
+//     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'User Name'}/>
+//     <TextInput  keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Password'}/>
+//     <TouchableOpacity onPress={()=>navigate('login')} style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
+//       <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
+// <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Sign Up</Text>
+// </View>
+//       </TouchableOpacity>
+//       <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
+//         <Text style={{fontSize:16}}>Alredy Signed Up? </Text>
+//         <TouchableOpacity onPress={()=>navigate('login')}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
+//     </View>
+//     </View>
     
     )
   }
