@@ -32,6 +32,8 @@ const product = require("../assets/icons/product.png");
 const bin = require("../assets/icons/bin.png");
 const bills = require("../assets/icons/bills.png");
 const report = require("../assets/icons/report.png");
+const done = require("../assets/icons/done.png");
+
 
 
 
@@ -69,6 +71,7 @@ export default {
     myorders,
     dashboard,
     product,
-    bills
+    bills,
+    done
     
 }

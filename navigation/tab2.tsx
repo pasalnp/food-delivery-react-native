@@ -26,6 +26,7 @@ import Dashboard from '../screens/Dashboard';
 import Users from '../screens/Users';
 import UserDetails from '../screens/UserProfile';
 import AdminProfile from '../screens/AdminProfile';
+import Days from '../screens/Dropdown';
 
 const Tab = createBottomTabNavigator();
 
@@ -182,7 +183,7 @@ const Tab2 = () => {
 
             <Tab.Screen
                 name="Reports"
-                component={Users}
+                component={UserDetails}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

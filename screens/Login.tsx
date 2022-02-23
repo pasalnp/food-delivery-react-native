@@ -55,6 +55,7 @@ if(pass=='12345'){
     if(logedin=='logged in'){
   
     pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
+    
     }
   },[logedin])
   
@@ -81,13 +82,13 @@ if(pass=='12345'){
 <TouchableOpacity onPress={()=>goToTabs('resetpassword')} style={{paddingTop:20,alignItems:'flex-end'}}>
   <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text>
   </TouchableOpacity>
-      
-      <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
+  {pickerValue=='Admin'?  <></> :  <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
         <Text style={{fontSize:16}}>don't have Account? </Text>
         <TouchableOpacity onPress={()=>navigate('signup')}>
           <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text>
           </TouchableOpacity>
-    </View>
+    </View>}
+     
     </View>
     </>
     )

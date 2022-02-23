@@ -1,23 +1,81 @@
 
+
 import React, {useState } from "react";
 import {
   View,
   Text,StyleSheet,
   Image
 } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import DropDown from 'react-native-paper-dropdown';
 import {COLORS, images, SIZES } from '../constants';
 import Header from "./Components/Header";
-import { Picker } from "@react-native-picker/picker";
+
 import { navigate } from "../navigation/RootNav";
+import { Checkbox, Provider } from "react-native-paper";
 
 
 const AddItem = ({ navigation }) => {
+
+  
+  const [category, setCategory] = useState<string>('');
+  const [showMultiSelectDropDown, setShowMultiSelectDropDown] = useState(false);
+  const [showDropDown, setShowDropDown] = useState(false);
+  const [time, setTime] = useState<string>('');
+  
+
+  const [sunday, setSunday] = React.useState(false);
+  const [monday, setMonday] = React.useState(false);
+  const [tuesday, setTuesday] = React.useState(false);
+  const [wednesday, setWednesday] = React.useState(false);
+  const [thursday, setThursday] = React.useState(false);
+  const [friday, setFriday] = React.useState(false);
+  const [saturday, setSaturday] = React.useState(false);
+
+
+  const CategoryList = [
+    {
+      label: 'Rice',
+      value: 'rice',
+    },
+    {
+      label: 'Tea',
+      value: 'tea',
+    },
+    {
+      label: 'Chowmin',
+      value: 'chowmin',
+    },
+   
+  
+  ];
+
+  const TimeList = [
+    {
+      label: '10-15 min',
+      value: '10-15 min',
+    },
+    {
+      label: '15-30 min',
+      value: '15-30 min',
+    },
+    {
+      label: '30-45 min',
+      value: '30-45 min',
+    },
+    {
+      label: '45-60 min',
+      value: '45-60 min',
+    },
+    
+  
+  ];
   // const[pickerValue, setPickerValue] =useState('FoodItems')
   return (
-        <>
+        <Provider>
        <Header title={'Add Items'}/>
-       <View style={{ padding: SIZES.padding }}>
+       <ScrollView showsVerticalScrollIndicator={false}>
+         <View style={{ padding: SIZES.padding }}>
          {/* <View style={styles.picker}>
        <Picker style={styles.picker} selectedValue={pickerValue}
      onValueChange={(itemValue) => setPickerValue(itemValue)}>
@@ -33,9 +91,88 @@ const AddItem = ({ navigation }) => {
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Item Name'}/>
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category'}/>
-    <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Price'}/>
+    <TextInput style={styles.box} placeholder={'Item Name'}/>
+    <TextInput style={styles.box} placeholder={'Discription'}/>
+    {/* <TextInput style={styles.box} placeholder={'Category'}/> */}
+    <DropDown
+    
+  label={'Categories'}
+  mode={'outlined'}
+  visible={showMultiSelectDropDown}
+  showDropDown={() => setShowMultiSelectDropDown(true)}
+  onDismiss={() => setShowMultiSelectDropDown(false)}
+  value={category}
+  setValue={setCategory}
+  list={CategoryList}
+  multiSelect
+/>
+    <TextInput keyboardType='number-pad' style={styles.box} placeholder={'Price'}/>
+    <DropDown
+              label={'Ready Time'}
+              mode={'outlined'}
+              visible={showDropDown}
+              showDropDown={() => setShowDropDown(true)}
+              onDismiss={() => setShowDropDown(false)}
+              value={time}
+              setValue={setTime}
+              list={TimeList}
+            />
+<View style={styles.box2}>
+  <Text style={{ padding: SIZES.padding, fontSize:20, color:COLORS.primary }}>Available on Days</Text>
+<View style={{flexDirection:'row'}}>
+    <View style={{ width:100,marginLeft:50}} >
+          <View style={styles.week}>
+            <Checkbox
+          status={sunday ? 'checked' : 'unchecked'} 
+          onPress={()=>setSunday(!sunday)}
+        /><Text style={styles.text}>Sunday</Text>
+        </View>
+        <View style={styles.week}>
+        <Checkbox
+          status={monday ? 'checked' : 'unchecked'} 
+          onPress={()=>setMonday(!monday)}
+        /><Text style={styles.text}>Monday</Text>
+        </View>
+        <View style={styles.week}>
+        <Checkbox
+          status={tuesday ? 'checked' : 'unchecked'} 
+          onPress={()=>setTuesday(!tuesday)}
+        /><Text style={styles.text}>Tuesday</Text>
+        </View>
+        <View style={styles.week}>
+        <Checkbox
+          status={wednesday ? 'checked' : 'unchecked'} 
+          onPress={()=>setWednesday(!wednesday)}
+        /><Text style={styles.text}>Wednesday</Text>
+        </View>
+       
+         </View>
+
+         <View style={{ width:100,paddingLeft:40,marginRight:50}}>
+         <View style={styles.week}>
+         <Checkbox
+          status={thursday ? 'checked' : 'unchecked'} 
+          onPress={()=>setThursday(!thursday)}
+        /><Text style={styles.text}>Thursday</Text>
+
+          </View>
+
+          <View style={styles.week}>
+          <Checkbox
+          status={friday ? 'checked' : 'unchecked'} 
+          onPress={()=>setFriday(!friday)}
+        /><Text style={styles.text}>Friday</Text>
+        </View>
+        <View style={styles.week}>
+        <Checkbox
+          status={saturday ? 'checked' : 'unchecked'} 
+          onPress={()=>setSaturday(!saturday)}
+        /><Text style={styles.text}>Saturday</Text>
+        </View>
+        
+        </View>
+        </View>
+        </View>
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Enter Category Name'}/>
     <TextInput keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={''}/> */}
     <View style={{padding:50,flexDirection:'row', justifyContent:'space-evenly',alignContent:'space-around'}}>
@@ -51,26 +188,17 @@ const AddItem = ({ navigation }) => {
       </View>
       
     </View>
-    </>
+    </ScrollView>
+    </Provider>
     )
   }
 
   const styles= StyleSheet.create({
-    
-    picker:{
-      height:40,
-      width:150,
-      borderColor:COLORS.primary,
-      borderRadius:6,
-      borderWidth:3,
-      backgroundColor:'blue',
-      color:COLORS.white,
-      textAlign:'center',
-      alignItems:'center',
-      alignContent:'center',
-      justifyContent:'center'
-      
-    },
+
+    box:{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,marginTop:10},
+    week:{flexDirection:'row'},
+    box2:{marginTop:10,borderRadius:6,borderColor:COLORS.secondary, borderWidth:1, padding:SIZES.padding},
+    text:{fontSize:18,paddingTop:10}
   })
   
   export default AddItem;

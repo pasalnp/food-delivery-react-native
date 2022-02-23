@@ -23,7 +23,7 @@ const Home = ({ navigation }) => {
  useEffect(()=>{
    console.log('data>>>>>.loading');
    
-   GetRequest("http://localhost:3000/",{search})
+   GetRequest("http://localhost:3000/post/sumir",{search})
 .then((response) => {
 	console.log('response');
 	setData(response);
@@ -382,44 +382,15 @@ const Home = ({ navigation }) => {
     return (
       <>       
       <Header title={'Home'} />
-      <View style={{ flexDirection: 'row', height: 50 }}>
-        <TouchableOpacity
-          style={{
-            width: 50,
-            paddingLeft: SIZES.padding * 2,
-            justifyContent: 'center'
-          }}
-        >
-          <Image
-            source={icons.nearby}
-            resizeMode="contain"
-            style={{
-              width: 30,
-              height: 30
-            }}
-          />
-        </TouchableOpacity>
-
-        <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-          <View
-            style={{
-              width: '70%',
-              height: "100%",
-              backgroundColor: COLORS.lightGray3,
-              alignItems: 'center',
-              justifyContent: 'center',
-              borderRadius: SIZES.radius
-            }}
-          >
-            <Headline3>{currentLocation.streetName}</Headline3>
-          </View>
-        </View>
+      <View style={{ flexDirection: 'row', height: 50,padding: SIZES.padding }}>
+      <Headline1>Categories</Headline1>
 
         <TouchableOpacity onPress={()=>navigate('mycart')}
           style={{
             width: 50,
-            paddingRight: SIZES.padding * 2,
-            justifyContent: 'center'
+           paddingLeft:250,
+            alignItems:'flex-end',
+            
           }}
         >
           <Image
@@ -443,7 +414,7 @@ const Home = ({ navigation }) => {
         <TouchableOpacity
           style={{
             padding: SIZES.padding,
-            paddingBottom: SIZES.padding * 2,
+            paddingBottom: SIZES.padding ,
             backgroundColor: (selectedCategory?.id == item.id) ? COLORS.primary : COLORS.white,
             borderRadius: SIZES.radius,
             alignItems: "center",
@@ -488,8 +459,7 @@ const Home = ({ navigation }) => {
 
     return (
       <View style={{ padding: SIZES.padding * 2 }}>
-        {/* <Headline1>Main</Headline1> */}
-        <Headline1>Categories</Headline1>
+        
 
         <FlatList
           data={categories}
@@ -506,7 +476,7 @@ const Home = ({ navigation }) => {
   function renderRestaurantList() {
     const renderItem = ({ item }) => (
       <TouchableOpacity
-        style={{ marginBottom: SIZES.padding * 2 }}
+        style={{ marginBottom: SIZES.padding  }}
         onPress={() => navigation.navigate("restaurant", {
           item,
           currentLocation

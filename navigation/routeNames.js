@@ -16,6 +16,7 @@ import Payment from '../screens/Payment';
 import UserProfile from '../screens/UserProfile';
 import AdminProfile from '../screens/AdminProfile';
 
+
 export const homeRoutes = [
     { name: 'login', component: Login, title: 'Login' },
     { name: 'tabs', component: Tabs, title: 'Tabs' },
@@ -34,4 +35,5 @@ export const homeRoutes = [
     { name: 'adminprofile', component: AdminProfile, title: 'Admin Profile' },
     { name: 'users', component:Users, title: 'Users' },
     { name: 'payment', component:Payment, title: 'Payment' },
+   
 ];
