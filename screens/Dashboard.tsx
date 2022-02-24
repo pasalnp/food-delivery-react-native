@@ -81,17 +81,13 @@ import { navigate } from "../navigation/RootNav";
                      <View style={{flexDirection:'row', justifyContent:'center'}}>
                          
 
-                     <View style={{margin:20,height:70, width:150,backgroundColor:COLORS.secondary,borderRadius:10, borderWidth:2 }}>
-                         <View style={{ alignItems:'center'}}>
-                             <Text style={{fontSize:18}}>Number of Orders</Text>
-                             <Text style={{fontSize:32}}>25</Text>
-                         </View>
-                     </View>
+                    
 
-                     <View style={{margin:20,height:70, width:150,backgroundColor:COLORS.secondary,borderRadius:10, borderWidth:2 }}>
-                         <View style={{ alignItems:'center'}}>
-                             <Text style={{fontSize:18, color:'red'}}>Pending Orders</Text>
-                             <Text style={{fontSize:32, color:'red'}}>10</Text>
+                     <View style={{margin:20,height:80,alignItems:'center', width:150,backgroundColor:COLORS.secondary,borderRadius:10, borderWidth:2,justifyContent:'center'}}>
+                        
+                             <Text style={{fontSize:22, color:'red'}}>Pending Orders</Text>
+                             <View style={{ marginBottom:10,alignItems:'center',width:50,height:50 ,borderRadius: SIZES.radius * 10, backgroundColor:'white',justifyContent:'center',borderWidth:1}}>
+                             <Text style={{fontSize:32, color:'red'}}>1000</Text>
                          </View>
                      </View>
 
