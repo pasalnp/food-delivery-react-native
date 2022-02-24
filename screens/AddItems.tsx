@@ -67,37 +67,40 @@ const AddItem = ({ navigation }) => {
       label: '45-60 min',
       value: '45-60 min',
     },
-    
+    {
+      label: '60-90 min',
+      value: '60-90 min',
+    },
+    {
+      label: '1-2 Hours',
+      value: '1-2 Hours',
+    },
   
   ];
-  // const[pickerValue, setPickerValue] =useState('FoodItems')
+  
   return (
         <Provider>
        <Header title={'Add Items'}/>
        <ScrollView showsVerticalScrollIndicator={false}>
          <View style={{ padding: SIZES.padding }}>
-         {/* <View style={styles.picker}>
-       <Picker style={styles.picker} selectedValue={pickerValue}
-     onValueChange={(itemValue) => setPickerValue(itemValue)}>
-       <Picker.Item label="Food Item" value="Food Item"/>
-       <Picker.Item label="Food Category" value="Food Category"/>
-     </Picker>
-     </View> */}
+         
     <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+        <TouchableOpacity>
         <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
         resizeMode='cover'
         style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
         />
+         </TouchableOpacity>
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
+   
     <TextInput style={styles.box} placeholder={'Item Name'}/>
-    <TextInput style={styles.box} placeholder={'Discription'}/>
+    <TextInput style={styles.box} placeholder={'Description of food'}/>
     <TextInput  keyboardType='number-pad' style={styles.box} placeholder={'Calories'}/>
     {/* <TextInput style={styles.box} placeholder={'Category'}/> */}
     <DropDown
-    
-  label={'Categories'}
+    label={'Categories'}
   mode={'outlined'}
   visible={showMultiSelectDropDown}
   showDropDown={() => setShowMultiSelectDropDown(true)}
@@ -106,7 +109,7 @@ const AddItem = ({ navigation }) => {
   setValue={setCategory}
   list={CategoryList}
   multiSelect
-/>
+  />
     <TextInput keyboardType='number-pad' style={styles.box} placeholder={'Price'}/>
     <DropDown
               label={'Ready Time'}

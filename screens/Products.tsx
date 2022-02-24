@@ -153,7 +153,7 @@ const [selectedCategory,setSelectedCategory]= useState(false);
             <Headline1>Products</Headline1>
         </View>
         <ScrollView showsVerticalScrollIndicator={false} style={{height:420}}>
-        <TouchableOpacity style={{paddingTop:10}}>
+        
         <View
         style={{
             paddingTop:10,
@@ -200,6 +200,7 @@ const [selectedCategory,setSelectedCategory]= useState(false);
                 <Headline2 style={{  fontSize:30 ,color:'red' }}>Rs.500</Headline2>
                 <Body4>fresh vegetables, meat plate, sauce</Body4>
               </View>
+              
               <View
             style={{
               position: 'absolute',
@@ -214,6 +215,7 @@ const [selectedCategory,setSelectedCategory]= useState(false);
               
             }}
           >
+            <TouchableOpacity >
             <Image
                   source={icons.edit}
                   style={{
@@ -222,8 +224,9 @@ const [selectedCategory,setSelectedCategory]= useState(false);
                     marginLeft:15
                   }}
                 />
-            
+             </TouchableOpacity>
             </View>
+           
 
               {/* Calories */}
               <View
@@ -248,7 +251,7 @@ const [selectedCategory,setSelectedCategory]= useState(false);
               </View>
         </View>
 
-        </TouchableOpacity>
+       
         
         </ScrollView>
         

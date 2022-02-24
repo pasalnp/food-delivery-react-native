@@ -42,65 +42,65 @@ const Home = ({ navigation }) => {
     }
   }
 
-  const categoryData = [
+  // const categoryData = [
     
-    {
-      id: 777,
-      name: "Todays Menu",
-      icon: icons.rice_bowl,
-    }
-    ,{
-      id: 1,
-      name: "Rice",
-      icon: icons.rice_bowl,
-    },
-    {
-      id: 2,
-      name: "Noodles",
-      icon: icons.noodle,
-    },
-    {
-      id: 3,
-      name: "Hot Dogs",
-      icon: icons.hotdog,
-    },
-    {
-      id: 4,
-      name: "Salads",
-      icon: icons.salad,
-    },
-    {
-      id: 5,
-      name: "Burgers",
-      icon: icons.hamburger,
-    },
-    {
-      id: 6,
-      name: "Pizza",
-      icon: icons.pizza,
-    },
-    {
-      id: 7,
-      name: "Snacks",
-      icon: icons.fries,
-    },
-    {
-      id: 8,
-      name: "Sushi",
-      icon: icons.sushi,
-    },
-    {
-      id: 9,
-      name: "Desserts",
-      icon: icons.donut,
-    },
-    {
-      id: 10,
-      name: "Drinks",
-      icon: icons.drink,
-    },
+  //   {
+  //     id: 777,
+  //     name: "Todays Menu",
+  //     icon: icons.rice_bowl,
+  //   }
+  //   ,{
+  //     id: 1,
+  //     name: "Rice",
+  //     icon: icons.rice_bowl,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Noodles",
+  //     icon: icons.noodle,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Hot Dogs",
+  //     icon: icons.hotdog,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Salads",
+  //     icon: icons.salad,
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Burgers",
+  //     icon: icons.hamburger,
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Pizza",
+  //     icon: icons.pizza,
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Snacks",
+  //     icon: icons.fries,
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Sushi",
+  //     icon: icons.sushi,
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Desserts",
+  //     icon: icons.donut,
+  //   },
+  //   {
+  //     id: 10,
+  //     name: "Drinks",
+  //     icon: icons.drink,
+  //   },
 
-  ]
+  // ]
 
   // price rating
   const affordable = 1
@@ -153,7 +153,7 @@ const Home = ({ navigation }) => {
     },
     {
       id: 2,
-      name: "Himalayan Pizza",
+      name: "Tuesday",
       rating: 4.8,
       categories: [2, 4, 777,6],
       priceRating: expensive,
@@ -204,7 +204,7 @@ const Home = ({ navigation }) => {
     },
     {
       id: 3,
-      name: "Himalayan Hotdogs",
+      name: "Monday",
       rating: 4.8,
       categories: [3],
       priceRating: expensive,
@@ -231,7 +231,7 @@ const Home = ({ navigation }) => {
     },
     {
       id: 4,
-      name: "Himalayan Sushi",
+      name: "Tuesday",
       rating: 4.8,
       categories: [8],
       priceRating: expensive,
@@ -371,6 +371,10 @@ useEffect(()=>{
     setRestaurantsback(res.data.content.data);
     console.log(res.data);
   })
+  GetRequest(`${API}/get/items`,).then(res=>{
+    setRestaurants(res.data.content.data);
+    console.log(res.data);
+  })
 },[])
   function onSelectCategory(category) {
     //filter restaurant
@@ -487,6 +491,7 @@ useEffect(()=>{
     )
   }
 
+  
   function renderRestaurantList() {
     const renderItem = ({ item }) => (
       <TouchableOpacity
@@ -505,7 +510,7 @@ useEffect(()=>{
           }}
         >
           <Image
-            source={item.photo}
+            source={{uri: `${CDN}/${item.image}` }}
             resizeMode="cover"
             style={{
               margin:10,
