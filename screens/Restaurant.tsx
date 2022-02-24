@@ -25,9 +25,9 @@ const Restaurant = ({ route, navigation }) => {
   const [orderItems, setOrderItems] = React.useState([]);
 
   React.useEffect(() => {
-    let { item, currentLocation } = route.params;
+    let { restaurants, currentLocation } = route.params;
 
-    setRestaurant(item)
+    setRestaurant(restaurants)
     setCurrentLocation(currentLocation)
   })
 
@@ -127,7 +127,7 @@ const Restaurant = ({ route, navigation }) => {
               backgroundColor: COLORS.lightGray3
             }}
           >
-            <Headline3>{restaurant?.name}</Headline3>
+            <Headline3>{restaurant?.day}</Headline3>
           </View>
         </View>
 
@@ -165,7 +165,7 @@ const Restaurant = ({ route, navigation }) => {
         ], { useNativeDriver: false })}
       >
         {
-          restaurant?.menu.map((item, index) => (
+          restaurant?.filter((item)=>item.Avilday==currentLocation).map((item, index) => (
             <View
               key={`menu-${index}`}
               style={{ alignItems: 'center' }}
@@ -269,7 +269,7 @@ const Restaurant = ({ route, navigation }) => {
                 }}
               >
                 <Headline2 style={{ marginVertical: 10, textAlign: 'center' }}>{item.name}}</Headline2>
-                <Headline1 style={{ textAlign: 'center' ,color:'green'}}> {item.price.toFixed(2)}</Headline1>
+                {/* <Headline1 style={{ textAlign: 'center' ,color:'green'}}> {item.price.toFixed(2)}</Headline1> */}
                 <Body3>{item.description}</Body3>
               </View>
 
@@ -289,9 +289,9 @@ const Restaurant = ({ route, navigation }) => {
                   }}
                 />
 
-                <Body3 style={{
+                {/* <Body3 style={{
                   color: COLORS.darygray
-                }}>{item.calories.toFixed(2)} cal</Body3>
+                }}>{item.calories.toFixed(2)} cal</Body3> */}
               </View>
             </View>
           ))
@@ -314,7 +314,7 @@ const Restaurant = ({ route, navigation }) => {
             height: SIZES.padding
           }}
         >
-          {restaurant?.menu.map((item, index) => {
+          {restaurant?.map((item, index) => {
 
             const opacity = dotPosition.interpolate({
               inputRange: [index - 1, index, index + 1],

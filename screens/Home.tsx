@@ -355,20 +355,26 @@ const Home = ({ navigation }) => {
 
   ]
 
-  const [categories, setCategories] = React.useState(categoryData)
+  const [categories, setCategories] = React.useState([])
   const [selectedCategory, setSelectedCategory] = React.useState(null)
-  const [restaurants, setRestaurants] = React.useState(restaurantData)
+  const [restaurantsback, setRestaurantsback] = React.useState([])
+  const [restaurants, setRestaurants] = React.useState([])
   const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
 useEffect(()=>{
-  GetRequest(`${API}/get/categorydata`,).then(res=>{
+  GetRequest(`${API}/get/categoryData`,).then(res=>{
     setCategories(res.data.content.data);
+    console.log(res.data);
+  })  
+  GetRequest(`${API}/get/productData`,).then(res=>{
+    setRestaurants(res.data.content.data);
+    setRestaurantsback(res.data.content.data);
     console.log(res.data);
   })
 },[])
   function onSelectCategory(category) {
     //filter restaurant
-    let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
+    let restaurantList = restaurantsback.filter(a => a.category.includes(category.id))
 
     setRestaurants(restaurantList)
 
@@ -486,8 +492,8 @@ useEffect(()=>{
       <TouchableOpacity
         style={{ marginBottom: SIZES.padding , borderColor:COLORS.primary, borderWidth:1, borderRadius:SIZES.radius }}
         onPress={() => navigation.navigate("restaurant", {
-          item,
-          currentLocation
+          restaurants,
+          currentLocation:item.Avilday
         })}
       >
         {/* Image */}
@@ -531,7 +537,7 @@ useEffect(()=>{
         <Headline3 style={{
            paddingLeft:30
           }}>
-            {item.name}</Headline3>
+            MENU:Avilable on {item.Avilday}'s</Headline3>
 
         <View
           style={{
@@ -560,7 +566,7 @@ useEffect(()=>{
               marginLeft: 10
             }}
           >
-            {
+            {/* {
               item.categories.map((categoryId) => {
                 return (
                   <View
@@ -572,7 +578,7 @@ useEffect(()=>{
                   </View>
                 )
               })
-            }
+            } */}
 
             {/* Price */}
             {/* {
