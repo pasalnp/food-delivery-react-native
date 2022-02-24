@@ -33,6 +33,7 @@ const bin = require("../assets/icons/bin.png");
 const bills = require("../assets/icons/bills.png");
 const report = require("../assets/icons/report.png");
 const done = require("../assets/icons/done.png");
+const edit = require("../assets/icons/edit.png");
 
 
 
@@ -40,6 +41,7 @@ const done = require("../assets/icons/done.png");
 export default {
     back,
     menu,
+    edit,
    bin,
    report,
     car,

@@ -20,13 +20,13 @@ export default class MyCart extends Component<{}> {
     super(props);
     this.state = {
       data: [
-         {id:1, image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
-         {id:2, image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
-         {id:3, image: "https://bootdey.com/img/Content/avatar/avatar2.png"},
-         {id:4, image: "https://bootdey.com/img/Content/avatar/avatar3.png"},
-         {id:5, image: "https://bootdey.com/img/Content/avatar/avatar4.png"},
-         {id:6, image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
-         {id:7, image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
+         {id:1,  name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
+         {id:2, name:'Mo:Mo', image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
+         {id:3, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar2.png"},
+         {id:4, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar3.png"},
+         {id:5, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar4.png"},
+         {id:6, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
+         {id:7, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
       ],
     };
   }
@@ -51,7 +51,7 @@ export default class MyCart extends Component<{}> {
               <View style={styles.box}>
                 <Image style={styles.image} source={{uri:item.image}} />
                 <View style={styles.info}>
-                  <Text  style={styles.name}>Burger</Text>
+                  <Text  style={styles.name}>{item.name}</Text>
                   <Text  style={styles.discription}>Veg</Text>
                   <Text  style={styles.price}>$$100</Text>
                   
@@ -109,13 +109,40 @@ export default class MyCart extends Component<{}> {
                   >
                     <Body1>+</Body1>
                   </TouchableOpacity>
+                  
+                  <View
+            style={{
+              position: 'absolute',
+              bottom: 60,
+              right:-130,
+              // backgroundColor: COLORS.white,
+              // borderRadius: SIZES.radius,
+              // borderColor:'blue',
+              // borderWidth:2,
+              // borderTopLeftRadius: SIZES.radius,
+              alignItems: 'center',
+              justifyContent: 'center',
+              
+            }}
+          >
+            
+            <TouchableOpacity onPress={()=>navigate('home')}> 
+            <Image  style={styles.icon} source={icons.bin} />
+            </TouchableOpacity>
+            </View>
+          {/* <View style={styles.icon}>
+          <TouchableOpacity  onPress={()=>navigate('home')}>
+          
+          <Image  style={styles.icon} source={icons.bin} /> 
+          </TouchableOpacity>
 
-                  <TouchableOpacity  >
-                    <View>
-                      
+          </View> */}
+        
+                  {/* <TouchableOpacity >
+                                    
                        <Image style={styles.icon} source={icons.bin} /> 
-                      </View>
-                    </TouchableOpacity>
+                      
+                    </TouchableOpacity> */}
                 </View>
               </View>
               </View>
@@ -132,6 +159,7 @@ export default class MyCart extends Component<{}> {
             <Headline3> Add More </Headline3>
             </View>
         </TouchableOpacity>
+       
 
         <TouchableOpacity onPress={()=>navigate('payment')} style={{marginRight:20,justifyContent:'flex-end',alignItems:'flex-end',alignContent:'flex-end'}}>
             <View style={styles.btn}>
@@ -155,7 +183,6 @@ const styles = StyleSheet.create({
   icon:{
     width:25,
     height:25,
-    bottom:30
    
   },
   btn: {
