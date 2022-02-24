@@ -359,7 +359,13 @@ const Home = ({ navigation }) => {
   const [restaurants, setRestaurants] = React.useState(restaurantData)
   const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
-
+useEffect(()=>{
+  GetRequest('http://192.168.1.100:3000/get/categorydata',).then(res=>{
+    setCategories(res.data.content.data);
+    console.log(res.data);
+    
+  })
+},[])
   function onSelectCategory(category) {
     //filter restaurant
     let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
