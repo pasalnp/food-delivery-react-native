@@ -53,7 +53,7 @@ export default class Users extends Component {
           renderItem={({item}) => {
             return (
                 
-              <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item)}}>
+              <View style={styles.card} >
                 {/* <View style={styles.cardHeader}>
                   <Image style={styles.icon} source={{uri:"https://img.icons8.com/flat_round/64/000000/hearts.png"}}/>
                 </View> */}
@@ -62,12 +62,12 @@ export default class Users extends Component {
                   <View style={{alignItems:"center", justifyContent:"center"}}>
                     <Text style={styles.name}>{item.name}</Text>
                     <Text style={styles.address}>{item.address}</Text>
-                    <TouchableOpacity style={styles.detailsbtn} onPress={()=> this.clickEventListener(item)}>
+                    <TouchableOpacity style={styles.detailsbtn} onPress={()=>navigate('userprofile')}>
                       <Text style={styles.followButtonText}>Details</Text>  
                     </TouchableOpacity>
                   </View>
                 </View>
-              </TouchableOpacity>
+              </View>
             )
           }}/>
       </View>

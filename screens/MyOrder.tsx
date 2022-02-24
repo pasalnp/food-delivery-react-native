@@ -53,16 +53,16 @@ export default class MyCart extends Component<{}> {
                 <View style={styles.info}>
                   <Text  style={styles.name}>himalayan royal sticky pizza</Text>
                   <Text  style={styles.discription}>Veg</Text>
-                  <Text  style={styles.discription}>Price</Text>
+                  <Text  style={styles.discription}>Rs. 100</Text>
                   
                   
                 
               </View>
               <View style={{marginRight:20,alignContent:'center', justifyContent:'center',alignItems:'center'}}>
               <Text style={styles.qty}>Qty</Text>
-              <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >52525</Text>
+              <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >5</Text>
               </View>
-              <View><Text style={styles.price}>$$10000</Text></View>
+              <View><Text style={styles.price}>Rs.500</Text></View>
               </View>
               
             

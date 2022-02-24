@@ -4,7 +4,7 @@ import {
   View,
   Text,
 } from "react-native";
-import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import {COLORS, SIZES } from '../constants'
 import { navigate } from "../navigation/RootNav";
 
@@ -45,7 +45,8 @@ const Example = () => {
     }
   }
   return <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}><Stack space={4} w="100%" >
-    <Text style={{color:'#888',paddingTop:10}}>Please fill your information to sign up</Text>
+    
+    
       <Input w={{
       base: "100%",
       md: "25%",
@@ -105,6 +106,7 @@ const Example = () => {
          <Text style={{fontSize:16}}>Alredy Signed Up? </Text>
          <TouchableOpacity onPress={()=>navigate('login')}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
      </View>
+     
     </Stack>
     </KeyboardAvoidingView>
 };
@@ -116,38 +118,14 @@ const SignUp = ({ navigation }) => {
   return (
     <NativeBaseProvider>
             <Header title={'Sign Up'}/>
-            
+            <Text style={{color:'#888',paddingBottom:10}}>Please fill your information to sign up</Text>
+            <ScrollView>
   
     <Center flex={1} px="3" >
         <Example />
     </Center>
+    </ScrollView>
   </NativeBaseProvider>
-//     <View>
-     
-//     <Text style={{fontSize:18, paddingTop:20}}></Text>
-//     <Text style={{color:'#888'}}>Please fill your information to sign up</Text>
-//     <Center>
-//       <Stack mt={3} space={4} w="75%" maxW="300px">
-//         <Input size="xs" placeholder="xs Input" />
-       
-//       </Stack>
-//     </Center>
-//     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Name'}/>
-//     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Address'}/>
-//     <TextInput dataDetectorTypes='phoneNumber' keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Phone Number'}/>
-//     <TextInput  style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Email'}/>
-//     <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'User Name'}/>
-//     <TextInput  keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Password'}/>
-//     <TouchableOpacity onPress={()=>navigate('login')} style={{paddingHorizontal:50, alignContent:'center', justifyContent:'center'}}>
-//       <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
-// <Text style={{color:'white', fontSize:18, textAlign:'center'}}>Sign Up</Text>
-// </View>
-//       </TouchableOpacity>
-//       <View style={{paddingTop:20, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
-//         <Text style={{fontSize:16}}>Alredy Signed Up? </Text>
-//         <TouchableOpacity onPress={()=>navigate('login')}><Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign In</Text></TouchableOpacity>
-//     </View>
-//     </View>
     
     )
   }

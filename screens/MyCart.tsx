@@ -154,7 +154,7 @@ export default class MyCart extends Component<{}> {
           )
         }}/></View>
         <View style={{marginTop:10,flexDirection:'row',width:SIZES.width,justifyContent:'space-between'}}>
-        <TouchableOpacity onPress={()=>navigate('home')} style={{marginLeft:20,justifyContent:'flex-start',alignItems:'flex-start'}}>
+        <TouchableOpacity onPress={()=>navigate('tabs')} style={{marginLeft:20,justifyContent:'flex-start',alignItems:'flex-start'}}>
             <View style={styles.btn}>
             <Headline3> Add More </Headline3>
             </View>
