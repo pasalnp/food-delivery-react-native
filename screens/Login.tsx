@@ -17,6 +17,8 @@ import {
 import { user } from "../constants/icons";
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
+import { API } from "../Config/var";
+import { GetRequest, PostRequest } from "../Config/axios";
 
 const Login = ({ navigation }) => {
 
@@ -25,32 +27,27 @@ const Login = ({ navigation }) => {
   const [user,setUser]= useState('');
   const[pickerValue, setPickerValue] =useState('Admin')
 
-  const loginHandler = ()=>{
-    console.log(user,pass);
-if(pass=='12345'){
-  // navigate('tabs');
-  pickerValue=='Customer'?  goToTabs('tabs') :  goToTabs('tab2');
-  user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
+  const loginHandler = async ()=>{
+    if(pickerValue=='Admin'){
+    PostRequest(`${API}/login`, {username:'sabin',password:'3595',role:pickerValue}).then((res)=>{
+      goToTabs('tab2'); 
+      setLoggedin('logged in');
+      console.log('data>>>>>>>>>>>>>>>>>>>>',);
+      
+    })
+    }else{
+      if(pass=='12345'){
+        // navigate('tabs');
+        pickerValue=='Customer' ?  goToTabs('tabs') :  goToTabs('tab2');
+        user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
+      
+      }
+    }
 
-}
   }
   const goToTabs = (page) => {
     navigate(page);
   }
-  const LoginData = [
-    {
-      id: 1,
-      name: "subin",
-      pass: '1234',
-    },
-    {
-      id: 2,
-      name: "sumir",
-      pass: '1234',
-    },
-    
-
-  ]
   useEffect(() => {
     if(logedin=='logged in'){
   
