@@ -93,6 +93,7 @@ const AddItem = ({ navigation }) => {
     </View> 
     <TextInput style={styles.box} placeholder={'Item Name'}/>
     <TextInput style={styles.box} placeholder={'Discription'}/>
+    <TextInput  keyboardType='number-pad' style={styles.box} placeholder={'Calories'}/>
     {/* <TextInput style={styles.box} placeholder={'Category'}/> */}
     <DropDown
     

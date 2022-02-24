@@ -63,17 +63,17 @@ if(pass=='12345'){
     <>
     <Header title={'Sign In'} />
     <View style={{ padding: SIZES.padding * 2 }}>       
-     
+     {pass=='sabin'?<Text>Password</Text> :  <></>}
     <Text style={{fontSize:18, color:COLORS.primary}}>WELCOME</Text>
     <Text>Please your credintial for login</Text>
-    <Text> your credintial for login is {user} {pass} {logedin}</Text>
+    
      <Picker style={styles.picker} selectedValue={pickerValue}
      onValueChange={(itemValue) => setPickerValue(itemValue)}>
        <Picker.Item label="Admin" value="Admin"/>
        <Picker.Item label="Customer" value="Customer"/>
      </Picker>
     <TextInput onChangeText={setUser} style={styles.box} placeholder={'User Name'}/>
-    <TextInput secureTextEntry={true} onChangeText={setPass} style={styles.box} placeholder={'Password'}/>
+    <TextInput secureTextEntry={true} onChangeText={setPass} style={styles.box} placeholder={'Password'} />
     <TouchableOpacity onPress={loginHandler} style={{paddingTop:50,paddingHorizontal:50}}>
       <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
 <Text style={{color:'white', fontSize:18, textAlign:'center'}} >Login</Text>

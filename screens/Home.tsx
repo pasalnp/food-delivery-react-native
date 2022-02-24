@@ -109,20 +109,20 @@ const Home = ({ navigation }) => {
   const restaurantData = [
     {
       id: 1,
-      name: "Himalayan Burger",
+      name: "SUNDAY",
       rating: 4.8,
       categories: [5, 7],
       priceRating: affordable,
       photo: images.burger_restaurant_1,
       duration: "30 - 45 min",
-      location: {
-        latitude: 1.5347282806345879,
-        longitude: 110.35632207358996,
-      },
-      courier: {
-        avatar: images.avatar_1,
-        name: "Amy"
-      },
+      // location: {
+      //   latitude: 1.5347282806345879,
+      //   longitude: 110.35632207358996,
+      // },
+      // courier: {
+      //   avatar: images.avatar_1,
+      //   name: "Amy"
+      // },
       menu: [
         {
           menuId: 1,
@@ -158,14 +158,14 @@ const Home = ({ navigation }) => {
       priceRating: expensive,
       photo: images.pizza_restaurant,
       duration: "15 - 20 min",
-      location: {
-        latitude: 1.556306570595712,
-        longitude: 110.35504616746915,
-      },
-      courier: {
-        avatar: images.avatar_2,
-        name: "Jackson"
-      },
+      // location: {
+      //   latitude: 1.556306570595712,
+      //   longitude: 110.35504616746915,
+      // },
+      // courier: {
+      //   avatar: images.avatar_2,
+      //   name: "Jackson"
+      // },
       menu: [
         {
           menuId: 4,
@@ -209,14 +209,14 @@ const Home = ({ navigation }) => {
       priceRating: expensive,
       photo: images.hot_dog_restaurant,
       duration: "20 - 25 min",
-      location: {
-        latitude: 1.5238753474714375,
-        longitude: 110.34261833833622,
-      },
-      courier: {
-        avatar: images.avatar_3,
-        name: "James"
-      },
+      // location: {
+      //   latitude: 1.5238753474714375,
+      //   longitude: 110.34261833833622,
+      // },
+      // courier: {
+      //   avatar: images.avatar_3,
+      //   name: "James"
+      // },
       menu: [
         {
           menuId: 8,
@@ -236,14 +236,14 @@ const Home = ({ navigation }) => {
       priceRating: expensive,
       photo: images.japanese_restaurant,
       duration: "10 - 15 min",
-      location: {
-        latitude: 1.5578068150528928,
-        longitude: 110.35482523764315,
-      },
-      courier: {
-        avatar: images.avatar_4,
-        name: "Ahmad"
-      },
+      // location: {
+      //   latitude: 1.5578068150528928,
+      //   longitude: 110.35482523764315,
+      // },
+      // courier: {
+      //   avatar: images.avatar_4,
+      //   name: "Ahmad"
+      // },
       menu: [
         {
           menuId: 9,
@@ -263,14 +263,14 @@ const Home = ({ navigation }) => {
       priceRating: affordable,
       photo: images.noodle_shop,
       duration: "15 - 20 min",
-      location: {
-        latitude: 1.558050496260768,
-        longitude: 110.34743759630511,
-      },
-      courier: {
-        avatar: images.avatar_4,
-        name: "Muthu"
-      },
+      // location: {
+      //   latitude: 1.558050496260768,
+      //   longitude: 110.34743759630511,
+      // },
+      // courier: {
+      //   avatar: images.avatar_4,
+      //   name: "Muthu"
+      // },
       menu: [
         {
           menuId: 10,
@@ -316,14 +316,14 @@ const Home = ({ navigation }) => {
       priceRating: affordable,
       photo: images.kek_lapis_shop,
       duration: "35 - 40 min",
-      location: {
-        latitude: 1.5573478487252896,
-        longitude: 110.35568783282145,
-      },
-      courier: {
-        avatar: images.avatar_1,
-        name: "Jessie"
-      },
+      // location: {
+      //   latitude: 1.5573478487252896,
+      //   longitude: 110.35568783282145,
+      // },
+      // courier: {
+      //   avatar: images.avatar_1,
+      //   name: "Jessie"
+      // },
       menu: [
         {
           menuId: 12,
@@ -381,14 +381,13 @@ const Home = ({ navigation }) => {
   function renderHeader() {
     return (
       <>       
-      <Header title={'Home'} />
-      <View style={{ flexDirection: 'row', height: 50,padding: SIZES.padding }}>
-      <Headline1>Categories</Headline1>
+       {/* <Header title={'Home'} />  */}
+      <View style={{padding:10, marginTop:20,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
+      <Headline1>Home</Headline1>
 
         <TouchableOpacity onPress={()=>navigate('mycart')}
           style={{
             width: 50,
-           paddingLeft:250,
             alignItems:'flex-end',
             
           }}
@@ -411,15 +410,16 @@ const Home = ({ navigation }) => {
   function renderMainCategories() {
     const renderItem = ({ item }) => {
       return (
+        <View style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
         <TouchableOpacity
           style={{
-            padding: SIZES.padding,
-            paddingBottom: SIZES.padding ,
+            padding: 5,
+           
             backgroundColor: (selectedCategory?.id == item.id) ? COLORS.primary : COLORS.white,
             borderRadius: SIZES.radius,
             alignItems: "center",
             justifyContent: "center",
-            marginRight: SIZES.padding,
+            marginRight: 5,
             ...styles.shadow
           }}
           onPress={() => onSelectCategory(item)}
@@ -444,16 +444,18 @@ const Home = ({ navigation }) => {
             />
           </View>
 
-          <Text
+         
+        </TouchableOpacity>
+        <Text
             style={{
               fontSize: 12,
               padding: 10,
-              color: (selectedCategory?.id == item.id) ? COLORS.white : COLORS.black,
+              color: (selectedCategory?.id == item.id) ? COLORS.primary : COLORS.black,
             }}
           >
             {item.name}
           </Text>
-        </TouchableOpacity>
+        </View>
       )
     }
 
@@ -467,7 +469,7 @@ const Home = ({ navigation }) => {
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => `${item.id}`}
           renderItem={renderItem}
-          contentContainerStyle={{ paddingVertical: SIZES.padding * 2 }}
+          contentContainerStyle={{ paddingVertical: SIZES.padding  }}
         />
       </View>
     )
@@ -476,7 +478,7 @@ const Home = ({ navigation }) => {
   function renderRestaurantList() {
     const renderItem = ({ item }) => (
       <TouchableOpacity
-        style={{ marginBottom: SIZES.padding  }}
+        style={{ marginBottom: SIZES.padding , borderColor:COLORS.primary, borderWidth:1, borderRadius:SIZES.radius }}
         onPress={() => navigation.navigate("restaurant", {
           item,
           currentLocation
@@ -485,20 +487,23 @@ const Home = ({ navigation }) => {
         {/* Image */}
         <View
           style={{
-            marginBottom: SIZES.padding
+            marginBottom: SIZES.padding ,
+            alignItems:'center',
+            alignContent:'center'
           }}
         >
           <Image
             source={item.photo}
             resizeMode="cover"
             style={{
-              width: "100%",
+              margin:10,
+              width: "94%",
               height: 200,
               borderRadius: SIZES.radius
             }}
           />
 
-          <View
+          {/* <View
             style={{
               position: 'absolute',
               bottom: 0,
@@ -513,20 +518,25 @@ const Home = ({ navigation }) => {
             }}
           >
             <Headline4>{item.duration}</Headline4>
-          </View>
+          </View> */}
         </View>
 
         {/* Restaurant Info */}
-        <Body2>{item.name}</Body2>
+        <Headline3 style={{
+           paddingLeft:30
+          }}>
+            {item.name}</Headline3>
 
         <View
           style={{
-            marginTop: SIZES.padding,
-            flexDirection: 'row'
+           
+            flexDirection: 'row',
+            paddingLeft:20,
+            paddingBottom:10
           }}
         >
           {/* Rating */}
-          <Image
+          {/* <Image
             source={icons.star}
             style={{
               height: 20,
@@ -535,7 +545,7 @@ const Home = ({ navigation }) => {
               marginRight: 10
             }}
           />
-          <Body3>{item.rating}</Body3>
+          <Body3>{item.rating}</Body3> */}
 
           {/* Categories */}
           <View
@@ -551,15 +561,15 @@ const Home = ({ navigation }) => {
                     style={{ flexDirection: 'row' }}
                     key={categoryId}
                   >
-                    <Body3>{getCategoryNameById(categoryId)}</Body3>
-                    <Headline3 >  </Headline3>
+                    <Body3 style={{fontColor:'red'}}>{getCategoryNameById(categoryId)}</Body3>
+                    <Headline3 >/</Headline3>
                   </View>
                 )
               })
             }
 
             {/* Price */}
-            {
+            {/* {
               [1, 2, 3].map((priceRating) => (
                 <Body3
                   key={priceRating}
@@ -568,7 +578,7 @@ const Home = ({ navigation }) => {
                   }}
                 >$</Body3>
               ))
-            }
+            } */}
           </View>
         </View>
       </TouchableOpacity>
