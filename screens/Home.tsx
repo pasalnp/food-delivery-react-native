@@ -11,11 +11,12 @@ import {
 import {
   icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
   Headline4, Body1, Body2,
-  Body3, Body4, Body5, LargeTitle
+  Body3, Body4, Body5, LargeTitle, GOOGLE_API_KEY
 } from '../constants'
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
 import { GetRequest } from "../Config/axios";
+import { API, CDN } from "../Config/var";
 
 const Home = ({ navigation }) => {
   const [data,setData] = useState([]);
@@ -360,10 +361,9 @@ const Home = ({ navigation }) => {
   const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
 useEffect(()=>{
-  GetRequest('http://192.168.1.100:3000/get/categorydata',).then(res=>{
+  GetRequest(`${API}/get/categorydata`,).then(res=>{
     setCategories(res.data.content.data);
     console.log(res.data);
-    
   })
 },[])
   function onSelectCategory(category) {
@@ -441,7 +441,7 @@ useEffect(()=>{
             }}
           >
             <Image
-              source={item.icon}
+              source={{uri: `${CDN}/${item.icon}` }}
               resizeMode="contain"
               style={{
                 width: 30,
