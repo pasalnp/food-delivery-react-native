@@ -17,6 +17,8 @@ import {
 import { user } from "../constants/icons";
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
+import { API } from "../Config/var";
+import { GetRequest, PostRequest } from "../Config/axios";
 
 const Login = ({ navigation }) => {
 
@@ -25,36 +27,32 @@ const Login = ({ navigation }) => {
   const [user,setUser]= useState('');
   const[pickerValue, setPickerValue] =useState('Admin')
 
-  const loginHandler = ()=>{
-    console.log(user,pass);
-if(pass=='12345'){
-  // navigate('tabs');
-  pickerValue=='Customer'?  goToTabs('tabs') :  goToTabs('tab2');
-  user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
+  const loginHandler = async ()=>{
+    if(pickerValue=='Customer'){
+    PostRequest(`${API}/login`, {username:user,password:pass,role:pickerValue}).then((res)=>{
+      (res.status==200) ? goToTabs('tabs') : alert('Invalid username or password'); 
+      setLoggedin('logged in');
+      console.log('data>>>>>>>>>>>>>>>>>>>>',);
+    }).catch((err)=>{
+      alert('Invalid username or password');
+    })
+    }else{
+      if(pass=='######'){
+        // navigate('tabs');
+        pickerValue=='Customer' ?  goToTabs('tabs') :  goToTabs('tab2');
+        user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
+      
+      }
+    }
 
-}
   }
   const goToTabs = (page) => {
     navigate(page);
   }
-  const LoginData = [
-    {
-      id: 1,
-      name: "subin",
-      pass: '1234',
-    },
-    {
-      id: 2,
-      name: "sumir",
-      pass: '1234',
-    },
-    
-
-  ]
   useEffect(() => {
     if(logedin=='logged in'){
   
-    pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
+    // pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
     
     }
   },[logedin])

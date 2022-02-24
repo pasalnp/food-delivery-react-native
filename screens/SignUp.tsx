@@ -12,7 +12,11 @@ import { user } from "../constants/icons";
 import { MaterialIcons } from "@expo/vector-icons";
 import Header from "./Components/Header";
 import { Center, FormControl, Icon, Input, KeyboardAvoidingView, NativeBaseProvider, Stack, useKeyboardDismissable, WarningOutlineIcon } from "native-base";
+import { PostRequest } from "../Config/axios";
+import { API } from "../Config/var";
 const Example = () => {
+  const [name,setName]= useState('');
+  const [uname,setUname]= useState('');
   const [pass,setPass]= useState('');
   const [num,setNum]= useState('');
   const [email,setEmail]= useState('');
@@ -23,8 +27,6 @@ const Example = () => {
   let validEmail=new RegExp(
     '^[a-zA-Z0-9._:$!%-]+@[a-zA-Z0-9.-]+.[a-zA-Z]$'
  );
-  
-
 
   const handlePass = (e) =>{
     if(pass.length<8){
@@ -43,11 +45,22 @@ const Example = () => {
       SetErrorEmail(false);
 
     }
+    PostRequest(`${API}/register`, {username:uname,email:email,fullname:name,contact:num,password:pass}).then((res)=>{
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+      alert(res.data.message);
+    }).catch(()=>alert('Error user already exists'));
   }
   return <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}><Stack space={4} w="100%" >
+<<<<<<< HEAD
     
     
       <Input w={{
+=======
+    <Text style={{color:'#888',paddingTop:10}}>Please fill your information to sign up</Text>
+      <Input 
+      onChangeText={setName}
+      w={{
+>>>>>>> e3d10115b455a5d71003ee1ebc830bc4215de27b
       base: "100%",
       md: "25%",
       
@@ -78,7 +91,9 @@ const Example = () => {
         </FormControl.ErrorMessage>)
         :<></>}
      </FormControl>
-    <Input type='email' w={{
+    <Input 
+    onChangeText={setUname}
+    type='email' w={{
       base: "100%",
       md: "25%"
     }} InputLeftElement={<Icon as={<MaterialIcons name="person-pin" />} size={5} ml="2" color="muted.400" />} placeholder="User Name" />
