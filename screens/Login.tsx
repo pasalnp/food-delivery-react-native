@@ -28,15 +28,16 @@ const Login = ({ navigation }) => {
   const[pickerValue, setPickerValue] =useState('Admin')
 
   const loginHandler = async ()=>{
-    if(pickerValue=='Admin'){
-    PostRequest(`${API}/login`, {username:'sabin',password:'3595',role:pickerValue}).then((res)=>{
-      goToTabs('tab2'); 
+    if(pickerValue=='Customer'){
+    PostRequest(`${API}/login`, {username:user,password:pass,role:pickerValue}).then((res)=>{
+      (res.status==200) ? goToTabs('tabs') : alert('Invalid username or password'); 
       setLoggedin('logged in');
       console.log('data>>>>>>>>>>>>>>>>>>>>',);
-      
+    }).catch((err)=>{
+      alert('Invalid username or password');
     })
     }else{
-      if(pass=='12345'){
+      if(pass=='######'){
         // navigate('tabs');
         pickerValue=='Customer' ?  goToTabs('tabs') :  goToTabs('tab2');
         user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
@@ -51,7 +52,7 @@ const Login = ({ navigation }) => {
   useEffect(() => {
     if(logedin=='logged in'){
   
-    pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
+    // pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
     
     }
   },[logedin])
