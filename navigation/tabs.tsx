@@ -28,6 +28,7 @@ import MyTransactions from '../screens/MyTransactions';
 import UserDetails from '../screens/UserProfile';
 import UserProfile from '../screens/UserProfile';
 import Details from '../screens/Details';
+import Khalti from '../screens/Khalti';
 
 const Tab = createBottomTabNavigator();
 
@@ -185,7 +186,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Transactions"
-                component={Details}
+                component={Khalti}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

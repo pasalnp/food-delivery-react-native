@@ -18,6 +18,7 @@ import UserProfile from '../screens/UserProfile';
 import AdminProfile from '../screens/AdminProfile';
 import Reports from '../screens/Reports';
 import Sales from '../screens/Sales';
+import Khalti from '../screens/Khalti';
 
 
 
@@ -42,6 +43,7 @@ export const homeRoutes = [
     { name: 'payment', component:Payment, title: 'Payment' },
     { name: 'reports', component:Reports, title: 'Reports' },
     { name: 'sales', component:Sales, title: 'Sales' },
+    { name: 'khalti', component:Khalti, title: 'Khalti' },
  
    
    

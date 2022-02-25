@@ -1,95 +1,40 @@
-import { Button, ButtonBase, Select } from "@material-ui/core";
-import SelectInput from "@material-ui/core/Select/SelectInput";
-import { Input } from "native-base";
-import React, { useEffect, useState } from "react";
+
+import React from "react";
 import {
   View,
   Text,
   StyleSheet
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import { Picker } from "@react-native-picker/picker";
-import {
-  icons, images, SIZES,COLORS, Headline1, Headline2, Headline3,
-  Headline4, Body1, Body2,GlobalStyle,
-  Body3, Body4, Body5, LargeTitle
-} from '../constants'
-import { user } from "../constants/icons";
-import Header from "./Components/Header";
+import {SIZES} from '../constants'
 import { navigate } from "../navigation/RootNav";
 
-const Login = ({ navigation }) => {
+const Khalti = ({ navigation }) => {
 
-//   const [pass,setPass]= useState('');
-//   const [logedin,setLoggedin]= useState('');
-//   const [user,setUser]= useState('');
-//   const[pickerValue, setPickerValue] =useState('Admin')
-
-//   const loginHandler = ()=>{
-//     console.log(user,pass);
-// if(pass=='12345'){
-//   // navigate('tabs');
-//   pickerValue=='Customer'?  goToTabs('tabs') :  goToTabs('tab2');
-//   user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
-
-// }
-//   }
-//   const goToTabs = (page) => {
-//     navigate(page);
-//   }
-//   const LoginData = [
-//     {
-//       id: 1,
-//       name: "subin",
-//       pass: '1234',
-//     },
-//     {
-//       id: 2,
-//       name: "sumir",
-//       pass: '1234',
-//     },
-    
-
-//   ]
-//   useEffect(() => {
-//     if(logedin=='logged in'){
   
-//     pickerValue=='Admin'?  goToTabs('tab2') : goToTabs('tabs');
-    
-    
-    
-//     }
-//   },[logedin])
   
+ 
   return (
     <>
-    <Header title={'Sign In'} />
+    <View style={styles.title}>
+<Text style={styles.title}>Khalti </Text>
+</View>
+
     <View style={{ padding: SIZES.padding * 2 }}>       
-     {pass=='sabin'?<Text>Password</Text> :  <></>}
-    <Text style={{fontSize:18, color:COLORS.primary}}>WELCOME</Text>
-    <Text>Please your credintial for login</Text>
+     
+    <Text style={{fontSize:18, color:'purple'}}>Khalti</Text>
+    <Text>Please enter your Khalti credentials</Text>
     
-     <Picker style={styles.picker} selectedValue={pickerValue}
-     onValueChange={(itemValue) => setPickerValue(itemValue)}>
-       <Picker.Item label="Admin" value="Admin"/>
-       <Picker.Item label="Customer" value="Customer"/>
-     </Picker>
-    <TextInput onChangeText={setUser} style={styles.box} placeholder={'User Name'}/>
-    <TextInput secureTextEntry={true} onChangeText={setPass} style={styles.box} placeholder={'Password'} />
-    <TouchableOpacity onPress={loginHandler} style={{paddingTop:50,paddingHorizontal:50}}>
-      <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
+    
+    <TextInput  style={styles.box} placeholder={'User Name / Phone number'}/>
+    <TextInput secureTextEntry={true}  style={styles.box} placeholder={'Password / MPIN'} />
+    <TouchableOpacity  style={{paddingTop:50,paddingHorizontal:50}}>
+      <View style={{padding:10,backgroundColor:'purple', borderRadius:10}}>
 <Text style={{color:'white', fontSize:18, textAlign:'center'}} >Login</Text>
 </View>
       </TouchableOpacity>
-<TouchableOpacity onPress={()=>goToTabs('resetpassword')} style={{paddingTop:20,alignItems:'flex-end'}}>
-  <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text>
-  </TouchableOpacity>
-  {pickerValue=='Admin'?  <></> :  <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
-        <Text style={{fontSize:16}}>don't have Account? </Text>
-        <TouchableOpacity onPress={()=>navigate('signup')}>
-          <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text>
-          </TouchableOpacity>
-    </View>}
+
+
      
     </View>
     </>
@@ -97,26 +42,30 @@ const Login = ({ navigation }) => {
   }
 
   const styles= StyleSheet.create({
-    
-    picker:{
-      height:40,
-      width:200,
-      borderColor:COLORS.primary,
-      borderRadius:10,
-      borderBottomColor:'red',
-      backgroundColor:COLORS.secondary,
-      color:COLORS.black,
-      textAlign:'center',
-    
-           
+    title: {
+        height:60,
+        padding:15,
+        borderRadius:6,
+        marginBottom: 15,
+        borderColor:'#fff',
+        color:'#fff',
+        borderWidth:2,
+        fontSize:25,
+        backgroundColor:'purple',
+        justifyContent:'center',
+        alignContent:'center',
+        textAlign:'center',
+        marginTop:20
     },
+    
+   
     box:{
       padding:20,
-      borderBottomColor:COLORS.primary,
+      borderBottomColor:'purple',
       borderBottomWidth:3,
       fontSize:18
     }
   })
   
-  export default Login;
+  export default Khalti;
   
