@@ -24,22 +24,27 @@ export const basket = require("../assets/icons/shopping-basket.png");
 export const star = require("../assets/icons/star.png");
 export const sushi = require("../assets/icons/sushi.png");
 export const user = require("../assets/icons/user.png");
-const additem = require("../assets/icons/add-item.png");
-const addcategory = require("../assets/icons/add-category.png");
-const myorders = require("../assets/icons/myorders.png");
-const dashboard = require("../assets/icons/dashboard.png");
-const product = require("../assets/icons/product.png");
-const bin = require("../assets/icons/bin.png");
-const bills = require("../assets/icons/bills.png");
-const report = require("../assets/icons/report.png");
-const done = require("../assets/icons/done.png");
-const edit = require("../assets/icons/edit.png");
+export const additem = require("../assets/icons/add-item.png");
+export const addcategory = require("../assets/icons/add-category.png");
+export const myorders = require("../assets/icons/myorders.png");
+export const dashboard = require("../assets/icons/dashboard.png");
+export const product = require("../assets/icons/product.png");
+export const bin = require("../assets/icons/bin.png");
+export const bills = require("../assets/icons/bills.png");
+export const report = require("../assets/icons/report.png");
+export const done = require("../assets/icons/done.png");
+export const edit = require("../assets/icons/edit.png");
+export const tea = require("../assets/icons/tea.png");
+export const samosa = require("../assets/icons/samosa.png");
+
 
 
 
 
 export default {
     back,
+    tea,
+    samosa,
     menu,
     edit,
    bin,

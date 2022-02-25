@@ -21,21 +21,21 @@ const Details = ({ navigation }) => {
                   source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 
                 <Text style={styles.name}>Sumir Shrestha </Text>
-                <Text style={styles.userInfo}>sumirshr03@gmail.com </Text>
+                {/* <Text style={styles.userInfo}>sumirshr03@gmail.com </Text> */}
                 <Text style={styles.userInfo}>Kathmandu </Text>
             </View>
             
             {/*Edit Button */}
-            <TouchableOpacity >
+            {/* <TouchableOpacity >
               <View style={styles.editbtn}>
               <Text>Edit</Text>
               </View>
-              </TouchableOpacity> 
+              </TouchableOpacity>  */}
             
           </View>
 
           {/* Body */}
-          <View style={styles.body}>
+          {/* <View style={styles.body}>
             <TouchableOpacity>
             <View style={styles.item}>
               <View >
@@ -69,7 +69,7 @@ const Details = ({ navigation }) => {
             </View>
             </TouchableOpacity>
 
-          </View>
+          </View> */}
           
       </View>
     );

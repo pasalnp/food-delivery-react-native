@@ -21,8 +21,8 @@ const ResetPassword= ({ navigation }) => {
     <Header title={'Reset Password'} />
     <View style={{ padding: SIZES.padding * 2 }}>       
      
-    <Text style={{fontSize:32, color:COLORS.primary}}>Forgot your Password</Text>
-    <Text>No worries! Enter your New Password</Text>
+    <Text style={{fontSize:32, color:COLORS.primary}}>Change Password</Text>
+    <Text>Enter your New Password</Text>
     <TextInput style={styles.box} placeholder={'New password'}/>
     <TextInput style={styles.box} placeholder={'Confirm New Password'}/>
     <TouchableOpacity onPress={()=>navigate('login')}style={{paddingTop:10,alignItems:'flex-end'}}>

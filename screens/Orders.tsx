@@ -12,7 +12,7 @@ const Orders = ({ navigation }) => {
        <>
        <Header title={'Orders'} />
        <ScrollView showsVerticalScrollIndicator={false}>
-        <View style={{padding:SIZES.padding}}>
+                    <View style={{padding:SIZES.padding}}>
            
                     <View style={styles.flex}>
                         <View style={styles.card}>

@@ -9,6 +9,7 @@ import {
   Animated
 } from "react-native";
 import { isIphoneX } from 'react-native-iphone-x-helper'
+import { CDN } from "../Config/var";
 import {
   icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
   Headline4, Body1, Body2,
@@ -83,7 +84,7 @@ const Restaurant = ({ route, navigation }) => {
   function sumOrder() {
     let total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
 
-    return total.toFixed(2)
+    return total
   }
 
   function renderHeader() {
@@ -127,7 +128,7 @@ const Restaurant = ({ route, navigation }) => {
               backgroundColor: COLORS.lightGray3
             }}
           >
-            <Headline3>{restaurant?.day}</Headline3>
+            <Headline3>{restaurant?.Avilday}</Headline3>
           </View>
         </View>
 
@@ -173,7 +174,7 @@ const Restaurant = ({ route, navigation }) => {
               <View style={{ height: SIZES.height * 0.35 }}>
                 {/* Food Image */}
                 <Image
-                  source={item.photo}
+                  source={{uri: `${CDN}/${item.image}`}}
                   resizeMode="cover"
                   style={{
                     width: SIZES.width,
@@ -197,7 +198,7 @@ const Restaurant = ({ route, navigation }) => {
             }}
           >
             <Text style={{fontSize:10}}>Will be Ready In</Text>
-            <Headline4>10-15</Headline4>
+            <Headline4>{item.duration}</Headline4>
             </View>
 
                 {/* Quantity */}
@@ -252,7 +253,7 @@ const Restaurant = ({ route, navigation }) => {
                       borderTopRightRadius: 25,
                       borderBottomRightRadius: 25
                     }}
-                    onPress={() => editOrder("+", item.menuId, item.price)}
+                    onPress={() => editOrder("+", item.Id, item.price)}
                   >
                     <Body1>+</Body1>
                   </TouchableOpacity>
@@ -268,8 +269,8 @@ const Restaurant = ({ route, navigation }) => {
                   paddingHorizontal: SIZES.padding * 2
                 }}
               >
-                <Headline2 style={{ marginVertical: 10, textAlign: 'center' }}>{item.name}}</Headline2>
-                {/* <Headline1 style={{ textAlign: 'center' ,color:'green'}}> {item.price.toFixed(2)}</Headline1> */}
+                <Headline2 style={{ marginVertical: 10, textAlign: 'center' }}>{item.name}</Headline2>
+                <Headline1 style={{ textAlign: 'center' ,color:'green'}}> Rs.{item.price}</Headline1>
                 <Body3>{item.description}</Body3>
               </View>
 
@@ -289,9 +290,9 @@ const Restaurant = ({ route, navigation }) => {
                   }}
                 />
 
-                {/* <Body3 style={{
-                  color: COLORS.darygray
-                }}>{item.calories.toFixed(2)} cal</Body3> */}
+                <Body3 style={{
+                  color: COLORS.darkgray
+                }}>{item.calories} cal</Body3> 
               </View>
             </View>
           ))
