@@ -51,16 +51,9 @@ const Example = () => {
     }).catch(()=>alert('Error user already exists'));
   }
   return <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}><Stack space={4} w="100%" >
-<<<<<<< HEAD
     
     
       <Input w={{
-=======
-    <Text style={{color:'#888',paddingTop:10}}>Please fill your information to sign up</Text>
-      <Input 
-      onChangeText={setName}
-      w={{
->>>>>>> e3d10115b455a5d71003ee1ebc830bc4215de27b
       base: "100%",
       md: "25%",
       

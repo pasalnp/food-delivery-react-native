@@ -39,7 +39,7 @@ const Login = ({ navigation }) => {
     }else{
       if(pass=='#'){
         // navigate('tabs');
-        pickerValue=='Customer' ?  goToTabs('tabs') :  goToTabs('tabs');
+        pickerValue=='Customer' ?  goToTabs('tab2') :  goToTabs('tab2');
         user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
       
       }

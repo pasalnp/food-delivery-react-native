@@ -10,10 +10,18 @@ import {COLORS, images, SIZES } from '../constants';
 import Header from "./Components/Header";
 import { Picker } from "@react-native-picker/picker";
 import { navigate } from "../navigation/RootNav";
+import { API } from "../Config/var";
+import { PostRequest } from "../Config/axios";
 
 
 const AddCategory = ({ navigation  }) => {
-  // const[pickerValue, setPickerValue] =useState('FoodItems')
+  const[name, setName] =useState('FoodItems')
+  const addCatHandler = () => {
+    PostRequest(`${API}/addcategoryData`, {name:name,icon:'this'}).then((res)=>{
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+      alert(res.data.message);
+    }).catch(()=>alert('Category already exists'));
+  }
   return (
         <>
        <Header title={'Add categories'}/>
@@ -33,7 +41,7 @@ const AddCategory = ({ navigation  }) => {
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
-    <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category Name'}/>
+    <TextInput onChangeText={setName} style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category Name'}/>
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category'}/> */}
     {/* <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Price'}/> */}
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Enter Category Name'}/>
@@ -44,7 +52,7 @@ const AddCategory = ({ navigation  }) => {
 </View>
 </TouchableOpacity>
 <View style={{padding:10, height:40,width:80,backgroundColor:COLORS.primary, borderRadius:10}}>
-<TouchableOpacity>
+<TouchableOpacity onPress={addCatHandler}>
 <Text style={{color:'white', fontSize:20, textAlign:'center'}}>Add</Text>
 </TouchableOpacity>
 </View>
