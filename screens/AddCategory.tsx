@@ -8,28 +8,64 @@ import {
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import {COLORS, images, SIZES } from '../constants';
 import Header from "./Components/Header";
-import { Center, FormControl, NativeBaseProvider, WarningOutlineIcon } from "native-base";
+import { Button, Center, FormControl, Icon, NativeBaseProvider, WarningOutlineIcon } from "native-base";
 import { navigate } from "../navigation/RootNav";
 import { API } from "../Config/var";
-import { PostRequest } from "../Config/axios";
+import { PostRequest, PutRequest } from "../Config/axios";
+import Constants from 'expo-constants';
+import { _pickImage } from "../constants/Tools";
 
 const Add = ({ navigation  }) => {
-
+  const [image, setImage] = useState('');
   const[name, setName] =useState('FoodItems');
   const [errorName,SetErrorName]= useState(false);
-
+  const chooseImage = async () => {
+    const result = await _pickImage('library');
+    
+    if (!result.cancelled) {
+      setImage(result);
+    }
+  };
+  let formData = new FormData();
+  // ImagePicker saves the taken photo to disk and returns a local URI to it
+  if (image.uri) {
+    let localUri = image.uri;
+    let filename = localUri.split('/').pop();
+    // Infer the type of the image
+    let match = /\.(\w+)$/.exec(filename);
+    let type = match ? `image/${match[1]}` : `image`;
+    
+    formData.append('imageUrl', {
+      uri: localUri,
+      name: filename,
+      type,
+      originalname: filename,
+    });
+    
+    formData.append('icon', filename);
+  } else {
+    formData.append('image', image);
+  }
+  
+  formData.append('name', name);
+  const chooseCamera = async () => {
+    const result = await _pickImage();
+    
+    if (!result.cancelled) {
+      setImage(result);
+    }
+  };
   const addCatHandler = () => {
     if(name.length==0){
       SetErrorName(true);
     }else{
       SetErrorName(false);
     }
-
-    PostRequest(`${API}/addcategoryData`, {name:name,icon:'this'}).then((res)=>{
+    PutRequest(`${API}/addcategoryData`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
-      alert(res.data.message);
+      alert(API);
       
-    }).catch(()=>alert('Category already exists'));
+    }).catch(()=>alert(API));
   }
 
   return (
@@ -45,10 +81,24 @@ const Add = ({ navigation  }) => {
      </Picker>
      </View> */}
     <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+    <Button onPress={chooseImage}>
+    <Icon name='image' />
+    </Button>
+    <Button onPress={chooseCamera}>
+    <Icon name='camera' />
+    </Button>
+    {image ? (
+      <Image
+      source={{ uri: image.uri }}
+      style={{ width: 200, height: 150 }}
+      />
+      ) : (
         <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
         resizeMode='cover'
         style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
         />
+        )}
+       
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
