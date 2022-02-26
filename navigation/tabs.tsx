@@ -27,6 +27,8 @@ import Payment from '../screens/Payment';
 import MyTransactions from '../screens/MyTransactions';
 import UserDetails from '../screens/UserProfile';
 import UserProfile from '../screens/UserProfile';
+import Details from '../screens/Details';
+import Khalti from '../screens/Khalti';
 
 const Tab = createBottomTabNavigator();
 
@@ -139,6 +141,7 @@ const Tabs = () => {
                 name="Home"
                 component={Home}
                 options={{
+                    unmountOnBlur: true,
                     tabBarIcon: ({ focused }) => (
                         <Image
                             source={icons.cutlery}
@@ -183,7 +186,7 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="Transactions"
-                component={MyTransactions}
+                component={Khalti}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image

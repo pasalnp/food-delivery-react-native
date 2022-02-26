@@ -20,23 +20,62 @@ const Details = ({ navigation }) => {
                 <Image style={styles.avatar}
                   source={{uri: 'https://bootdey.com/img/Content/avatar/avatar6.png'}}/>
 
-                <Text style={styles.name}>Sumir Shrestha </Text>
-                <Text style={styles.userInfo}>sumirshr03@gmail.com </Text>
+                <Text style={styles.name}>Sumir</Text>
+                {/* <Text style={styles.userInfo}>sumirshr03@gmail.com </Text> */}
                 <Text style={styles.userInfo}>Kathmandu </Text>
             </View>
             
             {/*Edit Button */}
-            <TouchableOpacity >
+            {/* <TouchableOpacity >
               <View style={styles.editbtn}>
               <Text>Edit</Text>
               </View>
-              </TouchableOpacity> 
+              </TouchableOpacity>  */}
             
           </View>
 
           {/* Body */}
-          <View style={styles.body}>
-            <TouchableOpacity>
+           <View style={styles.body}>
+           <View style={styles.item}>
+              <View style={{justifyContent:'center'}}>
+            <Image style={styles.icon} source={{uri: 'https://img.icons8.com/ios-filled/344/name.png'}}/>
+            </View>
+            <View>
+              <Text style={styles.info}>Sumir Shrestha</Text>
+            </View>
+            </View> 
+
+            <View style={styles.item}>
+              <View style={{justifyContent:'center'}}>
+            <Image style={styles.icon} source={{uri: 'https://img.icons8.com/ios-glyphs/344/address.png'}} />
+            </View>
+            <View>
+              <Text style={styles.info}>Chunikhel, Kathmandu, Nepal</Text>
+            </View>
+            </View> 
+
+            <View style={styles.item}>
+              <View style={{justifyContent:'center'}}>
+            <Image style={styles.icon} source={{uri: 'https://img.icons8.com/ios-glyphs/344/phone--v1.png'}}/>
+            </View>
+            <View>
+              <Text style={styles.info}>9861367637</Text>
+            </View>
+            </View>
+            
+
+            <View style={styles.item}>
+              <View style={{justifyContent:'center'}}>
+            <Image style={styles.icon} source={{uri: 'https://img.icons8.com/external-kiranshastry-solid-kiranshastry/344/external-email-multimedia-kiranshastry-solid-kiranshastry-1.png'}}/>
+            </View>
+            <View>
+              <Text style={styles.info}>sumirshr03@gmail.com</Text>
+            </View>
+            </View> 
+
+
+            
+            {/*<TouchableOpacity>
             <View style={styles.item}>
               <View >
             <Image style={styles.icon} source={{uri: 'https://img.icons8.com/color/70/000000/cottage.png'}}/>
@@ -67,9 +106,9 @@ const Details = ({ navigation }) => {
               <Text style={styles.info}>Logout</Text>
             </View>
             </View>
-            </TouchableOpacity>
+            </TouchableOpacity>*/}
 
-          </View>
+          </View> 
           
       </View>
     );
@@ -79,6 +118,7 @@ const Details = ({ navigation }) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
+        
         
       },
   header:{
@@ -106,43 +146,48 @@ const styles = StyleSheet.create({
     color:COLORS.white,
     fontWeight:'600',
   },
-  editbtn:{
-    height:30,
-    width:60,
-    marginRight:20,
-    backgroundColor:COLORS.secondary, 
-    marginBottom:10,
-    borderRadius:10,
-    justifyContent:'center',
-    alignItems:'center',
-    alignSelf:'flex-end',
+  // editbtn:{
+  //   height:30,
+  //   width:60,
+  //   marginRight:20,
+  //   backgroundColor:COLORS.secondary, 
+  //   marginBottom:10,
+  //   borderRadius:10,
+  //   justifyContent:'center',
+  //   alignItems:'center',
+  //   alignSelf:'flex-end',
        
-  },
+  // },
   body:{
-    backgroundColor: COLORS.secondary,
+    backgroundColor: COLORS.lightGray,
     height:500,
-    alignItems:'flex-start',
+    alignItems:'center',
   },
   item:{
     flexDirection : 'row',
     borderColor:COLORS.primary,
     borderWidth:2,
     borderRadius:6,
-    marginTop:10,
-    width:SIZES.width
+    marginTop:20,
+    width:SIZES.width * 0.95,
+    height:50,
+    marginHorizontal:20,
 
   },
     
   icon:{
-    width:40,
-    height:40,
-    paddingVertical:5,
-    paddingLeft:10
+    width:30,
+    height:30,
+    paddingLeft:10,
+    tintColor:COLORS.darkgray,
+    justifyContent:'center',
+    alignItems:'center',
+    paddingVertical:0
    
   },
   info:{
     fontSize:24,
-    color: "#FFFFFF",
+    color:"blue",
    paddingTop:5,
   paddingLeft:10,
      justifyContent:'center'

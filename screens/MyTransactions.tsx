@@ -21,15 +21,15 @@ export default class MyTransactions extends Component {
     super(props);
     this.state = {
       data: [
-        {id:1, day:1, month: 'Sep' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-         {id:2, day:2, month: 'Jan' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-         {id:3, day:3, month: 'Aug' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-         {id:4, day:4, month: 'Dec' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-         {id:5, day:5, month: 'Jul' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-         {id:6, day:6, month: 'Oct' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-         {id:7, day:7, month: 'Sep' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-        {id:8, day:8, month: 'Jan' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
-        {id:9, day:9, month: 'May' ,Image:"https://assets-api.kathmandupost.com/thumb.php?src=https://assets-cdn.kathmandupost.com/uploads/source/news/2018/others/nepali_1530237949-1000x0_1539049022.jpg&w=900&height=601"},
+        {id:1, day:1, qty:'10', price:'100', name:'Burger', month: 'Sep' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+         {id:2, day:2, qty:'5', price:'100', name:'Pizza', month: 'Jan' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+         {id:3, day:3, qty:'10', price:'100', name:'Samosa', month: 'Aug' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+         {id:4, day:4, qty:'5', price:'100', name:'Burger', month: 'Dec' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+         {id:5, day:5, qty:'10', price:'100', name:'Burger', month: 'Jul' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+         {id:6, day:6, qty:'10', price:'100', name:'Burger', month: 'Oct' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+         {id:7, day:7, qty:'10', price:'100', name:'Burger', month: 'Sep' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+        {id:8, day:8, qty:'10', price:'100', name:'Burger', month: 'Jan' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
+        {id:9, day:9, qty:'10', price:'100', name:'Burger', month: 'May' ,image:"https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg"},
 
       ],
     };
@@ -63,15 +63,15 @@ export default class MyTransactions extends Component {
                   
                   <View style={styles.eventContent}>
                       <View style={styles.image}>
-                  <Image  source={{uri:item.image}} resizeMode='contain'  />
+                  <Image  source={{uri:item.image}} resizeMode='cover'/>
                   </View>
                   <View style={{marginLeft:10}}>
-                  <Text  style={styles.Name}>Burger</Text>
-                  <Text  style={styles.rate}>Rs.400</Text>
+                  <Text  style={styles.Name}>{item.name}</Text>
+                  <Text  style={styles.rate}>Rs.{item.price} x {item.qty}</Text>
                   <Text  style={styles.description}>Lorem ipsum dolor sit amet, elit consectetur</Text>
                   </View>
                   <View>
-                      <Text>5000</Text>
+                      <Text>4000</Text>
                   </View>
                   </View>
                   

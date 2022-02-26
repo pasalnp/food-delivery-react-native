@@ -42,6 +42,8 @@ const Login = ({ navigation }) => {
         pickerValue=='Customer' ?  goToTabs('tab2') :  goToTabs('tab2');
         user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
       
+      }else{
+        alert('Invalid username or password');
       }
     }
 

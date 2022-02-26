@@ -16,11 +16,15 @@ import { PostRequest } from "../Config/axios";
 import { API } from "../Config/var";
 const Example = () => {
   const [name,setName]= useState('');
+  const [address,setAddress]= useState('');
   const [uname,setUname]= useState('');
   const [pass,setPass]= useState('');
   const [num,setNum]= useState('');
   const [email,setEmail]= useState('');
   const [showPass,SetShowPass]= useState(true);
+  const [errorName,SetErrorName]= useState(false);
+  const [errorAddress,SetErrorAddress]= useState(false);
+  const [errorUname,SetErrorUname]= useState(false);
   const [errorPass,SetErrorPass]= useState(false);
   const [errorNum,SetErrorNum]= useState(false);
   const [errorEmail,SetErrorEmail]= useState(false);
@@ -29,6 +33,21 @@ const Example = () => {
  );
 
   const handlePass = (e) =>{
+    if(name.length==0){
+      SetErrorName(true);
+    }else{
+      SetErrorName(false);
+    }
+    if(address.length==0){
+      SetErrorAddress(true);
+    }else{
+      SetErrorAddress(false);
+    }
+    if(uname.length==0){
+      SetErrorUname(true);
+    }else{
+      SetErrorUname(false);
+    }
     if(pass.length<8){
       SetErrorPass(true);
     }else{
@@ -45,23 +64,44 @@ const Example = () => {
       SetErrorEmail(false);
 
     }
-    PostRequest(`${API}/register`, {username:uname,email:email,fullname:name,contact:num,password:pass}).then((res)=>{
+    !errorName && !errorAddress && !errorNum && !errorEmail && !errorUname && !errorPass && PostRequest(`${API}/register`, 
+    {username:uname,email:email,fullname:name,contact:num,password:pass,address:address}).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
-    }).catch(()=>alert('Error user already exists'));
+    }).catch(()=>alert('Error! Please fill all fields correctly'));
   }
   return <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}><Stack space={4} w="100%" >
+<<<<<<< HEAD
     
     
       <Input w={{
+=======
+    <FormControl isInvalid={errorName} w="100%" > 
+      <Input 
+      onChangeText={setName}
+      w={{
+>>>>>>> 874f7240166ee0b50ee27742f75cacab6c951f1d
       base: "100%",
       md: "25%",
       
     }} style={{borderColor:'red'}} InputLeftElement={<Icon as={<MaterialIcons name="person" />} size={5} ml="2" color="muted.400" />} placeholder="Name" />
-      <Input w={{
+      {errorName ? (
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+         Name cannot be empty
+        </FormControl.ErrorMessage>)
+        :<></>}
+      </FormControl> 
+      <FormControl isInvalid={errorAddress} w="100%" > 
+      <Input onChangeText={setAddress} w={{
       base: "100%",
       md: "25%"
     }} InputLeftElement={<Icon as={<MaterialIcons name="location-on" />} size={5} mr="2" color="muted.400" />} placeholder="Address" />
+    {errorAddress ? (
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+         Address Required,!! cannot be empty
+        </FormControl.ErrorMessage>)
+        :<></>}
+      </FormControl>
     <FormControl isInvalid={errorNum} w="100%" >
     <Input onChangeText={setNum} keyboardType="numeric" w={{
       base: "100%",
@@ -84,12 +124,19 @@ const Example = () => {
         </FormControl.ErrorMessage>)
         :<></>}
      </FormControl>
+     <FormControl isInvalid={errorUname} w="100%" >
     <Input 
     onChangeText={setUname}
     type='email' w={{
       base: "100%",
       md: "25%"
     }} InputLeftElement={<Icon as={<MaterialIcons name="person-pin" />} size={5} ml="2" color="muted.400" />} placeholder="User Name" />
+{errorUname ? (
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+        Username required
+        </FormControl.ErrorMessage>)
+        :<></>}
+     </FormControl>
 
      <FormControl isInvalid={errorPass} w="100%" >
         
@@ -100,7 +147,7 @@ const Example = () => {
     <Icon onPress={()=>SetShowPass(!showPass)}  as={<MaterialIcons name={showPass? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />} placeholder="Password" />
         {errorPass ? (
         <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-         Password should be atleast eight character
+         Password should be at least eight character
         </FormControl.ErrorMessage>)
         :<></>}
       </FormControl>
@@ -139,4 +186,3 @@ const SignUp = ({ navigation }) => {
   }
   
   export default SignUp;
-  

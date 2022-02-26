@@ -30,9 +30,9 @@ export default class Payment extends Component {
     };
   }
 
-  clickEventListener(item) {
-    Alert.Alert(item.title)
-  }
+  // clickEventListener(item) {
+  //   Alert.Alert(item.title)
+  // }
 
   render() {
     return (
@@ -52,7 +52,7 @@ export default class Payment extends Component {
           }}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity style={styles.card} onPress={() => {this.clickEventListener(item.view)}}>
+              <TouchableOpacity style={styles.card} onPress={()=>navigate('khalti')}>
                 <View style={styles.cardFooter}></View>
                 <Image style={styles.cardImage} resizeMode='contain' source={{uri:item.image}}/>
                 <View style={styles.cardHeader}>

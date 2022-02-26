@@ -358,6 +358,7 @@ const Home = ({ navigation }) => {
   const [categories, setCategories] = React.useState([])
   const [selectedCategory, setSelectedCategory] = React.useState(null)
   const [restaurantsback, setRestaurantsback] = React.useState([])
+  const [days, setDays] = React.useState([])
   const [restaurants, setRestaurants] = React.useState([])
   const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocation)
 
@@ -371,11 +372,20 @@ useEffect(()=>{
     setRestaurantsback(res.data.content.data);
     console.log(res.data);
   })
-  GetRequest(`${API}/get/items`,).then(res=>{
-    setRestaurants(res.data.content.data);
-    console.log(res.data);
-  })
+
+ 
 },[])
+useEffect(()=>{
+  var groupBy = function(xs, key) {
+    return xs.reduce(function(rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+  };
+  
+  console.log("grouped rdays",groupBy(restaurants, 'Avilday'));
+  setData(groupBy(restaurants, 'Avilday'));
+},[restaurants])
   function onSelectCategory(category) {
     //filter restaurant
     let restaurantList = restaurantsback.filter(a => a.category.includes(category.id))
@@ -471,13 +481,14 @@ useEffect(()=>{
           >
             {item.name}
           </Text>
+          
         </View>
+        
       )
     }
 
     return (
       <View style={{ padding: SIZES.padding * 2 }}>
-        
 
         <FlatList
           data={categories}
@@ -488,12 +499,14 @@ useEffect(()=>{
           contentContainerStyle={{ paddingVertical: SIZES.padding  }}
         />
       </View>
+      
     )
   }
 
   
   function renderRestaurantList() {
     const renderItem = ({ item }) => (
+      
       <TouchableOpacity
         style={{ marginBottom: SIZES.padding , borderColor:COLORS.primary, borderWidth:1, borderRadius:SIZES.radius }}
         onPress={() => navigation.navigate("restaurant", {
@@ -501,6 +514,7 @@ useEffect(()=>{
           currentLocation:item.Avilday
         })}
       >
+        
         {/* Image */}
         <View
           style={{
@@ -510,7 +524,7 @@ useEffect(()=>{
           }}
         >
           <Image
-            source={{uri: `${CDN}/${item.image}` }}
+            source={{uri: `${CDN}/assets/day/${item.Avilday}.png?123=13`}}
             resizeMode="cover"
             style={{
               margin:10,
@@ -542,7 +556,7 @@ useEffect(()=>{
         <Headline3 style={{
            paddingLeft:30
           }}>
-            MENU:Avilable on {item.Avilday}'s</Headline3>
+            Available on {item.Avilday}</Headline3>
 
         <View
           style={{
