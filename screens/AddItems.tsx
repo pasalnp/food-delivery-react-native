@@ -13,14 +13,19 @@ import Header from "./Components/Header";
 
 import { navigate } from "../navigation/RootNav";
 import { Checkbox, Provider } from "react-native-paper";
-import { GetRequest } from "../Config/axios";
-import { API, CDN } from "../Config/var";
+import { API } from "../Config/var";
+import { PostRequest } from "../Config/axios";
 
 
 const AddItem = ({ navigation }) => {
 
-  
-  const [category, setCategories] = useState<string>('');
+  const addItemHandler = () => {
+    PostRequest(`${API}/addItems`, {name:'test'}).then((res)=>{
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+      alert(res.data.message);
+    }).catch(()=>alert('Error user already exists'));
+  }
+  const [category, setCategory] = useState<string>('');
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const [time, setTime] = useState<string>('');
@@ -197,7 +202,7 @@ const AddItem = ({ navigation }) => {
 </View>
 </TouchableOpacity>
 <View style={{padding:10, height:40,width:80,backgroundColor:COLORS.primary, borderRadius:10}}>
-<TouchableOpacity>
+<TouchableOpacity onPress={addItemHandler}>
 <Text style={{color:'white', fontSize:20, textAlign:'center'}}>Add</Text>
 </TouchableOpacity>
 </View>
