@@ -61,11 +61,20 @@ const Add = ({ navigation  }) => {
     }else{
       SetErrorName(false);
     }
+<<<<<<< HEAD
     PutRequest(`${API}/addcategoryData`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(API);
       
     }).catch(()=>alert(API));
+=======
+
+    !errorName && PostRequest(`${API}/addcategoryData`, {name:name,icon:'this'}).then((res)=>{
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+      alert(res.data.message);
+      navigate('tab2');
+    }).catch(()=>alert('Category already exists'));
+>>>>>>> 97cf6cbb3c9d747509e1c08ee5cc2d130ab46bb1
   }
 
   return (
@@ -106,8 +115,7 @@ const Add = ({ navigation  }) => {
     <TextInput onChangeText={setName} style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category Name'}/>
     {errorName ? (
     <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-    
-         Name cannot be empty
+             Name cannot be empty
         </FormControl.ErrorMessage>)
         :<></>}
       </FormControl> 
