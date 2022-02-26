@@ -13,7 +13,7 @@ import { navigate } from "../navigation/RootNav";
 import { API } from "../Config/var";
 import { PostRequest } from "../Config/axios";
 
-const Add = () => {
+const Add = ({ navigation  }) => {
 
   const[name, setName] =useState('FoodItems');
   const [errorName,SetErrorName]= useState(false);
@@ -28,7 +28,7 @@ const Add = () => {
     PostRequest(`${API}/addcategoryData`, {name:name,icon:'this'}).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
-      navigate('products');
+      
     }).catch(()=>alert('Category already exists'));
   }
 
@@ -36,7 +36,7 @@ const Add = () => {
        
      <>
        <Header title={'Add categories'}/>
-       <View style={{ padding: SIZES.padding, navigation }}>
+       <View style={{ padding: SIZES.padding,navigation }}>
          {/* <View style={styles.picker}>
        <Picker style={styles.picker} selectedValue={pickerValue}
      onValueChange={(itemValue) => setPickerValue(itemValue)}>
@@ -87,9 +87,9 @@ const Add = () => {
 
 <NativeBaseProvider>
             
-    <Center flex={1} px="3" >
-        <Add />
-    </Center>
+    
+        <Add  navigation   />
+  
    
   </NativeBaseProvider>
     
