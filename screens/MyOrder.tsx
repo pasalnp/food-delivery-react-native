@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState} from 'react';
 import {
   Platform,
   StyleSheet,
@@ -8,70 +8,78 @@ import {
   Image,
   Text,
 } from 'react-native';
-import {COLORS, SIZES,icons, images, Headline1, Headline2, Headline3,
-  Headline4, Body1, Body2,
-  Body3, Body4, Body5,  } from '../constants';
+import {COLORS, SIZES,icons, images, Headline1, Headline2 } from '../constants';
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
+import { GetRequest } from "../Config/axios";
+import { API, CDN } from "../Config/var";
 
-export default class MyCart extends Component<{}> {
-  
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [
-         {id:1, image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
-         {id:2, image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
-         {id:3, image: "https://bootdey.com/img/Content/avatar/avatar2.png"},
-         {id:4, image: "https://bootdey.com/img/Content/avatar/avatar3.png"},
-         {id:5, image: "https://bootdey.com/img/Content/avatar/avatar4.png"},
-         {id:6, image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
-         {id:7, image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
-      ],
-    };
-  }
 
-  render() {
-    return (
-      <>
-      <Header title={'My Orders'} />
-      <View>
-      <Headline1>Your Orders</Headline1> 
-      <FlatList 
-        style={styles.container} 
-        enableEmptySections={true}
-        data={this.state.data}
-        keyExtractor= {(item) => {
-          return item.id;
-        }}
-        renderItem={({item}) => {
-          return (
-            
-            <View >
+const MyOrders=()=>{
+  function renderOrders(){
+    const renderItem= ({ item }) => {
+        return(
+          <View>
               <View style={styles.box}>
-                <Image style={styles.image} source={{uri:item.image}} />
+                <Image style={styles.image} source={item.image} />
                 <View style={styles.info}>
-                  <Text  style={styles.name}>himalayan royal sticky pizza</Text>
-                  <Text  style={styles.discription}>Veg</Text>
-                  <Text  style={styles.discription}>Rs. 100</Text>
+                  <Text  style={styles.name}>{item.name}</Text>
+                  <Text  style={styles.discription}>{item.description}</Text>
+                  <Text  style={styles.discription}>Rs. {item.price}</Text>
                   
                   
                 
               </View>
               <View style={{marginRight:20,alignContent:'center', justifyContent:'center',alignItems:'center'}}>
               <Text style={styles.qty}>Qty</Text>
-              <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >5</Text>
+              <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >{item.quantity}</Text>
               </View>
               <View><Text style={styles.price}>Rs.500</Text></View>
               </View>
               
             
             </View>
-            
-            
-          )
-        }}/>
-        </View>
+
+        )
+
+    }
+
+    return (
+      <View style={{ padding: SIZES.padding * 2 }}>
+  
+        <FlatList
+          data={products}
+          vertical
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => `${item.id}`}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingVertical: SIZES.padding  }}
+        />
+      </View>
+      
+    )}
+
+      const [products,setProducts]= useState(false);
+      useEffect(()=>{
+      GetRequest(`${API}/get/cart_orders`,).then(res=>{
+      setProducts(res.data.content.data);
+            console.log(res.data);
+      })
+      } 
+      ,[])
+  
+    
+   
+
+    return (
+      
+              <>
+             <Header title={'My Orders'}/>
+             
+                  
+                 <View style={styles.container}>
+                 {renderOrders()}
+                 </View>
         <View style={styles.amount}>
            <Headline2> Your Total Amount</Headline2>
            <Headline1 > 10000</Headline1>
@@ -81,16 +89,19 @@ export default class MyCart extends Component<{}> {
             <Text>Cancel Order </Text>
             </View>
         </TouchableOpacity>
-        </>
-    );
-  }
-  
-}
+          
+            </>
+      
+          )
+        
+        };
+  export default MyOrders;
+
 
 const styles = StyleSheet.create({
   container: {
-    height:400,
-    backgroundColor: '#EEEEEE',
+    height:450,
+    backgroundColor: 'orange',
     
   },
   icon:{
@@ -104,7 +115,7 @@ const styles = StyleSheet.create({
     height:80
   },
   box: {
-    marginTop:10,
+    marginTop:10,borderRadius:20,
     backgroundColor: 'white',
     flexDirection: 'row',
     shadowColor: 'black',
