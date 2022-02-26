@@ -1,6 +1,6 @@
 
 
-import React, {useState } from "react";
+import React, {useState,useEffect } from "react";
 import {
   View,
   Text,StyleSheet,
@@ -13,12 +13,14 @@ import Header from "./Components/Header";
 
 import { navigate } from "../navigation/RootNav";
 import { Checkbox, Provider } from "react-native-paper";
+import { GetRequest } from "../Config/axios";
+import { API, CDN } from "../Config/var";
 
 
 const AddItem = ({ navigation }) => {
 
   
-  const [category, setCategory] = useState<string>('');
+  const [category, setCategories] = useState<string>('');
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const [time, setTime] = useState<string>('');
@@ -31,6 +33,16 @@ const AddItem = ({ navigation }) => {
   const [thursday, setThursday] = React.useState(false);
   const [friday, setFriday] = React.useState(false);
   const [saturday, setSaturday] = React.useState(false);
+
+  useEffect(()=>{
+    GetRequest(`${API}/get/categoryData`,).then(res=>{
+      setCategories(res.data.content.data);
+      console.log(res.data);
+    })  
+  
+
+  }
+  ,[])
 
 
   const CategoryList = [
@@ -106,7 +118,7 @@ const AddItem = ({ navigation }) => {
   showDropDown={() => setShowMultiSelectDropDown(true)}
   onDismiss={() => setShowMultiSelectDropDown(false)}
   value={category}
-  setValue={setCategory}
+  setValue={setCategories}
   list={CategoryList}
   multiSelect
   />

@@ -62,7 +62,7 @@ const Details = ({ navigation }) => {
               <Text style={styles.info}>9861367637</Text>
             </View>
             </View>
-            
+
 
             <View style={styles.item}>
               <View style={{justifyContent:'center'}}>
@@ -118,9 +118,8 @@ const Details = ({ navigation }) => {
 const styles = StyleSheet.create({
     container:{
         flex:1,
-        
-        
       },
+      
   header:{
     backgroundColor: COLORS.primary,
   },

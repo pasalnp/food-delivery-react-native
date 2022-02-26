@@ -68,19 +68,14 @@ const Example = () => {
     {username:uname,email:email,fullname:name,contact:num,password:pass,address:address}).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
+      navigate('login')
     }).catch(()=>alert('Error! Please fill all fields correctly'));
   }
   return <KeyboardAvoidingView  behavior={Platform.OS === "ios" ? "padding" : "height"}><Stack space={4} w="100%" >
-<<<<<<< HEAD
-    
-    
-      <Input w={{
-=======
     <FormControl isInvalid={errorName} w="100%" > 
       <Input 
       onChangeText={setName}
       w={{
->>>>>>> 874f7240166ee0b50ee27742f75cacab6c951f1d
       base: "100%",
       md: "25%",
       

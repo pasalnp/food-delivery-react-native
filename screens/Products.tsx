@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Image, Text, View, ScrollView,StyleSheet } from "react-native";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
 import { Button, Portal } from "react-native-paper";
@@ -6,11 +6,217 @@ import { COLORS, SIZES,images, icons, Body3, Headline2, Body1, Body4, Headline1,
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
 import { FloatingAction } from "react-native-floating-action";
-
-
+import { GetRequest } from "../Config/axios";
+import { API, CDN } from "../Config/var";
 
 const Products= () =>{
+function renderMainCategories() {
+  const renderItem = ({ item }) => {
+    return (
+      <View style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+      <TouchableOpacity
+        style={{
+          padding: 5,
+         
+          backgroundColor: (selectedCategory?.id == item.id) ? COLORS.primary : COLORS.white,
+          borderRadius: SIZES.radius,
+          alignItems: "center",
+          justifyContent: "center",
+          marginRight: 5,
+          ...styles.shadow
+        }}
+        onPress={() => onSelectCategory(item)}
+      >
+        <View
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: 25,
+            alignItems: "center",
+            justifyContent: "center",
+            backgroundColor: (selectedCategory?.id == item.id) ? COLORS.white : COLORS.lightGray
+          }}
+        >
+          <Image
+            source={{uri: `${CDN}/${item.icon}` }}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30
+            }}
+          />
+        </View>
+
+       
+      </TouchableOpacity>
+      <Text
+          style={{
+            fontSize: 12,
+            padding: 10,
+            color: (selectedCategory?.id == item.id) ? COLORS.primary : COLORS.black,
+          }}
+        >
+          {item.name}
+        </Text>
+        
+      </View>
+      
+    )
+  }
+
+  
+
+
+  return (
+    <View style={{ padding: SIZES.padding * 2 }}>
+
+      <FlatList
+        data={categories}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
+        contentContainerStyle={{ paddingVertical: SIZES.padding  }}
+      />
+    </View>
+    
+  )
+}
+
+function renderProducts() {
+  const renderItem = ({ item }) => {
+    return (
+      <View
+               style={{
+                   paddingTop:10,
+                   marginTop:10,
+                   height:340, 
+                   borderRadius:20,
+                   backgroundColor:COLORS.white, 
+                   alignItems: 'center' }}
+                   >
+                     <Headline4>Available on {item.Avilday}</Headline4>
+               <Image
+                         source={{uri: `${CDN}/${item.icon}`}}
+                         resizeMode='cover'
+                         style={styles.image}
+                       />
+                       <View
+                   style={{
+                     position: 'absolute',
+                     bottom: 120,
+                     height: 40,
+                     left:30,
+                     width: SIZES.width * 0.2,
+                     backgroundColor: COLORS.white,
+                     borderRadius: SIZES.radius,
+                     borderColor:'blue',
+                     borderWidth:2,
+                      borderTopLeftRadius: SIZES.radius,
+                     alignItems: 'center',
+                     justifyContent: 'center',
+                    
+                   }}
+                 >
+                   <Text style={{fontSize:10}}>Will be Ready In</Text>
+                   <Headline4>{item.duration}</Headline4>
+                   </View>
+                     <View  style={{paddingLeft:20}}>
+                     <View
+                       style={{
+                         width: SIZES.width,
+                         marginTop: 10,
+                         paddingHorizontal: SIZES.padding * 2
+                       }}
+                     >
+                       <Headline2 style={{  fontSize:30  }}>{item.name}</Headline2>
+                       <Headline2 style={{  fontSize:30 ,color:'red' }}>Rs.{item.price}</Headline2>
+                       <Body4>{item.description}</Body4>
+                     </View>
+                    
+                     <View
+                   style={{
+                     position: 'absolute',
+                     bottom: 10,
+                     right:40,
+                     width: SIZES.width * 0.2,
+                     borderTopLeftRadius: SIZES.radius,
+                     alignItems: 'center',
+                     justifyContent: 'center',
+                    
+                   }}
+                 >
+                   <TouchableOpacity >
+                   <Image
+                         source={icons.edit}
+                         style={{
+                           width: 30,
+                           height: 30,
+                           marginLeft:15
+                         }}
+                       />
+                    </TouchableOpacity>
+                   </View>
+                 
+      
+                     {/* Calories */}
+                     <View
+                       style={{
+                         flexDirection: 'row',
+                         marginTop: 5
+                       }}
+                     >
+                       <Image
+                         source={icons.fire}
+                         style={{
+                           width: 15,
+                           height: 15,
+                           marginLeft:15
+                         }}
+                       />
+      
+                       <Body3 style={{
+                         color: COLORS.darkgray
+                       }}>{item.calories} cal</Body3>
+                     </View>
+                     </View>
+               </View>
+      
+
+    )}
+    return (
+      <View style={{ padding: SIZES.padding * 2 }}>
+  
+        <FlatList
+          data={products}
+          vertical
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => `${item.id}`}
+          renderItem={renderItem}
+          contentContainerStyle={{ paddingVertical: SIZES.padding  }}
+        />
+      </View>
+      
+    )
+}
+
 const [selectedCategory,setSelectedCategory]= useState(false);
+const [categories,setCategories]= useState(false);
+const [products,setProducts]= useState(false);
+useEffect(()=>{
+  GetRequest(`${API}/get/categoryData`,).then(res=>{
+    setCategories(res.data.content.data);
+    console.log(res.data);
+  })  
+
+GetRequest(`${API}/get/productData`,).then(res=>{
+  setProducts(res.data.content.data);
+  setProducts(res.data.content.data);
+  console.log(res.data);
+})
+}
+,[])
+
   const actions = [
    
     {
@@ -31,265 +237,29 @@ const [selectedCategory,setSelectedCategory]= useState(false);
     }
   ];
 
-  const categoryData = [
-    {
-  id: 1,
-  name: "Rice",
-  icon: icons.rice_bowl,
-},
-{
-  id: 2,
-  name: "Noodles",
-  icon: icons.noodle,
-},
-{
-  id: 3,
-  name: "Hot Dogs",
-  icon: icons.hotdog,
-},
-{
-  id: 4,
-  name: "Salads",
-  icon: icons.salad,
-},
-{
-  id: 5,
-  name: "Burgers",
-  icon: icons.hamburger,
-},
-{
-  id: 6,
-  name: "Pizza",
-  icon: icons.pizza,
-},
-{
-  id: 7,
-  name: "Snacks",
-  icon: icons.fries,
-},
-{
-  id: 8,
-  name: "Sushi",
-  icon: icons.sushi,
-},
-{
-  id: 9,
-  name: "Desserts",
-  icon: icons.donut,
-},
-{
-  id: 10,
-  name: "Drinks",
-  icon: icons.drink,
-},
-
-]
+  
     return(
         <>
        <Header title={'Products'}/>
             
-           <View style={{padding:5,flex:1,backgroundColor:COLORS.secondary}}> 
-        
-           <View style={{flexDirection:'row'}}>
-               <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-                 <View style={{display:'flex',flexDirection:'column',alignItems:'center'}}>
-           <TouchableOpacity
-           onPress={()=>setSelectedCategory(!selectedCategory)}
-            style={{
-            width:70,
-            padding: SIZES.padding,
-            paddingBottom: SIZES.padding * 2,
-            backgroundColor: (selectedCategory) ? COLORS.primary : COLORS.white,
-            borderRadius: SIZES.radius * 2,
-            alignItems: "center",
-            justifyContent: "center",
-            marginRight: SIZES.padding,
-            ...styles.shadow
-          }}
-          
-        >
-          <View
-            style={{
-              width: 50,
-              height: 50,
-              borderRadius: 25,
-              alignItems: "center",
-              alignContent:'center',
-              justifyContent: "center",
-              backgroundColor: (selectedCategory) ? COLORS.white : COLORS.primary,
-            }}
-          >
-            <Image
-              source={icons.hotdog}
-              resizeMode="contain"
-              style={{
-                width: 30,
-                height: 30
-              }}
-            />
-          </View>
+           {renderMainCategories()}
+           {renderProducts()}
 
-          
-        </TouchableOpacity>
-        <Text
-            style={{
-              fontSize: 12,
-             alignContent:'center',
-              color: (selectedCategory) ? COLORS.primary : COLORS.white,
-            }}
-          >Chowmin
-           
-          </Text>
-
-          </View>
-        
-        </ScrollView>
-        </View>
-
-
-<View style={{paddingTop:0 }} >
-  
-        <View>
-            <Headline1>Products</Headline1>
-        </View>
-        <ScrollView showsVerticalScrollIndicator={false} style={{height:420}}>
-        
-        <View
-        style={{
-            paddingTop:10,
-            height:320, 
-            borderRadius:20,
-            backgroundColor:COLORS.white, 
-            alignItems: 'center' }}
-            >
-        <Image
-                  source={images.burger_restaurant_1}
-                  resizeMode='cover'
-                  style={styles.image}
-                />
-                <View
-            style={{
-              position: 'absolute',
-              bottom: 120,
-              height: 40,
-              left:40,
-              width: SIZES.width * 0.2,
-              backgroundColor: COLORS.white,
-              borderRadius: SIZES.radius,
-              borderColor:'blue',
-              borderWidth:2,
-              // borderTopLeftRadius: SIZES.radius,
-              alignItems: 'center',
-              justifyContent: 'center',
-              
-            }}
-          >
-            <Text style={{fontSize:10}}>Will be Ready In</Text>
-            <Headline4>10-15</Headline4>
-            </View>
-              <View>
-              <View
-                style={{
-                  width: SIZES.width,
-                  
-                  marginTop: 10,
-                  paddingHorizontal: SIZES.padding * 2
-                }}
-              >
-                <Headline2 style={{  fontSize:30  }}>Himalayan Burger</Headline2>
-                <Headline2 style={{  fontSize:30 ,color:'red' }}>Rs.500</Headline2>
-                <Body4>fresh vegetables, meat plate, sauce</Body4>
-              </View>
-              
-              <View
-            style={{
-              position: 'absolute',
-              bottom: 10,
-              
-              right:40,
-              width: SIZES.width * 0.2,
-             
-              // borderTopLeftRadius: SIZES.radius,
-              alignItems: 'center',
-              justifyContent: 'center',
-              
-            }}
-          >
-            <TouchableOpacity >
-            <Image
-                  source={icons.edit}
-                  style={{
-                    width: 30,
-                    height: 30,
-                    marginLeft:15
-                  }}
-                />
-             </TouchableOpacity>
-            </View>
-           
-
-              {/* Calories */}
-              <View
-                style={{
-                  flexDirection: 'row',
-                  marginTop: 5
-                }}
-              >
-                <Image
-                  source={icons.fire}
-                  style={{
-                    width: 15,
-                    height: 15,
-                    marginLeft:15
-                  }}
-                />
-
-                <Body3 style={{
-                  color: COLORS.darkgray
-                }}>50 cal</Body3>
-              </View>
-              </View>
-        </View>
-
-       
-        
-        </ScrollView>
-        
-        </View>
-
-        {/* Add Button */}
-
-        
-        <FloatingAction
-    actions={actions}
-    distanceToEdge={{ vertical: 60, horizontal: 20 }}
-    onPressItem={(page)=> navigate(page)}
-    color='red'
-       
-                                     
-        
     
+    {/* floating Button */}
+    <FloatingAction
+     actions={actions}
+     distanceToEdge={{ vertical: 60, horizontal: 20 }}
+     onPressItem={(page)=> navigate(page)}
+     color='red'    
+   />
+      </>
+
+    )
+  }
+              
       
-    
-  />
 
-
-         {/* <TouchableOpacity onPress={()=>navigate('additems')} style={styles.touchableopacity}>
-        <View style={{}}>
-             <Text style={{borderRadius:25,backgroundColor:'red',fontSize:30}}>ADD</Text>
-                
-                 </View> 
-        </TouchableOpacity>  */}
-
-      
-        
-        </View>
-
-          
-
-        </>
-    );
-}
 
 export default Products;
 const styles = StyleSheet.create({

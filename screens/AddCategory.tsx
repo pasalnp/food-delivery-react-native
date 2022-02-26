@@ -8,22 +8,33 @@ import {
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import {COLORS, images, SIZES } from '../constants';
 import Header from "./Components/Header";
-import { Picker } from "@react-native-picker/picker";
+import { Center, FormControl, NativeBaseProvider, WarningOutlineIcon } from "native-base";
 import { navigate } from "../navigation/RootNav";
 import { API } from "../Config/var";
 import { PostRequest } from "../Config/axios";
 
+const Add = () => {
 
-const AddCategory = ({ navigation  }) => {
-  const[name, setName] =useState('FoodItems')
+  const[name, setName] =useState('FoodItems');
+  const [errorName,SetErrorName]= useState(false);
+
   const addCatHandler = () => {
+    if(name.length==0){
+      SetErrorName(true);
+    }else{
+      SetErrorName(false);
+    }
+
     PostRequest(`${API}/addcategoryData`, {name:name,icon:'this'}).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
+      navigate('products');
     }).catch(()=>alert('Category already exists'));
   }
+
   return (
-        <>
+       
+     <>
        <Header title={'Add categories'}/>
        <View style={{ padding: SIZES.padding, navigation }}>
          {/* <View style={styles.picker}>
@@ -41,7 +52,15 @@ const AddCategory = ({ navigation  }) => {
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
+    <FormControl isInvalid={errorName} w="100%" > 
     <TextInput onChangeText={setName} style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category Name'}/>
+    {errorName ? (
+    <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+    
+         Name cannot be empty
+        </FormControl.ErrorMessage>)
+        :<></>}
+      </FormControl> 
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Category'}/> */}
     {/* <TextInput keyboardType='number-pad' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Price'}/> */}
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Enter Category Name'}/>
@@ -60,6 +79,20 @@ const AddCategory = ({ navigation  }) => {
       
     </View>
     </>
+  )
+    
+  }
+  const AddCategory = ({ navigation  }) => {
+    return(
+
+<NativeBaseProvider>
+            
+    <Center flex={1} px="3" >
+        <Add />
+    </Center>
+   
+  </NativeBaseProvider>
+    
     )
   }
 

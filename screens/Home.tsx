@@ -107,7 +107,7 @@ const Home = ({ navigation }) => {
   const fairPrice = 2
   const expensive = 3
 
-  const restaurantData = [
+  {/*const restaurantData = [
     {
       id: 1,
       name: "SUNDAY",
@@ -353,7 +353,7 @@ const Home = ({ navigation }) => {
       ]
     }
 
-  ]
+  ] */}
 
   const [categories, setCategories] = React.useState([])
   const [selectedCategory, setSelectedCategory] = React.useState(null)
