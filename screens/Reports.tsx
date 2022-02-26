@@ -20,7 +20,7 @@ export default class Reports extends Component {
     this.state = {
       data: [
         {id:1, title: "Sales", name:"Sales"},
-        {id:1, title: "Orders",  name:"Orders"},
+        {id:2, title: "Orders",  name:"Orders"},
         
       ]
     };
@@ -59,11 +59,7 @@ export default class Reports extends Component {
             )
           }}/>
       </View>
-      <TouchableOpacity onPress={()=>navigate('mycart')} style={{marginRight:20,justifyContent:'flex-end',alignItems:'flex-end',alignContent:'flex-end'}}>
-            <View style={styles.btn}>
-            <Headline3> Cancel</Headline3>
-            </View>
-        </TouchableOpacity>
+      
       </>
     );
   }
