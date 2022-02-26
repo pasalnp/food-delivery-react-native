@@ -163,8 +163,10 @@ const Tabs = () => {
 
             <Tab.Screen
                 name="My Orders"
+                
                 component={MyOrder}
                 options={{
+                    unmountOnBlur: true,
                     tabBarIcon: ({ focused }) => (
                         <Image
                             source={icons.myorders}
@@ -184,7 +186,7 @@ const Tabs = () => {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Transactions"
                 component={Khalti}
                 options={{
@@ -205,7 +207,7 @@ const Tabs = () => {
                         />
                     )
                 }}
-            />
+            /> */}
 
             <Tab.Screen
                 name="User"

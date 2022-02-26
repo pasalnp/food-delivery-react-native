@@ -30,8 +30,11 @@ const Restaurant = ({ route, navigation }) => {
 
     setRestaurant(restaurants)
     setCurrentLocation(currentLocation)
-  })
+  },[])
 
+  // React.useEffect(() => {
+  //   console.log(orderItems);
+  // },[orderItems])
   function editOrder(action, menuId, price) {
     let orderList = orderItems.slice()
     let item = orderList.filter(a => a.menuId == menuId)
@@ -433,12 +436,11 @@ const Restaurant = ({ route, navigation }) => {
                 justifyContent:'center',
                 borderRadius: SIZES.radius
               }}
-              onPress={() => navigation.navigate("OrderDelivery", {
-                restaurant: restaurant,
-                currentLocation: currentLocation
+              onPress={() => navigation.navigate("payment", {
+                orderItems: orderItems,
               })}
             >
-              <Headline2 style={{ color: COLORS.white }}>Add to Cart</Headline2>
+              <Headline2 style={{ color: COLORS.white }}>Place Order</Headline2>
             </TouchableOpacity>
           </View>
         </View>

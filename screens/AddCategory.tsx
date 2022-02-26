@@ -61,20 +61,12 @@ const Add = ({ navigation  }) => {
     }else{
       SetErrorName(false);
     }
-<<<<<<< HEAD
-    PutRequest(`${API}/addcategoryData`, formData).then((res)=>{
-      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
-      alert(API);
-      
-    }).catch(()=>alert(API));
-=======
 
-    !errorName && PostRequest(`${API}/addcategoryData`, {name:name,icon:'this'}).then((res)=>{
+    !errorName && PutRequest(`${API}/addcategoryData`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
       navigate('tab2');
     }).catch(()=>alert('Category already exists'));
->>>>>>> 97cf6cbb3c9d747509e1c08ee5cc2d130ab46bb1
   }
 
   return (

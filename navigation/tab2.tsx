@@ -141,7 +141,7 @@ const Tab2 = () => {
         >
             <Tab.Screen
                 name="Dashboard"
-                component={Dashboard}
+                component={Reports}
                 options={{
                     tabBarIcon: ({ focused }) => (
                         <Image
@@ -185,7 +185,7 @@ const Tab2 = () => {
                 }}
             />
 
-            <Tab.Screen
+            {/* <Tab.Screen
                 name="Reports"
                 component={Reports}
                 options={{
@@ -206,7 +206,7 @@ const Tab2 = () => {
                         />
                     )
                 }}
-            />
+            /> */}
 
             <Tab.Screen
                 name="User"

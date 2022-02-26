@@ -10,7 +10,16 @@ import { GetRequest } from "../Config/axios";
 import { API, CDN } from "../Config/var";
 
 const Products= () =>{
+  function onSelectCategory(category) {
+    //filter restaurant
+    let restaurantList = productsback.filter(a => a.category.includes(category.id))
+
+    setProducts(restaurantList)
+
+    setSelectedCategory(category)
+  }
 function renderMainCategories() {
+  
   const renderItem = ({ item }) => {
     return (
       <View style={{display:'flex',flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
@@ -97,7 +106,7 @@ function renderProducts() {
                    >
                      <Headline4>Available on {item.Avilday}</Headline4>
                <Image
-                         source={{uri: `${CDN}/${item.icon}`}}
+                         source={{uri: `${CDN}/${item.image}`}}
                          resizeMode='cover'
                          style={styles.image}
                        />
@@ -203,6 +212,7 @@ function renderProducts() {
 const [selectedCategory,setSelectedCategory]= useState(false);
 const [categories,setCategories]= useState(false);
 const [products,setProducts]= useState(false);
+const [productsback,setProductsback]= useState(false);
 useEffect(()=>{
   GetRequest(`${API}/get/categoryData`,).then(res=>{
     setCategories(res.data.content.data);
@@ -211,7 +221,7 @@ useEffect(()=>{
 
 GetRequest(`${API}/get/productData`,).then(res=>{
   setProducts(res.data.content.data);
-  setProducts(res.data.content.data);
+  setProductsback(res.data.content.data);
   console.log(res.data);
 })
 }

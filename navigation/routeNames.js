@@ -36,13 +36,13 @@ export const homeRoutes = [
     { name: 'home', component: Home, title: 'Home' },
     { name: 'products', component: Products, title: 'Products' },
     { name: 'dashboard', component: Dashboard, title: 'Dashboard' },
-    { name: 'orders', component: Orders, title: 'Orders' },
+    { name: 'Orders', component: Orders, title: 'Orders' },
     { name: 'userprofile', component: UserProfile, title: 'User Profile' },
     { name: 'adminprofile', component: AdminProfile, title: 'Admin Profile' },
     { name: 'users', component:Users, title: 'Users' },
     { name: 'payment', component:Payment, title: 'Payment' },
     { name: 'reports', component:Reports, title: 'Reports' },
-    { name: 'sales', component:Sales, title: 'Sales' },
+    { name: 'Sales', component:Sales, title: 'Sales' },
     { name: 'khalti', component:Khalti, title: 'Khalti' },
  
    

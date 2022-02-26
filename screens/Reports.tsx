@@ -33,9 +33,9 @@ export default class Reports extends Component {
   render() {
     return (
         <>
-      <Header title={'Reports'} />
+      <Header title={'Dashboard'} />
+      <Headline2>Reports</Headline2>
       <View style={styles.container}>
-         
         <FlatList style={styles.list}
           contentContainerStyle={styles.listContainer}
           data={this.state.data}
@@ -46,7 +46,7 @@ export default class Reports extends Component {
           }}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity style={styles.card} onPress={()=>navigate('sales')}>
+              <TouchableOpacity style={styles.card} onPress={()=>navigate(item.title)}>
                 <View style={styles.cardFooter}></View>
                 <Text style={styles.title} >{item.name}</Text>
                 <View style={styles.cardHeader}>
@@ -58,6 +58,8 @@ export default class Reports extends Component {
               
             )
           }}/>
+          
+      <Headline2>Reports</Headline2>
       </View>
       
       </>

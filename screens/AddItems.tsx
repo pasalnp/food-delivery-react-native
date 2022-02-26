@@ -14,18 +14,27 @@ import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
 import { Checkbox, Provider } from "react-native-paper";
 import { API } from "../Config/var";
-import { PostRequest } from "../Config/axios";
+import { PostRequest,GetRequest } from "../Config/axios";
+import { Select } from "native-base";
+import { Picker } from "../constants/theme";
 
 
 const AddItem = ({ navigation }) => {
+  const [image, setImage] = React.useState(false);
+  const [name, setName] = React.useState(false);
+  const [calories, setCalories] = React.useState(false);
+  const [price, setprice] = React.useState(false);
+  const [avilday, setAvilday] = React.useState(false);
+  const [description, setdescription] = React.useState(false);
 
   const addItemHandler = () => {
-    PostRequest(`${API}/addItems`, {name:'test'}).then((res)=>{
+    PostRequest(`${API}/addItem`, {category, image, name,calories,price,Avilday:avilday,description}).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
     }).catch(()=>alert('Error user already exists'));
   }
   const [category, setCategory] = useState<string>('');
+  const [categorypiker, setCategoryPiker] = useState([]);
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = useState(false);
   const [showDropDown, setShowDropDown] = useState(false);
   const [time, setTime] = useState<string>('');
@@ -41,11 +50,9 @@ const AddItem = ({ navigation }) => {
 
   useEffect(()=>{
     GetRequest(`${API}/get/categoryData`,).then(res=>{
-      setCategories(res.data.content.data);
-      console.log(res.data);
+      setCategoryPiker(res.data.content.data);
+      console.log("data::::",res.data.content.data);
     })  
-  
-
   }
   ,[])
 
@@ -64,7 +71,6 @@ const AddItem = ({ navigation }) => {
       value: 'chowmin',
     },
    
-  
   ];
 
   const TimeList = [
@@ -112,22 +118,32 @@ const AddItem = ({ navigation }) => {
 
     </View> 
    
-    <TextInput style={styles.box} placeholder={'Item Name'}/>
-    <TextInput style={styles.box} placeholder={'Description of food'}/>
-    <TextInput  keyboardType='number-pad' style={styles.box} placeholder={'Calories'}/>
+    <TextInput onChangeText={setName} style={styles.box} placeholder={'Item Name'}/>
+    <TextInput onChangeText={setdescription}  style={styles.box} placeholder={'Description of food'}/>
+    <TextInput onChangeText={setCalories}  keyboardType='number-pad' style={styles.box} placeholder={'Calories'}/>
     {/* <TextInput style={styles.box} placeholder={'Category'}/> */}
-    <DropDown
-    label={'Categories'}
-  mode={'outlined'}
-  visible={showMultiSelectDropDown}
-  showDropDown={() => setShowMultiSelectDropDown(true)}
-  onDismiss={() => setShowMultiSelectDropDown(false)}
-  value={category}
-  setValue={setCategories}
-  list={CategoryList}
-  multiSelect
-  />
-    <TextInput keyboardType='number-pad' style={styles.box} placeholder={'Price'}/>
+<View style={styles.box2}>
+          <Picker
+            mode='dropdown'
+            style={{ flex: 1, color: '#445870' }}
+            placeholder='Bill Type'
+            placeholderStyle={{ color: '#BFC6EA' }}
+            placeholderIconColor='#007AFF'
+            selectedValue={category}
+            onValueChange={setCategory}
+          >
+            {/* <Picker.Item label='Chose' value=' ' /> */}
+            {categorypiker.map((data)=>{
+              return(<Picker.Item label={data.name} value={data.id} />)
+            })}
+            {/* <Picker.Item label='SALE' value='SALE' />
+            <Picker.Item label='PURCHASE' value='PURCHASE' />
+            <Picker.Item label='RECIEPT' value='RECIEPT' />
+            <Picker.Item label='VOUCHER' value='VOUCHER' />
+            <Picker.Item label='EXPENSE' value='EXPENSE' /> */}
+          </Picker>
+          </View>
+    <TextInput onChangeText={setprice} keyboardType='number-pad' style={styles.box} placeholder={'Price'}/>
     <DropDown
               label={'Ready Time'}
               mode={'outlined'}
@@ -140,8 +156,25 @@ const AddItem = ({ navigation }) => {
             />
 <View style={styles.box2}>
   <Text style={{ padding: SIZES.padding, fontSize:20, color:COLORS.primary }}>Available on Days</Text>
-<View style={{flexDirection:'row'}}>
-    <View style={{ width:100,marginLeft:50}} >
+  <Picker
+            mode='dropdown'
+            style={{ flex: 1, color: '#445870' }}
+            placeholder='Bill Type'
+            placeholderStyle={{ color: '#BFC6EA' }}
+            placeholderIconColor='#007AFF'
+            selectedValue={avilday}
+            onValueChange={setAvilday}
+          >
+            <Picker.Item label='Sunday' value='Sunday' />
+            <Picker.Item label='Monday' value='Monday' />
+            <Picker.Item label='Tuesday' value='Tuesday' />
+            <Picker.Item label='Wednesday' value='Wednesday' />
+            <Picker.Item label='Thursday' value='Thursday' />
+            <Picker.Item label='Friday' value='Friday' />
+            <Picker.Item label='Saturday' value='Saturday' />
+          </Picker>
+{/* <View style={{flexDirection:'row'}}>
+    <View style={{ width:100,marginLeft:50}} > 
           <View style={styles.week}>
             <Checkbox
           status={sunday ? 'checked' : 'unchecked'} 
@@ -192,8 +225,8 @@ const AddItem = ({ navigation }) => {
         </View>
         
         </View>
-        </View>
-        </View>
+        </View>*/}
+        </View> 
     {/* <TextInput style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={'Enter Category Name'}/>
     <TextInput keyboardType='default' style={{padding:10,borderColor:'#ccc',borderWidth:1,borderRadius:6,margin:10,}} placeholder={''}/> */}
     <View style={{padding:50,flexDirection:'row', justifyContent:'space-evenly',alignContent:'space-around'}}>

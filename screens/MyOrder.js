@@ -16,12 +16,30 @@ import { API, CDN } from "../Config/var";
 
 
 const MyOrders=()=>{
+  const [user_id,setUserId] = useState();
+  const getData = async () => {
+  try {
+    const value = await AsyncStorage.getItem('user_id')
+    if(value !== null) {
+      // value previously stored
+      setUserId(value)
+      console.log(value)
+    }
+  } catch(e) {
+    console.log(e);
+    
+    // error reading value
+  }
+}
+useEffect(()=>{
+  getData();
+},[])
   function renderOrders(){
     const renderItem= ({ item }) => {
         return(
           <View>
               <View style={styles.box}>
-                <Image style={styles.image} source={item.image} />
+                <Image style={styles.image} source={{uri: `${CDN}/${item.image}` }} />
                 <View style={styles.info}>
                   <Text  style={styles.name}>{item.name}</Text>
                   <Text  style={styles.discription}>{item.description}</Text>
@@ -34,7 +52,7 @@ const MyOrders=()=>{
               <Text style={styles.qty}>Qty</Text>
               <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >{item.quantity}</Text>
               </View>
-              <View><Text style={styles.price}>Rs.500</Text></View>
+              <View><Text style={styles.price}>Rs.{item.price}</Text></View>
               </View>
               
             
@@ -48,7 +66,7 @@ const MyOrders=()=>{
       <View style={{ padding: SIZES.padding * 2 }}>
   
         <FlatList
-          data={products}
+          data={item}
           vertical
           showsHorizontalScrollIndicator={false}
           keyExtractor={item => `${item.id}`}
@@ -59,15 +77,24 @@ const MyOrders=()=>{
       
     )}
 
-      const [products,setProducts]= useState(false);
+      const [products,setProducts]= useState([]);
+      const [total,setTotal]= useState(0);
+      const [item,setItem]= useState(false);
       useEffect(()=>{
       GetRequest(`${API}/get/cart_orders`,).then(res=>{
       setProducts(res.data.content.data);
-            console.log(res.data);
+            console.log("data_____",res.data);
       })
       } 
       ,[])
-  
+        useEffect(()=>{
+          let t=0;
+          let i = products?.filter(data=>data.ID==3)
+          setItem(i);
+        products?.filter(data=>data.ID==3).map((val)=> t = parseInt(t) + parseInt(val.price));
+        setTotal(t)
+        }
+        ,[products])
     
    
 
@@ -82,13 +109,13 @@ const MyOrders=()=>{
                  </View>
         <View style={styles.amount}>
            <Headline2> Your Total Amount</Headline2>
-           <Headline1 > 10000</Headline1>
+           <Headline1 > {total}</Headline1>
             </View>
-        <TouchableOpacity style={{paddingRight:5,justifyContent:'flex-end',alignItems:'flex-end'}}>
+        {/* <TouchableOpacity style={{paddingRight:5,justifyContent:'flex-end',alignItems:'flex-end'}}>
             <View style={styles.cancel}>
             <Text>Cancel Order </Text>
             </View>
-        </TouchableOpacity>
+        </TouchableOpacity> */}
           
             </>
       
@@ -161,7 +188,7 @@ const styles = StyleSheet.create({
   amount:{
     margin:10,
     padding:10,
-    height:80,
+    height:100,
     borderRadius:6,
     borderColor:COLORS.primary,
     borderWidth:2,

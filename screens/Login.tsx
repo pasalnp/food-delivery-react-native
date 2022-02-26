@@ -18,7 +18,10 @@ import { user } from "../constants/icons";
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
 import { API } from "../Config/var";
+import { saveDataToStorage } from "../constants/Tools";
 import { GetRequest, PostRequest } from "../Config/axios";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const Login = ({ navigation }) => {
 
@@ -26,13 +29,22 @@ const Login = ({ navigation }) => {
   const [logedin,setLoggedin]= useState('');
   const [user,setUser]= useState('');
   const[pickerValue, setPickerValue] =useState('Admin')
-
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem('user_id', JSON.stringify(value))
+    } catch (e) {
+      console.log(e);
+      
+    }
+  }
   const loginHandler = async ()=>{
     if(pickerValue=='Customer'){
     PostRequest(`${API}/login`, {username:user,password:pass,role:pickerValue}).then((res)=>{
       (res.status==200) ? goToTabs('tabs') : alert('Invalid username or password'); 
       setLoggedin('logged in');
-      console.log('data>>>>>>>>>>>>>>>>>>>>',);
+      AsyncStorage.removeItem('user_id');
+      storeData(res.data.user.id);
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.user.id);
     }).catch((err)=>{
       alert('Invalid username or password');
     })

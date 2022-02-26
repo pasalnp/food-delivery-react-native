@@ -8,6 +8,17 @@ import * as Permissions from 'expo-permissions';
 import Constants from 'expo-constants';
 import * as CONTACTS from 'expo-contacts';
 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+export const saveDataToStorage = (name, data) => {
+  AsyncStorage.setItem(name, data);
+};
+export const removeDataFromStorage = (name) => {
+  AsyncStorage.removeItem(name);
+};
+export const getDataFromStorage = async (name) => {
+  return await AsyncStorage.getItem(name);
+};
 export const OpenURL = ({ url, children }) => {
   const handlePress = useCallback(async () => {
     // Checking if the link is supported for links with custom URL scheme.

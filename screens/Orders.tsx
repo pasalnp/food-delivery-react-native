@@ -7,17 +7,14 @@ import Header from "./Components/Header";
 import ImageContainer from "./Components/ImageContainer";
 import { GetRequest } from "../Config/axios";
 import { API, CDN } from "../Config/var";
-import { FlatList } from "native-base";
+import { FlatList, NativeBaseProvider } from "native-base";
 
 
 const Orders = ({ navigation }) => {
     function renderOrders(){
         const renderItem= ({ item }) => {
-        
     return (
-
         <View style={{padding:SIZES.padding}}>
-           
         <View style={styles.flex}>
             <View style={styles.card}>
                 <View style={{flexDirection:'row'}}>
@@ -78,8 +75,10 @@ const Orders = ({ navigation }) => {
 
       return (
        <>
+       <NativeBaseProvider>
        <Header title={'Orders'} />
        {renderOrders()}
+       </NativeBaseProvider>
                    
 </>
         
