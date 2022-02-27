@@ -30,7 +30,7 @@ const Sales =()=> {
                   
                   <View style={styles.eventContent}>
                   <View style={styles.image}>
-                  <Image  source={{uri:item.image}} resizeMode='contain'  />
+                  <Image  source={{uri: `${CDN}/${item.image}?123=13`}} resizeMode='contain'  />
                   </View>
                   <View style={{marginLeft:10,width:170}}>
                   <Text  style={styles.Name}>{item.name}</Text>
@@ -99,7 +99,6 @@ const Sales =()=> {
 const styles = StyleSheet.create({
   container:{
     flex:1,
-    backgroundColor: COLORS.secondary,
   },
  image: {
     width: 50,

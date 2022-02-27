@@ -47,13 +47,13 @@ export default class UserProfile extends Component {
             </View>
             </TouchableOpacity>
 
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>navigate('resetpassword')}>
             <View style={styles.item}>
               <View >
             <Image style={styles.icon} source={{uri: 'https://cdn-icons-png.flaticon.com/512/945/945147.png'}}/>
             </View>
             <View>
-              <Text style={styles.info}>Settings</Text>
+              <Text style={styles.info}>Change Password</Text>
             </View>
             </View>
             </TouchableOpacity>

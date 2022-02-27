@@ -20,13 +20,13 @@ export default class MyCart extends Component<{}> {
     super(props);
     this.state = {
       data: [
-         {id:1,  name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
-         {id:2, name:'Mo:Mo', image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
-         {id:3, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar2.png"},
-         {id:4, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar3.png"},
-         {id:5, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar4.png"},
-         {id:6, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar1.png"},
-         {id:7, name:'Burger', image: "https://bootdey.com/img/Content/avatar/avatar6.png"},
+         {id:1,  description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'How To order', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/clock.png?v=125"},
+         {id:2, description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'How to Register', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/car.png?v=125"},
+         {id:3, description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'How to login', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/donut.png?v=125"},
+         {id:4, description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'How to see and navigate', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/drop.png?v=125"},
+         {id:5, description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'How to change password', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/avatar4.png?v=125"},
+         {id:6, description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'how to pay online', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/map.png?v=125"},
+         {id:7, description:'this is detail explanation for navigating for diffrent pages in this app hope you find helathy meal with few clicks',name:'Where to find my orders list', image: "https://www.bootdey.com/app/webroot/img/Content/icons/64/PNG/64/marker.png?v=125"},
       ],
     };
   }
@@ -34,7 +34,7 @@ export default class MyCart extends Component<{}> {
   render() {
     return (
       <>
-      <Header title={'My Cart'} />
+      <Header title={'Help '} />
       <View>
                   
       <FlatList 
@@ -52,8 +52,7 @@ export default class MyCart extends Component<{}> {
                 <Image style={styles.image} source={{uri:item.image}} />
                 <View style={styles.info}>
                   <Text  style={styles.name}>{item.name}</Text>
-                  <Text  style={styles.discription}>Veg</Text>
-                  <Text  style={styles.price}>$$100</Text>
+                  <Text  style={styles.discription}>{item.description}</Text>
                   
 
                     
@@ -68,7 +67,7 @@ export default class MyCart extends Component<{}> {
                     flexDirection: 'row'
                   }}
                 >
-                  <TouchableOpacity
+                  {/* <TouchableOpacity
                     style={{
                       width: 30,
                       backgroundColor: COLORS.primary,
@@ -108,9 +107,9 @@ export default class MyCart extends Component<{}> {
                     // onPress={() => editOrder("+", item.menuId, item.price)}
                   >
                     <Body1>+</Body1>
-                  </TouchableOpacity>
+                  </TouchableOpacity> */}
                   
-                  <View
+                  {/* <View
             style={{
               position: 'absolute',
               bottom: 60,
@@ -129,7 +128,7 @@ export default class MyCart extends Component<{}> {
             <TouchableOpacity onPress={()=>navigate('home')}> 
             <Image  style={styles.icon} source={icons.bin} />
             </TouchableOpacity>
-            </View>
+            </View> */}
           {/* <View style={styles.icon}>
           <TouchableOpacity  onPress={()=>navigate('home')}>
           
@@ -153,7 +152,7 @@ export default class MyCart extends Component<{}> {
             
           )
         }}/></View>
-        <View style={{marginTop:10,flexDirection:'row',width:SIZES.width,justifyContent:'space-between'}}>
+        {/* <View style={{marginTop:10,flexDirection:'row',width:SIZES.width,justifyContent:'space-between'}}>
         <TouchableOpacity onPress={()=>navigate('tabs')} style={{marginLeft:20,justifyContent:'flex-start',alignItems:'flex-start'}}>
             <View style={styles.btn}>
             <Headline3> Add More </Headline3>
@@ -167,7 +166,7 @@ export default class MyCart extends Component<{}> {
             </View>
         </TouchableOpacity>
 
-        </View>
+        </View> */}
         </>
     );
   }

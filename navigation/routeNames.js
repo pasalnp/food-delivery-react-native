@@ -19,6 +19,7 @@ import AdminProfile from '../screens/AdminProfile';
 import Reports from '../screens/Reports';
 import Sales from '../screens/Sales';
 import Khalti from '../screens/Khalti';
+import ForgotPassword from '../screens/forgotpass';
 
 
 
@@ -29,6 +30,7 @@ export const homeRoutes = [
     { name: 'tab2', component: Tab2, title: 'Tab2' },
     { name: 'restaurant', component:Restaurant , title: 'Restaurant' },
     { name: 'resetpassword', component: ResetPassword, title: 'Rest Password' },
+    { name: 'forgotpassword', component: ForgotPassword, title: 'Frogot Password' },
     { name: 'signup', component: SignUp, title: 'Sign Up' },
     { name: 'mycart', component: MyCart, title: 'My Cart' },
     { name: 'additems', component: AddItem, title: 'Add Items' },

@@ -9,6 +9,7 @@ import {
   Animated
 } from "react-native";
 import { isIphoneX } from 'react-native-iphone-x-helper'
+import { Line } from "react-native-svg";
 import { CDN } from "../Config/var";
 import {
   icons, images, SIZES, COLORS, Headline1, Headline2, Headline3,
@@ -16,10 +17,18 @@ import {
   Body3, Body4, Body5, LargeTitle
 } from '../constants'
 import { navigate } from "../navigation/RootNav";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const Restaurant = ({ route, navigation }) => {
-
+  const storeData = async (value) => {
+    try {
+      await AsyncStorage.setItem('order_item', JSON.stringify(value))
+    } catch (e) {
+      console.log(e);
+      
+    }
+  }
   const scrollX = new Animated.Value(0);
   const [restaurant, setRestaurant] = React.useState(null);
   const [currentLocation, setCurrentLocation] = React.useState(null);
@@ -35,9 +44,9 @@ const Restaurant = ({ route, navigation }) => {
   // React.useEffect(() => {
   //   console.log(orderItems);
   // },[orderItems])
-  function editOrder(action, menuId, price) {
+  function editOrder(action, menuId, price,name) {
     let orderList = orderItems.slice()
-    let item = orderList.filter(a => a.menuId == menuId)
+    let item = orderList.filter(a => a.id == menuId)
 
     if (action == "+") {
       if (item.length > 0) {
@@ -46,7 +55,8 @@ const Restaurant = ({ route, navigation }) => {
         item[0].total = item[0].qty * price
       } else {
         const newItem = {
-          menuId: menuId,
+          id: menuId,
+          name: name,
           qty: 1,
           price: price,
           total: price
@@ -69,7 +79,7 @@ const Restaurant = ({ route, navigation }) => {
   }
 
   function getOrderQty(menuId) {
-    let orderItem = orderItems.filter(a => a.menuId == menuId)
+    let orderItem = orderItems.filter(a => a.id == menuId)
 
     if (orderItem.length > 0) {
       return orderItem[0].qty
@@ -85,7 +95,7 @@ const Restaurant = ({ route, navigation }) => {
   }
 
   function sumOrder() {
-    let total = orderItems.reduce((a, b) => a + (b.total || 0), 0)
+    let total = orderItems.reduce((a, b) => parseInt(a) + parseInt(b.total || 0), 0)
 
     return total
   }
@@ -226,7 +236,7 @@ const Restaurant = ({ route, navigation }) => {
                       borderTopLeftRadius: 25,
                       borderBottomLeftRadius: 25
                     }}
-                    onPress={() => editOrder("-", item.menuId, item.price)}
+                    onPress={() => editOrder("-", item.id, item.price,item.name)}
                   >
                     <Headline1>-</Headline1>
                   </TouchableOpacity>
@@ -256,12 +266,13 @@ const Restaurant = ({ route, navigation }) => {
                       borderTopRightRadius: 25,
                       borderBottomRightRadius: 25
                     }}
-                    onPress={() => editOrder("+", item.Id, item.price)}
+                    onPress={() => editOrder("+", item.id, item.price,item.name)}
                   >
                     <Body1>+</Body1>
                   </TouchableOpacity>
                 </View>
               </View>
+                <TouchableOpacity onPress={()=>storeData(item)}><Text>Select</Text></TouchableOpacity>
 
               {/* Name & Description */}
               <View
@@ -381,7 +392,7 @@ const Restaurant = ({ route, navigation }) => {
             }}
           >
             <Headline3>{getBasketItemCount()} items in Cart</Headline3>
-            <Headline3>${sumOrder()}</Headline3>
+            <Headline3>NPR.{sumOrder()}</Headline3>
           </View>
 
           <View
@@ -436,7 +447,7 @@ const Restaurant = ({ route, navigation }) => {
                 justifyContent:'center',
                 borderRadius: SIZES.radius
               }}
-              onPress={() => navigation.navigate("payment", {
+              onPress={() => navigation.navigate("khalti", {
                 orderItems: orderItems,
               })}
             >

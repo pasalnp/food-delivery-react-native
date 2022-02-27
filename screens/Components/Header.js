@@ -1,15 +1,40 @@
 import React from "react";
+import { Image } from "react-native";
 import { StyleSheet, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { Card } from "react-native-paper";
-import { COLORS } from "../../constants";
+import { COLORS, Headline1, icons } from "../../constants";
+import { navigate } from "../../navigation/RootNav";
 
 const Header = ({title})=>{
     return(
 <>
-<View style={styles.title}>
+{/* <View style={styles.title}>
 <Text style={styles.title}>{title} </Text>
-</View>
+</View> */}
+<>       
+       {/* <Header title={'Home'} />  */}
+      <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 80,justifyContent:'space-between' }}>
+      <Headline1>{title}</Headline1>
 
+        <TouchableOpacity onPress={()=>navigate('mycart')}
+          style={{
+            width: 50,
+            alignItems:'flex-end',
+            
+          }}
+        >
+          <Image
+            source={icons.like}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+      </>
 </>
     )
 }
@@ -46,7 +71,7 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignContent:'center',
         textAlign:'center',
-        marginTop:20
+        marginTop:40
     
     
 

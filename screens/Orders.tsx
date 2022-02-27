@@ -18,10 +18,10 @@ const Orders = ({ navigation }) => {
         <View style={styles.flex}>
             <View style={styles.card}>
                 <View style={{flexDirection:'row'}}>
-                <Text style={{fontSize:24, paddingLeft:10,paddingBottom:10}} >{item.fullname}</Text>
+                <Text style={{width:250,fontSize:24, paddingLeft:10,paddingBottom:10}} >{item.fullname}</Text>
                 <TouchableOpacity>
                     <Image source={icons.done}
-                    style={{ marginTop:10,marginLeft:200,width: 20,height: 20}}/>
+                    style={{ marginTop:10,marginLeft:40,width: 20,height: 20}}/>
                 </TouchableOpacity>
                 </View>
                 <View style={{ paddingLeft:10, flexDirection:'row'}}>
@@ -49,7 +49,7 @@ const Orders = ({ navigation }) => {
 
 
     return (
-        <View style={{ padding: SIZES.padding * 2 }}>
+        <View style={{ height:600,padding: SIZES.padding * 2 }}>
     
           <FlatList
             data={orders}

@@ -14,14 +14,17 @@ import { API } from "../Config/var";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const Khalti = ({ route,navigation }) => {
-  // let {  orderItems } = route?.params;
+  let {  orderItems } = route?.params;
  const [user_id,setUserId] = useState();
+ const [cart_data,setcartdata] = useState([]);
   const getData = async () => {
   try {
     const value = await AsyncStorage.getItem('user_id')
+    const cart = await AsyncStorage.getItem('order_item')
     if(value !== null) {
       // value previously stored
       setUserId(value)
+      setcartdata(cart)
       console.log(value)
     }
   } catch(e) {
@@ -32,15 +35,20 @@ const Khalti = ({ route,navigation }) => {
 }
 useEffect(()=>{
   getData();
-  console.log("kahlti:::",user_id);},[])
+  console.log("kahlti:::",orderItems);},[])
   useEffect(()=>{
     
-    console.log("kahlti:::",user_id);},[user_id])
+    console.log("kahlti:::",orderItems);},[orderItems])
   const addOrderHandler = () => {
-    PostRequest(`${API}/addOrder`, {user_id:user_id, quantity:123, product_id:12}).then((res)=>{
-      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
-      alert(res.data.message);
-    }).catch(()=>alert('Error user already exists'));
+    orderItems.map((item)=>{
+      PostRequest(`${API}/addOrder`, {user_id:user_id, quantity:item.qty, product_id:item.id}).then((res)=>{
+        console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+        alert(res.data.message);
+      }).catch(()=>alert('Error user already exists'));
+    }
+
+    )
+    
   }
 
   return (
@@ -49,7 +57,7 @@ useEffect(()=>{
 <Text style={styles.title}>Khalti </Text>
 </View>
 <Text>Pay for your order through khalti</Text>
-{/* {orderItems?.map((item)=>{
+{orderItems?.map((item)=>{
       return(
         <>
         <View style={styles.box}>
@@ -63,13 +71,13 @@ useEffect(()=>{
         </View>
         <View style={{marginRight:20,alignContent:'center', justifyContent:'center',alignItems:'center'}}>
         <Text style={styles.qty}>Qty</Text>
-        <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >{item?.quantity}</Text>
+        <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >{item?.qty}</Text>
         </View>
-        <View><Text style={styles.price}>Rs.500</Text></View>
+        <View><Text style={styles.price}>Rs.{item?.price}</Text></View>
         </View>
         </>
         )
-    })} */}
+    })}
     <View style={{ padding: SIZES.padding * 2 }}>       
      
     <Text style={{fontSize:18, color:'purple'}}>Khalti</Text>

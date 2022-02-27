@@ -21,6 +21,8 @@ import { API } from "../Config/var";
 import { saveDataToStorage } from "../constants/Tools";
 import { GetRequest, PostRequest } from "../Config/axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Center } from "native-base";
+import { NativeBaseProvider } from "native-base";
 
 
 const Login = ({ navigation }) => {
@@ -72,18 +74,21 @@ const Login = ({ navigation }) => {
   },[logedin])
   
   return (
-    <>
+    <NativeBaseProvider>
     <Header title={'Sign In'} />
     <View style={{ padding: SIZES.padding * 2 }}>       
      {pass=='sabin'?<Text>Password</Text> :  <></>}
-    <Text style={{fontSize:18, color:COLORS.primary}}>WELCOME</Text>
+    <Center style={{display:'flex',flexDirection:'column',}}>
+    <Headline1 style={{ color:COLORS.primary,marginBottom:5,}}>WELCOME</Headline1>
     <Text>Please your credintial for login</Text>
-    
-     <Picker style={styles.picker} selectedValue={pickerValue}
+    <Picker style={styles.picker} selectedValue={pickerValue}
      onValueChange={(itemValue) => setPickerValue(itemValue)}>
        <Picker.Item label="Admin" value="Admin"/>
        <Picker.Item label="Customer" value="Customer"/>
      </Picker>
+     </Center>
+    
+
     <TextInput onChangeText={setUser} style={styles.box} placeholder={'User Name'}/>
     <TextInput secureTextEntry={true} onChangeText={setPass} style={styles.box} placeholder={'Password'} />
     <TouchableOpacity onPress={loginHandler} style={{paddingTop:50,paddingHorizontal:50}}>
@@ -91,18 +96,23 @@ const Login = ({ navigation }) => {
 <Text style={{color:'white', fontSize:18, textAlign:'center'}} >Login</Text>
 </View>
       </TouchableOpacity>
-<TouchableOpacity onPress={()=>goToTabs('resetpassword')} style={{paddingTop:20,alignItems:'flex-end'}}>
+<TouchableOpacity onPress={()=>goToTabs('forgotpassword')} style={{paddingTop:20,alignItems:'flex-end'}}>
   <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Forgot Password?</Text>
   </TouchableOpacity>
+  <Center style={{display:'flex',flexDirection:'column',}}>
+  <View>
+  
+     </View>
   {pickerValue=='Admin'?  <></> :  <View style={{paddingTop:30, flexDirection:'row', alignContent:'center', justifyContent:'center'}}>
         <Text style={{fontSize:16}}>don't have Account? </Text>
         <TouchableOpacity onPress={()=>navigate('signup')}>
           <Text style={{color:COLORS.primary, fontWeight:'bold', fontSize:16}}>Sign Up</Text>
           </TouchableOpacity>
+          
     </View>}
-     
+    </Center>
     </View>
-    </>
+    </NativeBaseProvider>
     )
   }
 
@@ -117,6 +127,8 @@ const Login = ({ navigation }) => {
       backgroundColor:COLORS.secondary,
       color:COLORS.black,
       textAlign:'center',
+      marginTop:20,
+      marginBottom:100,
     
            
     },

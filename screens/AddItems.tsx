@@ -15,8 +15,9 @@ import { navigate } from "../navigation/RootNav";
 import { Checkbox, Provider } from "react-native-paper";
 import { API } from "../Config/var";
 import { PostRequest,GetRequest } from "../Config/axios";
-import { Select } from "native-base";
+import { Button, Icon, NativeBaseProvider, Select } from "native-base";
 import { Picker } from "../constants/theme";
+import { _pickImage } from "../constants/Tools";
 
 
 const AddItem = ({ navigation }) => {
@@ -47,7 +48,20 @@ const AddItem = ({ navigation }) => {
   const [thursday, setThursday] = React.useState(false);
   const [friday, setFriday] = React.useState(false);
   const [saturday, setSaturday] = React.useState(false);
-
+  const chooseImage = async () => {
+    const result = await _pickImage('library');
+    
+    if (!result.cancelled) {
+      setImage(result);
+    }
+  };
+  const chooseCamera = async () => {
+    const result = await _pickImage();
+    
+    if (!result.cancelled) {
+      setImage(result);
+    }
+  };
   useEffect(()=>{
     GetRequest(`${API}/get/categoryData`,).then(res=>{
       setCategoryPiker(res.data.content.data);
@@ -102,7 +116,7 @@ const AddItem = ({ navigation }) => {
   ];
   
   return (
-        <Provider>
+        <NativeBaseProvider>
        <Header title={'Add Items'}/>
        <ScrollView showsVerticalScrollIndicator={false}>
          <View style={{ padding: SIZES.padding }}>
@@ -114,6 +128,12 @@ const AddItem = ({ navigation }) => {
         style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
         />
          </TouchableOpacity>
+         <Button onPress={chooseImage}>
+    <Icon name='image' />
+    </Button>
+    <Button onPress={chooseCamera}>
+    <Icon name='camera' />
+    </Button>
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
@@ -243,7 +263,7 @@ const AddItem = ({ navigation }) => {
       
     </View>
     </ScrollView>
-    </Provider>
+    </NativeBaseProvider>
     )
   }
 

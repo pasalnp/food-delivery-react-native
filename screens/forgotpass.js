@@ -17,32 +17,14 @@ import { navigate } from "../navigation/RootNav";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { PostRequest } from "../Config/axios";
 
-const ResetPassword= ({ navigation }) => {
-const [id, setId]=useState('');
+const ForgotPassword= ({ navigation }) => {
 const [pass, setPass]=useState('');
-useEffect(()=>{
-  getData();
-  console.log("kahlti:::",id);},[])
-const getData = async () => {
-  try {
-    const value = await AsyncStorage.getItem('user_id')
-    if(value !== null) {
-      // value previously stored
-      setId(value)
-      console.log(value)
-    }
-  } catch(e) {
-    console.log(e);
-    
-    // error reading value
-  }
-}
   const passHandler = ()=>{
-    PostRequest(`${API}/passreset`, {id:id,password:pass}).then((res)=>{
-      alert('Changed password');
+    PostRequest(`${API}/passforget`, {email:pass}).then((res)=>{
+      alert('Mail has sent');
       
     }).catch((err)=>{
-      alert('Invalid username or password');
+      alert('Invalid email');
     })
 
   }
@@ -51,10 +33,9 @@ const getData = async () => {
     <Header title={'Reset Password'} />
     <View style={{ padding: SIZES.padding * 2 }}>       
      
-    <Text style={{fontSize:32, color:COLORS.primary}}>Change Password</Text>
-    <Text>Enter your New Password</Text>
-    <TextInput style={styles.box} placeholder={'New password'}/>
-    <TextInput onChangeText={setPass} style={styles.box} placeholder={'Confirm New Password'}/>
+    <Text style={{fontSize:32, color:COLORS.primary}}>Forgot Password</Text>
+    <Text>Enter your email</Text>
+    <TextInput onChangeText={setPass} style={styles.box} placeholder={'Enter you email'}/>
     <TouchableOpacity onPress={()=>navigate('login')}style={{paddingTop:10,alignItems:'flex-end'}}>
         <Text style={{color:COLORS.primary,fontWeight:'bold', fontSize:16}}>Cancel</Text>
         </TouchableOpacity>
@@ -79,5 +60,5 @@ const getData = async () => {
     }
   })
   
-  export default ResetPassword;
+  export default ForgotPassword;
   

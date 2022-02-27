@@ -95,6 +95,7 @@ function renderMainCategories() {
 function renderProducts() {
   const renderItem = ({ item }) => {
     return (
+      <ScrollView>
       <View
                style={{
                    paddingTop:10,
@@ -155,7 +156,7 @@ function renderProducts() {
                     
                    }}
                  >
-                   <TouchableOpacity >
+                   <TouchableOpacity onPress={()=>navigate('additems')}>
                    <Image
                          source={icons.edit}
                          style={{
@@ -190,11 +191,12 @@ function renderProducts() {
                      </View>
                      </View>
                </View>
+               </ScrollView>
       
 
     )}
     return (
-      <View style={{ padding: SIZES.padding * 2 }}>
+      <View style={{ height:400,padding: SIZES.padding  }}>
   
         <FlatList
           data={products}

@@ -62,7 +62,7 @@ const Add = ({ navigation  }) => {
       SetErrorName(false);
     }
 
-    !errorName && PutRequest(`${API}/addcategoryData`, formData).then((res)=>{
+    !errorName && PostRequest(`${API}/addcategoryData`, {name:name,icon:'/assets/icons/breakfast.png'}).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
       navigate('tab2');
