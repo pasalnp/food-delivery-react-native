@@ -5,36 +5,45 @@ import {COLORS,icons,images, SIZES} from '../constants';
 import { navigate } from "../navigation/RootNav";
 import Header from "./Components/Header";
 import ImageContainer from "./Components/ImageContainer";
-import { GetRequest } from "../Config/axios";
+import { GetRequest, PostRequest } from "../Config/axios";
 import { API, CDN } from "../Config/var";
 import { FlatList, NativeBaseProvider } from "native-base";
 
 
 const Orders = ({ navigation }) => {
+
+    const passHandler = ()=>{
+        PostRequest(`${API}/editOrder`, {id:id,state:'pending'}).then((res)=>{
+          alert('Order completed');})}
+
     function renderOrders(){
         const renderItem= ({ item }) => {
     return (
-        <View style={{padding:SIZES.padding}}>
+        <View style={{padding:10}}>
         <View style={styles.flex}>
             <View style={styles.card}>
                 <View style={{flexDirection:'row'}}>
                 <Text style={{width:250,fontSize:24, paddingLeft:10,paddingBottom:10}} >{item.fullname}</Text>
                 <TouchableOpacity>
+                    <Image  source={icons.done}
+                    style={{tintColor:'red', marginTop:10,marginLeft:10,width: 20,height: 20}}/>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={passHandler}>
                     <Image source={icons.done}
-                    style={{ marginTop:10,marginLeft:40,width: 20,height: 20}}/>
+                    style={{ marginTop:10,marginLeft:20,width: 20,height: 20}}/>
                 </TouchableOpacity>
                 </View>
                 <View style={{ paddingLeft:10, flexDirection:'row'}}>
                     <Image 
-                    source={images.sushi}
+                    source={{uri: `${CDN}/${item.image}`}}
                     style={{ width: 100,height: 100,borderColor:COLORS.darkgray, borderWidth:2, borderRadius:6}}/>
                     
-                    <View style={{ paddingLeft:10, }}>
-                        <Text style={{fontSize:24}}>{item.name}</Text>
-                        <Text style={{paddingTop:30,fontSize:18}}>{item.quantity}</Text>
+                    <View style={{ paddingLeft:10 }}>
+                        <Text style={{fontSize:24,width:100}}>{item.name}</Text>
+                        <Text style={{paddingTop:30,width:100,fontSize:18}}>{item.quantity}</Text>
                     </View>
-                    <View style={{ paddingLeft:70, paddingTop:30 }}>
-                    <Text style={{fontSize:24, fontWeight:'bold'}}>Rs. {item.price}</Text>
+                    <View style={{ paddingLeft:10, paddingTop:30 }}>
+                    <Text style={{fontSize:24, fontWeight:'bold'}}>Rs. {item.price * item.quantity}</Text>
                     </View>
                     </View>
                    
