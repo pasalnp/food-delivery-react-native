@@ -36,6 +36,8 @@ export const done = require("../assets/icons/done.png");
 export const edit = require("../assets/icons/edit.png");
 export const tea = require("../assets/icons/tea.png");
 export const samosa = require("../assets/icons/samosa.png");
+export const camera = require("../assets/icons/camera.png");
+export const gallery = require("../assets/icons/gallery.png");
 
 
 
@@ -43,7 +45,8 @@ export const samosa = require("../assets/icons/samosa.png");
 
 export default {
     back,
-    tea,
+    tea,gallery,
+    camera,
     samosa,
     menu,
     edit,

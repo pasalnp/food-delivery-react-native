@@ -8,7 +8,7 @@ import {
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import {COLORS, images, SIZES } from '../constants';
 import Header from "./Components/Header";
-import { Button, Center, FormControl, Icon, NativeBaseProvider, WarningOutlineIcon } from "native-base";
+import { Button, Center, FormControl, Icon, KeyboardAvoidingView, NativeBaseProvider, WarningOutlineIcon } from "native-base";
 import { navigate } from "../navigation/RootNav";
 import { API } from "../Config/var";
 import { PostRequest, PutRequest } from "../Config/axios";
@@ -73,6 +73,7 @@ const Add = ({ navigation  }) => {
        
      <>
        <Header title={'Add categories'}/>
+       <KeyboardAvoidingView>
        <View style={{ padding: SIZES.padding,navigation }}>
          {/* <View style={styles.picker}>
        <Picker style={styles.picker} selectedValue={pickerValue}
@@ -128,6 +129,7 @@ const Add = ({ navigation  }) => {
       </View>
       
     </View>
+    </KeyboardAvoidingView>
     </>
   )
     

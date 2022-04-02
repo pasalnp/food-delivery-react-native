@@ -107,7 +107,7 @@ function renderProducts() {
                    >
                      <Headline4>Available on {item.Avilday}</Headline4>
                <Image
-                         source={{uri: `${CDN}/${item.image}`}}
+                         source={{uri: `${CDN}/${item.images}` }}
                          resizeMode='cover'
                          style={styles.image}
                        />

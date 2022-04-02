@@ -213,6 +213,27 @@ const Restaurant = ({ route, navigation }) => {
             <Text style={{fontSize:10}}>Will be Ready In</Text>
             <Headline4>{item.duration}</Headline4>
             </View>
+           
+            <View
+            style={{
+              position: 'absolute',
+              bottom: 5,
+              right:0,
+              height: 50,
+              width: SIZES.width * 0.2,
+              backgroundColor: COLORS.white,
+              borderRadius: SIZES.radius,
+              borderColor:'blue',
+              borderWidth:2,
+              // borderTopLeftRadius: SIZES.radius,
+              alignItems: 'center',
+              justifyContent: 'center',
+              
+            }}
+          >
+            <Text style={{fontSize:10}}>Available on</Text>
+            <Headline4>{ item.Avilday}</Headline4>
+            </View>
 
                 {/* Quantity */}
                 <View
@@ -252,7 +273,7 @@ const Restaurant = ({ route, navigation }) => {
                       justifyContent: 'center'
                     }}
                   >
-                    <Headline2>{getOrderQty(item.menuId)}</Headline2>
+                    {/* <Headline2>{getOrderQty(item.menuId)}</Headline2> */}
                   </View>
 
                   <TouchableOpacity
@@ -272,7 +293,7 @@ const Restaurant = ({ route, navigation }) => {
                   </TouchableOpacity>
                 </View>
               </View>
-                <TouchableOpacity onPress={()=>storeData(item)}><Text>Select</Text></TouchableOpacity>
+                {/* <TouchableOpacity onPress={()=>storeData(item)}><Text>Select</Text></TouchableOpacity> */}
 
               {/* Name & Description */}
               <View

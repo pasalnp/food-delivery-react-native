@@ -524,7 +524,7 @@ useEffect(()=>{
           }}
         >
           <Image
-            source={{uri: `${CDN}/assets/day/${item.Avilday}.png?123=13`}}
+            source={{uri: `${CDN}/${item.image}`}}
             resizeMode="cover"
             style={{
               margin:10,
@@ -556,7 +556,14 @@ useEffect(()=>{
         <Headline3 style={{
            paddingLeft:30
           }}>
-            Available on {item.Avilday}</Headline3>
+          {item.name}</Headline3>
+          <View style={{
+           paddingLeft:30
+          }}>
+         <Text>
+         Rs.{item.price}
+           </Text> 
+          </View>
 
         <View
           style={{

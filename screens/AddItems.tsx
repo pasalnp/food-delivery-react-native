@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
 import DropDown from 'react-native-paper-dropdown';
-import {COLORS, images, SIZES } from '../constants';
+import {COLORS, icons, images, SIZES } from '../constants';
 import Header from "./Components/Header";
 
 import { navigate } from "../navigation/RootNav";
@@ -122,17 +122,31 @@ const AddItem = ({ navigation }) => {
          <View style={{ padding: SIZES.padding }}>
          
     <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
-        <TouchableOpacity>
+         <TouchableOpacity>
         <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
         resizeMode='cover'
         style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
         />
-         </TouchableOpacity>
+         </TouchableOpacity> 
          <Button onPress={chooseImage}>
-    <Icon name='image' />
+         <Image
+            source={icons.gallery}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30
+            }}
+          />
     </Button>
-    <Button onPress={chooseCamera}>
-    <Icon name='camera' />
+    <Button style={{marginTop:5}} onPress={chooseCamera}>
+    <Image
+            source={icons.camera}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30
+            }}
+          />
     </Button>
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 

@@ -63,8 +63,8 @@ useEffect(()=>{
         <View style={styles.box}>
           <View style={styles.info}>
             <Text  style={styles.name}>{item?.name}</Text>
-            <Text  style={styles.discription}>{item?.description}</Text>
-            <Text  style={styles.discription}>Rs. {item?.price}</Text>
+            {/* <Text  style={styles.discription}>{item?.description}</Text> */}
+            <Text  style={styles.rate}>Rs. {item?.price}</Text>
             
             
           
@@ -73,7 +73,7 @@ useEffect(()=>{
         <Text style={styles.qty}>Qty</Text>
         <Text style={{fontSize:24,alignContent:'center',alignItems:'center',color:'red',justifyContent:'center'}} >{item?.qty}</Text>
         </View>
-        <View><Text style={styles.price}>Rs.{item?.price}</Text></View>
+        <View><Text style={styles.price}>Rs.{item?.qty * item?.price}</Text></View>
         </View>
         </>
         )
@@ -167,7 +167,7 @@ useEffect(()=>{
       alignItems:'center',
       color: 'green',
       marginRight:10,
-      paddingTop:30
+      paddingTop:10
     },
     qty: {
       fontSize:16,
@@ -178,6 +178,11 @@ useEffect(()=>{
     },
     discription:{
       fontSize:12,
+      marginTop:5,
+      color: '#333'
+    },
+    rate:{
+      fontSize:16,
       marginTop:5,
       color: '#333'
     },

@@ -28,12 +28,35 @@ const sarawak_laksa = require("../assets/images/sarawak-laksa.jpg");
 const sushi = require("../assets/images/sushi.jpg");
 const teh_c_peng = require("../assets/images/teh-c-peng.jpg");
 const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
+const biryani = require("../assets/images/biryani.jpg");
+const blacktea = require("../assets/images/blacktea.jpg");
+const eggnoodle = require("../assets/images/eggnoodle.jpg");
+const fruitsalad = require("../assets/images/fruitsalad.jpg");
+const fryrice = require("../assets/images/fryrice.jpg");
+const milktea = require("../assets/images/milktea.jpg");
+const momo = require("../assets/images/momo.jpg");
+const pulau = require("../assets/images/pulau.jpg");
+const vegnoodle = require("../assets/images/vegnoodle.jpg");
+const vegsalad = require("../assets/images/vegsalad.jpg");
+// const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
+// const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
+// const tomato_pasta = require("../assets/images/tomato-pasta.jpg");
 
 
 
 export default {
     avatar_1,
     avatar_2,
+    biryani,
+    momo,
+    pulau,
+    eggnoodle,
+    vegsalad,
+    vegnoodle,
+    fruitsalad,
+    blacktea,
+    milktea,
+    fryrice,
     avatar_3,
     avatar_4,
     avatar_5,
