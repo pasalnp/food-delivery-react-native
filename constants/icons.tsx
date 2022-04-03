@@ -7,7 +7,6 @@ export const drink = require("../assets/icons/drink.png");
 export const fire = require("../assets/icons/fire.png");
 export const fries = require("../assets/icons/fries.png");
 export const hamburger = require("../assets/icons/hamburger.png");
-export const hotdog = require("../assets/icons/hotdog.png");
 export const like = require("../assets/icons/like.png");
 export const list = require("../assets/icons/list.png");
 export const location = require("../assets/icons/location.png");
@@ -59,7 +58,6 @@ export default {
     fire,
     fries,
     hamburger,
-    hotdog,
     like,
     list,
     location,
