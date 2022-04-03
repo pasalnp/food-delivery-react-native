@@ -13,7 +13,7 @@ import { FlatList, NativeBaseProvider } from "native-base";
 const Orders = ({ navigation }) => {
 
     const passHandler = ()=>{
-        PostRequest(`${API}/editOrder`, {id:id,state:'pending'}).then((res)=>{
+        PostRequest(`${API}/editOrder`, {id:123,state:'pending'}).then((res)=>{
           alert('Order completed');})}
 
     function renderOrders(){
