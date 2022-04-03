@@ -11,10 +11,11 @@ import { FlatList, NativeBaseProvider } from "native-base";
 
 
 const Orders = ({ navigation }) => {
-
-    const passHandler = (id)=>{
-        PostRequest(`${API}/editOrder`, {id:id,state:'Done'}).then((res)=>{
-          alert(`Order Complete For ${id}`);})}
+ const [refresh, setRefresh] = useState(0);
+    const cartEditHandler = (id,state)=>{
+    console.log("🚀 ~ file: Orders.tsx ~ line 16 ~ cartEditHandler ~ id", id)
+        PostRequest(`${API}/editOrder`, {id:id.cart_id,state:state}).then((res)=>{ setRefresh(id.cart_id)
+          alert(`Action Complete For ${id.cart_id}`);})}
 
     function renderOrders(){
         const renderItem= ({ item }) => {
@@ -24,15 +25,12 @@ const Orders = ({ navigation }) => {
             <View style={styles.card}>
                 <View style={{flexDirection:'row'}}>
                 <Text style={{width:250,fontSize:24, paddingLeft:10,paddingBottom:10}} >{item.fullname}</Text>
-                <TouchableOpacity onPress={()=>passHandler(item.id)}>
-                    <Image  source={icons.done}
-                    style={{tintColor:'red', marginTop:10,marginLeft:10,width: 20,height: 20}}/>
-                    <Text style={{fontSize:24,width:100}}>{item.state}</Text>
+                <TouchableOpacity onPress={(data)=>cartEditHandler(item,'Done')}>
+                    <Image  source={item.state=='Pending' ? icons.pending :icons.completed }
+                    style={{ marginTop:10,marginLeft:30,width: 30,height: 20}}/>
+                    <Text style={{fontSize:18,width:100}}>{item.state}</Text>
                 </TouchableOpacity>
-                {/* <TouchableOpacity onPress={passHandler}>
-                    <Image source={icons.done}
-                    style={{ marginTop:10,marginLeft:20,width: 20,height: 20}}/>
-                </TouchableOpacity> */}
+                
 
                 </View>
                 <View style={{ paddingLeft:10, flexDirection:'row'}}>
@@ -46,9 +44,16 @@ const Orders = ({ navigation }) => {
                     </View>
                     <View style={{ paddingLeft:10, paddingTop:30 }}>
                     <Text style={{fontSize:24, fontWeight:'bold'}}>Rs. {item.price * item.quantity}</Text>
+                    <TouchableOpacity onPress={(data)=>cartEditHandler(item,'Cancelled')}>
+                    <Image source={icons.cancel }
+                    style={{ marginTop:10,marginLeft:50,width: 20,height: 20}}/>
+                    <Text style={{marginLeft:40}}>Cancel</Text>
+                    </TouchableOpacity>
                     </View>
+               
                     </View>
-                   
+                    
+                
             </View>
            
            
@@ -80,7 +85,7 @@ const Orders = ({ navigation }) => {
             console.log(res.data);
       })
       } 
-      ,[])
+      ,[refresh])
 
 
 
@@ -101,6 +106,7 @@ const Orders = ({ navigation }) => {
 const styles = StyleSheet.create({
     flex: {
         flex: 1,
+        flexDirection:'column',
         backgroundColor: '#fff'
     },
     header:{
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
         height:20
     },
     card: {
-        height:150,
+        // height:150,
         backgroundColor: COLORS.white,
         borderWidth:2,
         borderRadius: 5,

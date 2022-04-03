@@ -22,18 +22,13 @@ import { _pickImage } from "../constants/Tools";
 
 const AddItem = ({ navigation }) => {
   const [image, setImage] = React.useState(false);
+  const [imageUrl, setImageUrl] = React.useState(false);
   const [name, setName] = React.useState(false);
   const [calories, setCalories] = React.useState(false);
   const [price, setprice] = React.useState(false);
   const [avilday, setAvilday] = React.useState(false);
   const [description, setdescription] = React.useState(false);
 
-  const addItemHandler = () => {
-    PostRequest(`${API}/addItem`, {category, image, name,calories,price,Avilday:avilday,description}).then((res)=>{
-      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
-      alert(res.data.message);
-    }).catch(()=>alert('Error user already exists'));
-  }
   const [category, setCategory] = useState<string>('');
   const [categorypiker, setCategoryPiker] = useState([]);
   const [showMultiSelectDropDown, setShowMultiSelectDropDown] = useState(false);
@@ -48,6 +43,38 @@ const AddItem = ({ navigation }) => {
   const [thursday, setThursday] = React.useState(false);
   const [friday, setFriday] = React.useState(false);
   const [saturday, setSaturday] = React.useState(false);
+  const addItemHandler = () => {
+    let formData = new FormData();
+    if (image.uri) {
+      let localUri = image.uri;
+      let filename = localUri.split('/').pop();
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+      
+      formData.append('imageUrl', {
+        uri: localUri,
+        name: filename,
+        type,
+        originalname: filename,
+      });
+      
+      formData.append('filename', filename);
+    } else {
+      formData.append('image', image);
+    }
+    
+    formData.append('category', category);
+    formData.append('name', name);
+    formData.append('calories', calories);
+    formData.append('price', price);
+    formData.append('Avilday', avilday);
+    formData.append('description', description);
+    PostRequest(`${API}/addItem`, formData).then((res)=>{
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+      alert(res.data.message);
+    }).catch(()=>alert('Error user already exists'));
+  }
   const chooseImage = async () => {
     const result = await _pickImage('library');
     
@@ -62,6 +89,23 @@ const AddItem = ({ navigation }) => {
       setImage(result);
     }
   };
+  useEffect(()=>{
+    if (image.uri) {
+      let localUri = image.uri;
+      let filename = localUri.split('/').pop();
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+      setImageUrl({
+        uri: localUri,
+        name: filename,
+        type,
+        originalname: filename,
+      });
+    } else {
+      setImageUrl('defualt.jpg');
+    }
+  },[image])
   useEffect(()=>{
     GetRequest(`${API}/get/categoryData`,).then(res=>{
       setCategoryPiker(res.data.content.data);

@@ -21,7 +21,11 @@ export default class Reports extends Component {
       data: [
         {id:1, title: "Sales", name:"Sales"},
         {id:2, title: "Orders",  name:"Orders"},
-        
+      ],
+      reports:[
+        {id:1, title: "Pending Sales", value:"RS.4300"},
+        {id:1, title: "Total ", value:"RS.9600"},
+        {id:2, title: "Cancled Orders",  value:"5300"},
       ]
     };
   }
@@ -58,8 +62,29 @@ export default class Reports extends Component {
               
             )
           }}/>
-          
-      <Headline2>Reports</Headline2>
+           <FlatList style={styles.list}
+          contentContainerStyle={styles.listContainer}
+          data={this.state.reports}
+          horizontal={false}
+          numColumns={2}
+          keyExtractor= {(item) => {
+            return item.id;
+          }}
+          renderItem={({item}) => {
+            return (
+              <TouchableOpacity style={styles.card} onPress={()=>navigate(item.title)}>
+                <View style={styles.cardFooter}></View>
+                <Text style={styles.title} >{item.title}</Text>
+                <View style={styles.cardHeader}>
+                  <View style={{alignItems:"center", justifyContent:"center"}}>
+                    <Text style={styles.name}>{item.value}</Text>
+                  </View>
+                </View>
+              </TouchableOpacity>
+              
+            )
+          }}/>
+      {/* <Headline2>Reports</Headline2> */}
       </View>
       
       </>
@@ -73,7 +98,7 @@ const styles = StyleSheet.create({
     
   },
   list: {
-    paddingHorizontal: 5,
+    paddingHorizontal: 0,
     backgroundColor:"#E6E6E6",
   },
 
@@ -86,12 +111,12 @@ const styles = StyleSheet.create({
 
     shadowOffset: {
       width: 0,
-      height: 6,
+      height: 0,
     },
     shadowOpacity: 0.37,
     shadowRadius: 7.49,
 
-    elevation: 12,
+    elevation: 0,
     marginVertical: 5,
     backgroundColor:"white",
     flexBasis: '42%',

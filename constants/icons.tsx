@@ -37,6 +37,9 @@ export const tea = require("../assets/icons/tea.png");
 export const samosa = require("../assets/icons/samosa.png");
 export const camera = require("../assets/icons/camera.png");
 export const gallery = require("../assets/icons/gallery.png");
+export const cancel = require("../assets/icons/cancel.png");
+export const completed = require("../assets/icons/completed.png");
+export const pending = require("../assets/icons/pending.png");
 
 
 
@@ -44,6 +47,9 @@ export const gallery = require("../assets/icons/gallery.png");
 
 export default {
     back,
+    cancel,
+    pending,
+    completed,
     tea,gallery,
     camera,
     samosa,

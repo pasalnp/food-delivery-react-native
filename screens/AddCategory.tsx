@@ -26,28 +26,7 @@ const Add = ({ navigation  }) => {
       setImage(result);
     }
   };
-  let formData = new FormData();
-  // ImagePicker saves the taken photo to disk and returns a local URI to it
-  if (image.uri) {
-    let localUri = image.uri;
-    let filename = localUri.split('/').pop();
-    // Infer the type of the image
-    let match = /\.(\w+)$/.exec(filename);
-    let type = match ? `image/${match[1]}` : `image`;
-    
-    formData.append('imageUrl', {
-      uri: localUri,
-      name: filename,
-      type,
-      originalname: filename,
-    });
-    
-    formData.append('icon', filename);
-  } else {
-    formData.append('image', image);
-  }
-  
-  formData.append('name', name);
+ 
   const chooseCamera = async () => {
     const result = await _pickImage();
     
@@ -56,13 +35,36 @@ const Add = ({ navigation  }) => {
     }
   };
   const addCatHandler = () => {
+
+    let formData = new FormData();
+    // ImagePicker saves the taken photo to disk and returns a local URI to it
+    if (image.uri) {
+      let localUri = image.uri;
+      let filename = localUri.split('/').pop();
+      // Infer the type of the image
+      let match = /\.(\w+)$/.exec(filename);
+      let type = match ? `image/${match[1]}` : `image`;
+      
+      formData.append('imageUrl', {
+        uri: localUri,
+        name: filename,
+        type,
+        originalname: filename,
+      });
+      
+      formData.append('icon', filename);
+    } else {
+      formData.append('image', image);
+    }
+    
+    formData.append('name', name);
     if(name.length==0){
       SetErrorName(true);
     }else{
       SetErrorName(false);
     }
 
-    !errorName && PostRequest(`${API}/addcategoryData`, {name:name,icon:'/assets/icons/breakfast.png'}).then((res)=>{
+    !errorName && PostRequest(`${API}/addcategoryData`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
       navigate('tab2');
