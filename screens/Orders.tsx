@@ -12,9 +12,9 @@ import { FlatList, NativeBaseProvider } from "native-base";
 
 const Orders = ({ navigation }) => {
 
-    const passHandler = ()=>{
-        PostRequest(`${API}/editOrder`, {id:123,state:'pending'}).then((res)=>{
-          alert('Order completed');})}
+    const passHandler = (id)=>{
+        PostRequest(`${API}/editOrder`, {id:id,state:'Done'}).then((res)=>{
+          alert(`Order Complete For ${id}`);})}
 
     function renderOrders(){
         const renderItem= ({ item }) => {
@@ -24,14 +24,16 @@ const Orders = ({ navigation }) => {
             <View style={styles.card}>
                 <View style={{flexDirection:'row'}}>
                 <Text style={{width:250,fontSize:24, paddingLeft:10,paddingBottom:10}} >{item.fullname}</Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={()=>passHandler(item.id)}>
                     <Image  source={icons.done}
                     style={{tintColor:'red', marginTop:10,marginLeft:10,width: 20,height: 20}}/>
+                    <Text style={{fontSize:24,width:100}}>{item.state}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={passHandler}>
+                {/* <TouchableOpacity onPress={passHandler}>
                     <Image source={icons.done}
                     style={{ marginTop:10,marginLeft:20,width: 20,height: 20}}/>
-                </TouchableOpacity>
+                </TouchableOpacity> */}
+
                 </View>
                 <View style={{ paddingLeft:10, flexDirection:'row'}}>
                     <Image 
