@@ -73,6 +73,7 @@ const AddItem = ({ navigation }) => {
     PostRequest(`${API}/addItem`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
+      navigate('Products')
     }).catch(()=>alert('Error user already exists'));
   }
   const chooseImage = async () => {
