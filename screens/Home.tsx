@@ -419,7 +419,7 @@ useEffect(()=>{
           }}
         >
           <Image
-            source={icons.basket}
+            source={icons.like}
             resizeMode="contain"
             style={{
               width: 30,

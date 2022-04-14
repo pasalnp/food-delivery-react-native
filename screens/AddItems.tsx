@@ -164,14 +164,7 @@ const AddItem = ({ navigation }) => {
        <Header title={'Add Items'}/>
        <ScrollView showsVerticalScrollIndicator={false}>
          <View style={{ padding: SIZES.padding }}>
-         
-    <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
-         <TouchableOpacity>
-        <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
-        resizeMode='cover'
-        style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
-        />
-         </TouchableOpacity> 
+         <View style={{flexDirection:'row',paddingTop:20, alignContent:'space-between',justifyContent:'center',alignSelf:'center'}}>
          <Button onPress={chooseImage}>
          <Image
             source={icons.gallery}
@@ -182,7 +175,7 @@ const AddItem = ({ navigation }) => {
             }}
           />
     </Button>
-    <Button style={{marginTop:5}} onPress={chooseCamera}>
+    <Button onPress={chooseCamera}>
     <Image
             source={icons.camera}
             resizeMode="contain"
@@ -192,6 +185,15 @@ const AddItem = ({ navigation }) => {
             }}
           />
     </Button>
+         </View>
+    <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+         <TouchableOpacity>
+        <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
+        resizeMode='cover'
+        style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
+        />
+         </TouchableOpacity> 
+         
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
