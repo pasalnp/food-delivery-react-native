@@ -131,7 +131,7 @@ const Restaurant = ({ route, navigation }) => {
             justifyContent: 'center'
           }}
         >
-          <View
+          {/* <View
             style={{
               height: 50,
               alignItems: 'center',
@@ -142,7 +142,7 @@ const Restaurant = ({ route, navigation }) => {
             }}
           >
             <Headline3>{restaurant?.Avilday}</Headline3>
-          </View>
+          </View> */}
         </View>
 
         <TouchableOpacity

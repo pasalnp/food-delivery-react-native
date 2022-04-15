@@ -105,7 +105,7 @@ function renderProducts() {
                    backgroundColor:COLORS.white, 
                    alignItems: 'center' }}
                    >
-                     <Headline4>Available on {item.Avilday}</Headline4>
+                     {/* <Headline4>Available on {item.Avilday}</Headline4> */}
                <Image
                          source={{uri: `${CDN}/${item.image}`  }}
                          resizeMode='cover'
@@ -114,7 +114,7 @@ function renderProducts() {
                        <View
                    style={{
                      position: 'absolute',
-                     bottom: 120,
+                     bottom: 140,
                      height: 40,
                      left:30,
                      width: SIZES.width * 0.2,

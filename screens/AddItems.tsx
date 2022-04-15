@@ -7,7 +7,7 @@ import {
   Image
 } from "react-native";
 import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import DropDown from 'react-native-paper-dropdown';
+
 import {COLORS, icons, images, SIZES } from '../constants';
 import Header from "./Components/Header";
 
@@ -18,6 +18,7 @@ import { PostRequest,GetRequest } from "../Config/axios";
 import { Button, Icon, NativeBaseProvider, Select } from "native-base";
 import { Picker } from "../constants/theme";
 import { _pickImage } from "../constants/Tools";
+import DropDown from "react-native-paper-dropdown";
 
 
 const AddItem = ({ navigation }) => {
@@ -225,7 +226,8 @@ const AddItem = ({ navigation }) => {
           </Picker>
           </View>
     <TextInput onChangeText={setprice} keyboardType='number-pad' style={styles.box} placeholder={'Price'}/>
-    <DropDown
+    <TextInput onChangeText={setTime } keyboardType='number-pad' style={styles.box} placeholder={'Estimated Ready Time'}/>
+     {/* <DropDown
               label={'Ready Time'}
               mode={'outlined'}
               visible={showDropDown}
@@ -234,12 +236,12 @@ const AddItem = ({ navigation }) => {
               value={time}
               setValue={setTime}
               list={TimeList}
-            />
+            /> */}
 <View style={styles.box2}>
   <Text style={{ padding: SIZES.padding, fontSize:20, color:COLORS.primary }}>Available on Days</Text>
   <Picker
             mode='dropdown'
-            style={{ flex: 1, color: '#445870' }}
+            style={{ flex: 1, color: '#445870', fontWeight:'bold' }}
             placeholder='Bill Type'
             placeholderStyle={{ color: '#BFC6EA' }}
             placeholderIconColor='#007AFF'
