@@ -3,12 +3,12 @@ import promise from 'promise';
 import { AsyncStorage } from 'react-native';
 var axiosInstance = axios.create();
 
-export const getDataFromStorage = async (name) => {
-    return await AsyncStorage.getItem(name);
-  };
+// export const getDataFromStorage = async (name) => {
+//     return await AsyncStorage.getItem(name);
+//   };
 axiosInstance.interceptors.request.use(
   async (config) => {
-    const accessToken = await getDataFromStorage('token');
+    const accessToken = "Token";
     if (accessToken) {
       config.headers.authorization = accessToken;
     }

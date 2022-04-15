@@ -11,19 +11,19 @@ import {
 import {COLORS, SIZES,icons, images, Headline1, Headline2 } from '../constants';
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
-import { GetRequest } from "../Config/axios";
 import { API, CDN } from "../Config/var";
-
+import { GetRequest } from '../Config/axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const MyOrders=()=>{
-  const [user_id,setUserId] = useState();
+  const [user_id,setUserId] = useState(4);
   const getData = async () => {
   try {
     const value = await AsyncStorage.getItem('user_id')
     if(value !== null) {
       // value previously stored
       setUserId(value)
-      console.log(value)
+      console.log("🚀 ~ file: MyOrder.js ~ line 26 ~ getData ~ value", value)
     }
   } catch(e) {
     console.log(e);
@@ -81,7 +81,7 @@ useEffect(()=>{
       const [total,setTotal]= useState(0);
       const [item,setItem]= useState(false);
       useEffect(()=>{
-      GetRequest(`${API}/get/cart_orders`,).then(res=>{
+      GetRequest(`${API}/get/cart_orders`).then(res=>{
       setProducts(res.data.content.data);
             console.log("data_____",res.data);
       })
@@ -89,9 +89,9 @@ useEffect(()=>{
       ,[])
         useEffect(()=>{
           let t=0;
-          let i = products?.filter(data=>data.ID==3)
+          let i = products?.filter(data=>data.ID==user_id)
           setItem(i);
-        products?.filter(data=>data.ID==3).map((val)=> t = parseInt(t) + parseInt(val.price));
+        products?.filter(data=>data.ID==user_id).map((val)=> t = parseInt(t) + parseInt(val.price));
         setTotal(t)
         }
         ,[products])

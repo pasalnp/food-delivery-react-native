@@ -53,22 +53,33 @@ const Add = ({ navigation  }) => {
       });
       
       formData.append('icon', filename);
+      formData.append('name', name);
+    console.log("🚀 ~ file: AddCategory.tsx ~ line 68 ~ !errorName&&PostRequest ~ formData", formData)
+    !errorName && PostRequest(`${API}/addcategoryData`, {name:name,icon:filename,imageUrl:[{
+      uri: localUri,
+      name: filename,
+      type,
+      originalname: filename,
+    }]}).then((res)=>{
+      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
+      alert(res.data.message);
+      navigate('tab2');
+    }).catch(()=>alert('Category already exists'));
+
+
     } else {
       formData.append('image', image);
+    formData.append('name', name);
+
     }
     
-    formData.append('name', name);
+
     if(name.length==0){
       SetErrorName(true);
     }else{
       SetErrorName(false);
     }
 
-    !errorName && PostRequest(`${API}/addcategoryData`, formData).then((res)=>{
-      console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
-      alert(res.data.message);
-      navigate('tab2');
-    }).catch(()=>alert('Category already exists'));
   }
 
   return (
