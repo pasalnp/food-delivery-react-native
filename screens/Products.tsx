@@ -105,16 +105,16 @@ function renderProducts() {
                    backgroundColor:COLORS.white, 
                    alignItems: 'center' }}
                    >
-                     <Headline4>Available on {item.Avilday}</Headline4>
+                     {/* <Headline4>Available on {item.Avilday}</Headline4> */}
                <Image
-                         source={{uri: `${CDN}/${item.images}` }}
+                         source={{uri: `${CDN}/${item.image}`  }}
                          resizeMode='cover'
                          style={styles.image}
                        />
                        <View
                    style={{
                      position: 'absolute',
-                     bottom: 120,
+                     bottom: 140,
                      height: 40,
                      left:30,
                      width: SIZES.width * 0.2,
@@ -128,8 +128,9 @@ function renderProducts() {
                     
                    }}
                  >
-                   <Text style={{fontSize:10}}>Will be Ready In</Text>
-                   <Headline4>{item.duration}</Headline4>
+                   <Text style={{fontSize:10}}>Ready Time</Text>
+                   <Text style={{fontSize:16,fontWeight:'Bold',paddingTop:5}}>{item.duration} Min.</Text>
+                   
                    </View>
                      <View  style={{paddingLeft:20}}>
                      <View

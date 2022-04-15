@@ -23,9 +23,9 @@ export default class Reports extends Component {
         {id:2, title: "Orders",  name:"Orders"},
       ],
       reports:[
-        {id:1, title: "Pending Sales", value:"RS.4300"},
-        {id:1, title: "Total ", value:"RS.9600"},
-        {id:2, title: "Cancled Orders",  value:"5300"},
+        {id:1, title: "Total ", value:"9600"},
+        {id:1, title: "Pending Orders", value:"4300"},
+        {id:2, title: "Cancelled Orders",  value:"5300"},
       ]
     };
   }
@@ -54,9 +54,7 @@ export default class Reports extends Component {
                 <View style={styles.cardFooter}></View>
                 <Text style={styles.title} >{item.name}</Text>
                 <View style={styles.cardHeader}>
-                  <View style={{alignItems:"center", justifyContent:"center"}}>
-                    <Text style={styles.name}>{item.title}</Text>
-                  </View>
+                 
                 </View>
               </TouchableOpacity>
               
@@ -72,15 +70,15 @@ export default class Reports extends Component {
           }}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity style={styles.card} onPress={()=>navigate(item.title)}>
-                <View style={styles.cardFooter}></View>
-                <Text style={styles.title} >{item.title}</Text>
+              <View style={styles.card} onPress={()=>navigate(item.title)}>
+                
+                <Text style={{fontSize:24,alignSelf:'center'}} >{item.title}</Text>
                 <View style={styles.cardHeader}>
                   <View style={{alignItems:"center", justifyContent:"center"}}>
-                    <Text style={styles.name}>{item.value}</Text>
+                    <Text style={styles.name}>Rs.{item.value}</Text>
                   </View>
                 </View>
-              </TouchableOpacity>
+              </View>
               
             )
           }}/>

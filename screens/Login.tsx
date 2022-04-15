@@ -51,10 +51,10 @@ const Login = ({ navigation }) => {
       alert('Invalid username or password');
     })
     }else{
-      if(pass=='#'){
+      if(pass=='admin'){
         // navigate('tabs');
-        pickerValue=='Customer' ?  goToTabs('tab2') :  goToTabs('tab2');
-        user=='sabin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
+        pickerValue=='Admin' ?  goToTabs('tab2') :  goToTabs('tab2');
+        user=='admin' ? setLoggedin('logged in') : setLoggedin('not logged in'); 
       
       }else{
         alert('Invalid username or password');

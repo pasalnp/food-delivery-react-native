@@ -7,7 +7,7 @@ import {
   Image
 } from "react-native";
 import { ScrollView, TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import DropDown from 'react-native-paper-dropdown';
+
 import {COLORS, icons, images, SIZES } from '../constants';
 import Header from "./Components/Header";
 
@@ -18,6 +18,7 @@ import { PostRequest,GetRequest } from "../Config/axios";
 import { Button, Icon, NativeBaseProvider, Select } from "native-base";
 import { Picker } from "../constants/theme";
 import { _pickImage } from "../constants/Tools";
+import DropDown from "react-native-paper-dropdown";
 
 
 const AddItem = ({ navigation }) => {
@@ -73,6 +74,7 @@ const AddItem = ({ navigation }) => {
     PostRequest(`${API}/addItem`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
+      navigate('Products')
     }).catch(()=>alert('Error user already exists'));
   }
   const chooseImage = async () => {
@@ -164,14 +166,7 @@ const AddItem = ({ navigation }) => {
        <Header title={'Add Items'}/>
        <ScrollView showsVerticalScrollIndicator={false}>
          <View style={{ padding: SIZES.padding }}>
-         
-    <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
-         <TouchableOpacity>
-        <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
-        resizeMode='cover'
-        style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
-        />
-         </TouchableOpacity> 
+         <View style={{flexDirection:'row',paddingTop:20, alignContent:'space-between',justifyContent:'center',alignSelf:'center'}}>
          <Button onPress={chooseImage}>
          <Image
             source={icons.gallery}
@@ -182,7 +177,7 @@ const AddItem = ({ navigation }) => {
             }}
           />
     </Button>
-    <Button style={{marginTop:5}} onPress={chooseCamera}>
+    <Button onPress={chooseCamera}>
     <Image
             source={icons.camera}
             resizeMode="contain"
@@ -192,6 +187,15 @@ const AddItem = ({ navigation }) => {
             }}
           />
     </Button>
+         </View>
+    <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+         <TouchableOpacity>
+        <Image source={{uri:'https://cdn-icons-png.flaticon.com/512/739/739198.png'}}
+        resizeMode='cover'
+        style={{height:100, tintColor:COLORS.secondary,width:100,borderRadius:6,borderColor:'grey',borderWidth:3}}
+        />
+         </TouchableOpacity> 
+         
     <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
 
     </View> 
@@ -222,7 +226,8 @@ const AddItem = ({ navigation }) => {
           </Picker>
           </View>
     <TextInput onChangeText={setprice} keyboardType='number-pad' style={styles.box} placeholder={'Price'}/>
-    <DropDown
+    <TextInput onChangeText={setTime } keyboardType='number-pad' style={styles.box} placeholder={'Estimated Ready Time'}/>
+     {/* <DropDown
               label={'Ready Time'}
               mode={'outlined'}
               visible={showDropDown}
@@ -231,12 +236,12 @@ const AddItem = ({ navigation }) => {
               value={time}
               setValue={setTime}
               list={TimeList}
-            />
+            /> */}
 <View style={styles.box2}>
   <Text style={{ padding: SIZES.padding, fontSize:20, color:COLORS.primary }}>Available on Days</Text>
   <Picker
             mode='dropdown'
-            style={{ flex: 1, color: '#445870' }}
+            style={{ flex: 1, color: '#445870', fontWeight:'bold' }}
             placeholder='Bill Type'
             placeholderStyle={{ color: '#BFC6EA' }}
             placeholderIconColor='#007AFF'

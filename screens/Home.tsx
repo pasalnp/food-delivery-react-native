@@ -407,8 +407,8 @@ useEffect(()=>{
   function renderHeader() {
     return (
       <>       
-       {/* <Header title={'Home'} />  */}
-      <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
+        {/* <Header title={'Home'} />   */}
+       <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
       <Headline1>Home</Headline1>
 
         <TouchableOpacity onPress={()=>navigate('mycart')}
@@ -427,7 +427,7 @@ useEffect(()=>{
             }}
           />
         </TouchableOpacity>
-      </View>
+      </View> 
       </>
 
     )

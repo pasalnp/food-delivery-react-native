@@ -6,7 +6,7 @@ import {
   Image
 } from "react-native";
 import { TextInput, TouchableOpacity } from "react-native-gesture-handler";
-import {COLORS, images, SIZES } from '../constants';
+import {COLORS, icons, images, SIZES } from '../constants';
 import Header from "./Components/Header";
 import { Button, Center, FormControl, Icon, KeyboardAvoidingView, NativeBaseProvider, WarningOutlineIcon } from "native-base";
 import { navigate } from "../navigation/RootNav";
@@ -88,20 +88,30 @@ const Add = ({ navigation  }) => {
        <Header title={'Add categories'}/>
        <KeyboardAvoidingView>
        <View style={{ padding: SIZES.padding,navigation }}>
-         {/* <View style={styles.picker}>
-       <Picker style={styles.picker} selectedValue={pickerValue}
-     onValueChange={(itemValue) => setPickerValue(itemValue)}>
-       <Picker.Item label="Food Item" value="Food Item"/>
-       <Picker.Item label="Food Category" value="Food Category"/>
-     </Picker>
-     </View> */}
-    <View style={{paddingTop:20, alignContent:'center',justifyContent:'center',alignItems:'center'}}>
+        
+    <View style={{flexDirection:'row',paddingTop:20, alignContent:'space-between',justifyContent:'center',alignSelf:'center'}}>
     <Button onPress={chooseImage}>
-    <Icon name='image' />
+         <Image
+            source={icons.gallery}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30
+            }}
+          />
     </Button>
-    <Button onPress={chooseCamera}>
-    <Icon name='camera' />
+    <Button  onPress={chooseCamera}>
+    <Image
+            source={icons.camera}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30
+            }}
+          />
     </Button>
+    </View>
+    <View style={{paddingTop:20,alignSelf:'center'}}>
     {image ? (
       <Image
       source={{ uri: image.uri }}
@@ -114,7 +124,7 @@ const Add = ({ navigation  }) => {
         />
         )}
        
-    <Text style={{color:COLORS.darkgray, fontSize:18}}>Add Image</Text>
+    
 
     </View> 
     <FormControl isInvalid={errorName} w="100%" > 
