@@ -1,7 +1,7 @@
 import { Home, Restaurant } from '../screens';
 import AddItem from '../screens/AddItems';
 import Login from '../screens/Login';
-import MyCart from '../screens/MyCart';
+import Help from '../screens/Help';
 import Dashboard from '../screens/Dashboard';
 import ResetPassword from '../screens/PasswordReset';
 import Products from '../screens/Products';
@@ -20,6 +20,7 @@ import Reports from '../screens/Reports';
 import Sales from '../screens/Sales';
 import Khalti from '../screens/Khalti';
 import ForgotPassword from '../screens/forgotpass';
+import MyCart from '../screens/MyCart';
 
 
 
@@ -32,7 +33,7 @@ export const homeRoutes = [
     { name: 'resetpassword', component: ResetPassword, title: 'Rest Password' },
     { name: 'forgotpassword', component: ForgotPassword, title: 'Frogot Password' },
     { name: 'signup', component: SignUp, title: 'Sign Up' },
-    { name: 'mycart', component: MyCart, title: 'My Cart' },
+    { name: 'help', component: Help, title: 'My Cart' },
     { name: 'additems', component: AddItem, title: 'Add Items' },
     { name: 'addcategory', component: AddCategory, title: 'Add Category' },
     { name: 'home', component: Home, title: 'Home' },
@@ -46,6 +47,7 @@ export const homeRoutes = [
     { name: 'reports', component:Reports, title: 'Reports' },
     { name: 'Sales', component:Sales, title: 'Sales' },
     { name: 'khalti', component:Khalti, title: 'Khalti' },
+    { name: 'mycart', component:MyCart, title: 'mycart' },
  
    
    

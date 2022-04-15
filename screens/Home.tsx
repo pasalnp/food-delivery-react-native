@@ -388,7 +388,10 @@ useEffect(()=>{
 },[restaurants])
   function onSelectCategory(category) {
     //filter restaurant
-    let restaurantList = restaurantsback.filter(a => a.category.includes(category.id))
+    var days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+var d = new Date();
+var dayName = days[d.getDay()];
+    let restaurantList = restaurantsback.filter(a => a.category.includes(category.id) && a.Avilday.includes(dayName))
 
     setRestaurants(restaurantList)
 
@@ -411,7 +414,7 @@ useEffect(()=>{
        <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
       <Headline1>Home</Headline1>
 
-        <TouchableOpacity onPress={()=>navigate('mycart')}
+        <TouchableOpacity onPress={()=>navigate('help')}
           style={{
             width: 50,
             alignItems:'flex-end',
@@ -562,6 +565,9 @@ useEffect(()=>{
           }}>
          <Text>
          Rs.{item.price}
+           </Text> 
+           <Text>
+         {item.Avilday}
            </Text> 
           </View>
 

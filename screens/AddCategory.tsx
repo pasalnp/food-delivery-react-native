@@ -21,6 +21,7 @@ const Add = ({ navigation  }) => {
   const [errorName,SetErrorName]= useState(false);
   const chooseImage = async () => {
     const result = await _pickImage('library');
+    console.log(result);
     
     if (!result.cancelled) {
       setImage(result);
@@ -55,12 +56,7 @@ const Add = ({ navigation  }) => {
       formData.append('icon', filename);
       formData.append('name', name);
     console.log("🚀 ~ file: AddCategory.tsx ~ line 68 ~ !errorName&&PostRequest ~ formData", formData)
-    !errorName && PostRequest(`${API}/addcategoryData`, {name:name,icon:filename,imageUrl:[{
-      uri: localUri,
-      name: filename,
-      type,
-      originalname: filename,
-    }]}).then((res)=>{
+    !errorName && PostRequest(`${API}/addcategoryData`, formData).then((res)=>{
       console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
       alert(res.data.message);
       navigate('tab2');

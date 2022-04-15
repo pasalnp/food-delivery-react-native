@@ -12,20 +12,10 @@ import { navigate } from "../navigation/RootNav";
 import { PostRequest,GetRequest } from "../Config/axios";
 import { API } from "../Config/var";
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { FormControl, Icon, Input, NativeBaseProvider, WarningOutlineIcon } from "native-base";
-import { MaterialIcons } from "@expo/vector-icons";
 
-const Khalti = ({route}) => {
-  // let {  orderItems } = route?.params;
-  const orderItems =route.params.orderItems;
-  console.log("🚀 ~ file: Khalti.js ~ line 17 ~ Khalti ~ route", orderItems)
- const [uname,setUname] = useState("");
- const [user_id,setUserId] = useState("");
- const [showPass,SetShowPass]= useState(true);
- const [pass,setPass]= useState('');
- const [errorUname,SetErrorUname]= useState(false);
- const [errorPass,SetErrorPass]= useState(false);
- const [test,setTest]= useState(true);
+const MyCart = ({ route,navigation }) => {
+  let {  orderItems } = route?.params;
+ const [user_id,setUserId] = useState();
  const [cart_data,setcartdata] = useState([]);
   const getData = async () => {
   try {
@@ -43,30 +33,15 @@ const Khalti = ({route}) => {
     // error reading value
   }
 }
-
-
-
 useEffect(()=>{
   getData();
-  console.log("kahlti:::",orderItems);},[])
+  console.log("mycart:::",orderItems);},[])
   useEffect(()=>{
     
-    console.log("kahlti:::",orderItems);},[orderItems])
+    console.log("mycart:::",orderItems);},[orderItems])
   const addOrderHandler = () => {
-    if(uname.length==10){
-      setTest(false);
-      SetErrorUname(false);
-    }else{
-      SetErrorUname(true);
-  }
-    if(pass.length<8){
-      SetErrorPass(true);
-    }else{
-      SetErrorPass(false);
-    setTest(false);
-  }
     orderItems.map((item)=>{
-      !test && !errorUname && !errorPass && PostRequest(`${API}/addOrder`, {user_id:user_id, quantity:item.qty, product_id:item.id}).then((res)=>{
+      PostRequest(`${API}/addOrder`, {user_id:user_id, quantity:item.qty, product_id:item.id}).then((res)=>{
         console.log('data>>>>>>>>>>>>>>>>>>>>',res.data.message);
         alert(res.data.message);
       }).catch(()=>alert('Error user already exists'));
@@ -78,11 +53,11 @@ useEffect(()=>{
 
   return (
     <>
-    <NativeBaseProvider><View style={styles.title}>
-<Text style={styles.title}>Khalti </Text>
+    <View style={styles.title}>
+<Text style={styles.title}>My Cart </Text>
 </View>
-<Text>Pay for your order through khalti</Text>
-{ orderItems?.map((item)=>{
+<Text>Your Cart Items</Text>
+{orderItems?.map((item)=>{
       return(
         <>
         <View style={styles.box}>
@@ -105,43 +80,20 @@ useEffect(()=>{
     })}
     <View style={{ padding: SIZES.padding * 2 }}>       
      
-    <Text style={{fontSize:18, color:'purple'}}>Khalti</Text>
+    {/* <Text style={{fontSize:18, color:COLORS.primary}}>Khalti</Text>
     <Text>Please enter your Khalti credentials</Text>
    
-    <FormControl isInvalid={errorPass} w="100%" >
     
-    <Input onChangeText={setUname}  style={styles.box} placeholder={'User Name / Phone number'}/>
-    {errorUname ? (
-        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-         Contact should be 10digit long
-        </FormControl.ErrorMessage>)
-        :<></>}
-    </FormControl>
-
-    <FormControl isInvalid={errorPass} w="100%" >
-        
-        <Input onChangeText={setPass} type={showPass? 'password' : 'text'} w={{
-      base: "100%",
-      md: "25%"
-    }} InputLeftElement={<Icon as={<MaterialIcons name="lock" />} size={5} ml="2" color="muted.400" />} InputRightElement={
-    <Icon onPress={()=>SetShowPass(!showPass)}  as={<MaterialIcons name={showPass? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />} placeholder="Password" />
-        {errorPass ? (
-        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-         Password should be at least eight character
-        </FormControl.ErrorMessage>)
-        :<></>}
-      </FormControl>
-
-    <TouchableOpacity  style={{paddingTop:50,paddingHorizontal:50}} onPress={addOrderHandler}>
-      <View style={{padding:10,backgroundColor:'purple', borderRadius:10}}>
-<Text style={{color:'white', fontSize:18, textAlign:'center'}} >Pay Now</Text>
+    <TextInput  style={styles.box} placeholder={'User Name / Phone number'}/>
+    <TextInput secureTextEntry={true}  style={styles.box} placeholder={'Password / MPIN'} /> */}
+    <TouchableOpacity  style={{paddingTop:50,paddingHorizontal:50}} onPress={()=>{navigate('payment',{orderItems:orderItems})}}>
+      <View style={{padding:10,backgroundColor:COLORS.primary, borderRadius:10}}>
+<Text style={{color:'white', fontSize:18, textAlign:'center'}} >Place Order</Text>
 </View>
       </TouchableOpacity>
 
-
      
     </View>
-    </NativeBaseProvider>
     </>
     )
   }
@@ -156,7 +108,7 @@ useEffect(()=>{
         color:'#fff',
         borderWidth:2,
         fontSize:25,
-        backgroundColor:'purple',
+        backgroundColor:COLORS.primary,
         justifyContent:'center',
         alignContent:'center',
         textAlign:'center',
@@ -166,7 +118,7 @@ useEffect(()=>{
    
     box:{
       padding:20,
-      borderBottomColor:'purple',
+      borderBottomColor:COLORS.primary,
       borderBottomWidth:3,
       fontSize:18
     },container: {
@@ -256,5 +208,5 @@ useEffect(()=>{
     
   })
   
-  export default Khalti;
+  export default MyCart;
   

@@ -14,7 +14,7 @@ import {COLORS, SIZES,icons, images, Headline1, Headline2, Headline3,
 import Header from "./Components/Header";
 import { navigate } from "../navigation/RootNav";
 
-export default class MyCart extends Component<{}> {
+export default class Help extends Component<{}> {
   
   constructor(props) {
     super(props);

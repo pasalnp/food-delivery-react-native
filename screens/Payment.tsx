@@ -13,11 +13,10 @@ import { COLORS, Headline2, Headline3 } from '../constants';
 import Header from './Components/Header';
 import { navigate } from "../navigation/RootNav";
 
-export default class Payment extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
+const Payment =({route})=>{
+   const orderItems =route.params.orderItems;
+   
+    const state = {
       data: [
         {id:1, title: "Khalti", image:"https://dao578ztqooau.cloudfront.net/static/img/logo1.png"},
         {id:1, title: "e-Sewa", image:"https://laxmanbaralblog.com/wp-content/uploads/2019/12/eSewa-Nepal-App.png"},
@@ -28,13 +27,11 @@ export default class Payment extends Component {
         
       ]
     };
-  }
 
   // clickEventListener(item) {
   //   Alert.Alert(item.title)
   // }
 
-  render() {
     return (
         <>
       <Header title={'Payment Options'} />
@@ -44,7 +41,7 @@ export default class Payment extends Component {
           </View>
         <FlatList style={styles.list}
           contentContainerStyle={styles.listContainer}
-          data={this.state.data}
+          data={state.data}
           horizontal={false}
           numColumns={2}
           keyExtractor= {(item) => {
@@ -52,7 +49,7 @@ export default class Payment extends Component {
           }}
           renderItem={({item}) => {
             return (
-              <TouchableOpacity style={styles.card} onPress={()=>navigate('khalti')}>
+              <TouchableOpacity style={styles.card} onPress={()=>{navigate('khalti',{orderItems:orderItems})}}>
                 <View style={styles.cardFooter}></View>
                 <Image style={styles.cardImage} resizeMode='contain' source={{uri:item.image}}/>
                 <View style={styles.cardHeader}>
@@ -72,7 +69,6 @@ export default class Payment extends Component {
         </TouchableOpacity>
       </>
     );
-  }
 }
 
 const styles = StyleSheet.create({
@@ -151,4 +147,4 @@ const styles = StyleSheet.create({
     alignSelf:'center',
     color:"#696969"
   },
-});   
+});   export default Payment;

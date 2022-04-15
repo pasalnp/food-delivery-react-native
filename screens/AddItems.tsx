@@ -62,6 +62,8 @@ const AddItem = ({ navigation }) => {
       
       formData.append('filename', filename);
     } else {
+      formData.append('filename', "filename");
+
       formData.append('image', image);
     }
     

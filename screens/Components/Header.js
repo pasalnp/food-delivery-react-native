@@ -17,7 +17,7 @@ const Header = ({title})=>{
       <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
       <Headline1>{title}</Headline1>
 
-        {/* <TouchableOpacity onPress={()=>navigate('mycart')}
+        {/* <TouchableOpacity onPress={()=>navigate('help')}
           style={{
             width: 50,
             alignItems:'flex-end',

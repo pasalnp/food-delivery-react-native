@@ -13,13 +13,13 @@ import { Home, OrderDelivery, Restaurant } from "../screens"
 import { COLORS, icons, images } from "../constants"
 import Login from '../screens/Login';
 import SignUp from '../screens/SignUp';
-import CartItem from '../screens/MyCart';
+import CartItem from '../screens/Help';
 import AddItem from '../screens/AddItems';
 import ViewOrder from '../screens/MyOrder';
 import MyOrder from '../screens/MyOrder';
 import Orders from '../screens/Dashboard';
 import Products from '../screens/Products';
-import MyCart from '../screens/MyCart';
+import Help from '../screens/Help';
 import ResetPassword from '../screens/PasswordReset';
 import MyOrders from '../screens/MyOrder';
 import CreditCard from '../screens/CreditCard';

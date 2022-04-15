@@ -468,7 +468,7 @@ const Restaurant = ({ route, navigation }) => {
                 justifyContent:'center',
                 borderRadius: SIZES.radius
               }}
-              onPress={() => navigation.navigate("khalti", {
+              onPress={() => navigation.navigate("mycart", {
                 orderItems: orderItems,
               })}
             >
