@@ -14,10 +14,10 @@ const Header = ({title})=>{
 </View> */}
 <>       
        {/* <Header title={'Home'} />  */}
-      <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 80,justifyContent:'space-between' }}>
+      <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
       <Headline1>{title}</Headline1>
 
-        <TouchableOpacity onPress={()=>navigate('mycart')}
+        {/* <TouchableOpacity onPress={()=>navigate('mycart')}
           style={{
             width: 50,
             alignItems:'flex-end',
@@ -32,7 +32,7 @@ const Header = ({title})=>{
               height: 30
             }}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View>
       </>
 </>
