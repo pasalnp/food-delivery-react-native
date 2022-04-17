@@ -414,7 +414,7 @@ var dayName = days[d.getDay()];
        <View style={{padding:10, marginTop:50,flexDirection: 'row', height: 50,justifyContent:'space-between' }}>
       <Headline1>Home</Headline1>
 
-        <TouchableOpacity onPress={()=>navigate('help')}
+        {/* <TouchableOpacity onPress={()=>navigate('help')}
           style={{
             width: 50,
             alignItems:'flex-end',
@@ -429,7 +429,7 @@ var dayName = days[d.getDay()];
               height: 30
             }}
           />
-        </TouchableOpacity>
+        </TouchableOpacity> */}
       </View> 
       </>
 

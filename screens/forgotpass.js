@@ -22,7 +22,7 @@ const [pass, setPass]=useState('');
   const passHandler = ()=>{
     PostRequest(`${API}/passforget`, {email:pass}).then((res)=>{
       alert('Mail has sent');
-      
+      navigate('login')
     }).catch((err)=>{
       alert('Invalid email');
     })

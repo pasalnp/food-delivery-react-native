@@ -22,11 +22,11 @@ export default class Reports extends Component {
         {id:1, title: "Sales", name:"Sales"},
         {id:2, title: "Orders",  name:"Orders"},
       ],
-      reports:[
-        {id:1, title: "Total ", value:"9600"},
-        {id:1, title: "Pending Orders", value:"4300"},
-        {id:2, title: "Cancelled Orders",  value:"5300"},
-      ]
+      // reports:[
+      //   {id:1, title: "Total ", value:"9600"},
+      //   {id:1, title: "Pending Orders", value:"4300"},
+      //   {id:2, title: "Cancelled Orders",  value:"5300"},
+      // ]
     };
   }
 

@@ -157,7 +157,7 @@ function renderProducts() {
                     
                    }}
                  >
-                   <TouchableOpacity onPress={()=>navigate('additems')}>
+                   {/* <TouchableOpacity onPress={()=>navigate('additems')}>
                    <Image
                          source={icons.edit}
                          style={{
@@ -166,7 +166,7 @@ function renderProducts() {
                            marginLeft:15
                          }}
                        />
-                    </TouchableOpacity>
+                    </TouchableOpacity> */}
                    </View>
                  
       
